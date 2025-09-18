@@ -54,7 +54,7 @@
                     x-show="notifOpen"
                     x-transition
                     @click.outside="notifOpen=false"
-                    class="absolute right-0 z-50 mt-2 w-[22rem] max-w-[90vw] rounded-2xl border border-gray-200 bg-white shadow-xl"
+                    class="absolute right-0 z-40 mt-2 w-[22rem] max-w-[90vw] rounded-2xl border border-gray-200 bg-white shadow-xl"
                 >
                     <div
                         class="flex items-center justify-between px-4 py-3"
@@ -294,7 +294,7 @@
                     x-show="userOpen"
                     x-transition
                     @click.outside="userOpen=false"
-                    class="absolute right-0 z-50 mt-2 w-64 sm:w-80 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+                    class="absolute right-0 z-40 mt-2 w-64 sm:w-80 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
                 >
                     <div
                         class="flex items-center gap-3 px-4 py-4"
