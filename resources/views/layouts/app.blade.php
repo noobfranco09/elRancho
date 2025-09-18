@@ -20,66 +20,13 @@
         <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
 
 
-        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
-        <script
-            defer
-            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-        ></script>
-
-        <style type="text/tailwindcss">
-            :root {
-                --primary-50: #f0fdf4;
-                --primary-100: #dcfce7;
-                --primary-200: #bbf7d0;
-                --primary-300: #86efac;
-                --primary-400: #4ade80;
-                --primary-500: #22c55e;
-                --primary-600: #16a34a;
-                --primary-700: #15803d;
-                --primary-800: #166534;
-                --primary-900: #14532d;
-                --primary-950: #052e16;
-            }
-
-            .sidebar-text {
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-                white-space: nowrap;
-            }
-
-            .sidebar-expanded .sidebar-text {
-                opacity: 1;
-                transition-delay: 0.15s;
-            }
-        </style>
-
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: {
-                                50: "var(--primary-50)",
-                                100: "var(--primary-100)",
-                                200: "var(--primary-200)",
-                                300: "var(--primary-300)",
-                                400: "var(--primary-400)",
-                                500: "var(--primary-500)",
-                                600: "var(--primary-600)",
-                                700: "var(--primary-700)",
-                                800: "var(--primary-800)",
-                                900: "var(--primary-900)",
-                                950: "var(--primary-950)",
-                            },
-                        },
-                    },
-                },
-            };
-        </script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-50 text-gray-900" x-data="{ sidebarOpen: false }">
+    <body class="bg-gray-50 text-gray-900" x-data="{ sidebarOpen: false, loaded: true }" x-init="window.addEventListener('DOMContentLoaded', () => { setTimeout(() => loaded = false, 500) })">
+        <x-preloader />
+
         <div
             class="flex min-h-screen"
             style="font-family: Inter, &quot;Noto Sans&quot;, sans-serif"
