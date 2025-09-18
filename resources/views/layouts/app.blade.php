@@ -85,7 +85,17 @@
             style="font-family: Inter, &quot;Noto Sans&quot;, sans-serif"
         >
 
-            <x-sidebar />
+            <x-sidebar>
+                <x-sidebar.section icon="dashboard" title="Dashboard" selected/>
+
+                <x-sidebar.section icon="inventory_2" title="Inventario">
+                    <x-sidebar.link icon="search" title="Buscar"/>
+                    <x-sidebar.link icon="bar_chart" title="Estadisticas" selected/>
+                    <x-sidebar.link icon="add_box" title="Añadir producto" src="noce.html"/>
+                </x-sidebar.section>
+
+                <x-sidebar.section icon="factory" title="Produccion"/>
+            </x-sidebar>
 
             <main
                 class="ml-20 w-full flex-1 p-6 transition-all duration-300 ease-in-out lg:p-8"

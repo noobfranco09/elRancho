@@ -25,7 +25,7 @@
                 </div>
             </div>
             <nav class="mt-8 flex flex-col gap-2">
-                <a
+                <!--<a
                     class="flex items-center gap-3 rounded-lg bg-primary-100 px-3 py-2 text-primary-700"
                     href="#"
                 >
@@ -35,12 +35,11 @@
                     <span class="sidebar-text text-sm font-medium"
                         >Dashboard</span
                     >
-                </a>
+                </a>-->
 
-                <x-sidebar.section />
+                {{ $slot }}
 
-
-                <a
+                <!--<a
                     class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100"
                     href="#"
                 >
@@ -61,18 +60,7 @@
                     <span class="sidebar-text text-sm font-medium"
                         >Finanzas</span
                     >
-                </a>
-                <a
-                    class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100"
-                    href="#"
-                >
-                    <span class="material-symbols-outlined shrink-0"
-                        >monitoring</span
-                    >
-                    <span class="sidebar-text text-sm font-medium"
-                        >Reportes</span
-                    >
-                </a>
+                </a>-->
             </nav>
         </div>
         <div class="flex flex-col gap-2">
