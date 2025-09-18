@@ -61,12 +61,7 @@
                             React Developer
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"
-                                ></div>
-                                Online
-                            </div>
+                            <x-status-label active label="Online"/>
                         </td>
                         <td class="px-6 py-4">
                             <a
@@ -106,12 +101,7 @@
                         </th>
                         <td class="px-6 py-4">Designer</td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"
-                                ></div>
-                                Online
-                            </div>
+                            <x-status-label active label="Online"/>
                         </td>
                         <td class="px-6 py-4">
                             <a
@@ -152,12 +142,7 @@
                             Vue JS Developer
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"
-                                ></div>
-                                Online
-                            </div>
+                            <x-status-label active label="Online"/>
                         </td>
                         <td class="px-6 py-4">
                             <a
@@ -198,12 +183,7 @@
                             UI/UX Engineer
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"
-                                ></div>
-                                Online
-                            </div>
+                            <x-status-label active label="Online"/>
                         </td>
                         <td class="px-6 py-4">
                             <a
@@ -242,12 +222,7 @@
                             SEO Specialist
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"
-                                ></div>
-                                Offline
-                            </div>
+                            <x-status-label label="Offline"/>
                         </td>
                         <td class="px-6 py-4">
                             <a
