@@ -86,7 +86,7 @@
         >
 
             <x-sidebar>
-                <x-sidebar.section icon="dashboard" title="Dashboard" selected/>
+                <x-sidebar.section icon="dashboard" title="Dashboard" :src="route('dashboard')" :selected="request()->routeIs('dashboard')"/>
 
                 <x-sidebar.section icon="inventory_2" title="Inventario">
                     <x-sidebar.link icon="search" title="Buscar"/>
@@ -94,7 +94,7 @@
                     <x-sidebar.link icon="add_box" title="Añadir producto" src="noce.html"/>
                 </x-sidebar.section>
 
-                <x-sidebar.section icon="factory" title="Produccion"/>
+                <x-sidebar.section icon="factory" title="Produccion" :src="route('table-example')" :selected="request()->routeIs('table-example')"/>
             </x-sidebar>
 
             <main

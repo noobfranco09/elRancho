@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/dashboard", function () {
     return view("dashboard");
-});
+})->name("dashboard");
+
+Route::get("/table-example", function() {
+    return view("table-example");
+})->name("table-example");
 
 
 /* Route::get('/dashboard', function () { */
