@@ -1,3 +1,7 @@
+@props([
+    'title',
+    'description'
+])
 <header class="mb-8">
     <div
         class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm lg:px-6 lg:py-4"
@@ -20,10 +24,10 @@
             <h1
                 class="text-2xl font-bold text-gray-800 lg:text-3xl"
             >
-                Dashboard
+               {{ $title }}
             </h1>
             <p class="text-gray-500">
-                Resumen general de las operaciones del rancho.
+                {{ $description }}
             </p>
         </div>
 
