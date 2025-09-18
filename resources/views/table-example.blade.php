@@ -3,8 +3,11 @@
         <x-header title="Dashboard" description="Administración del rancho"/>
     </x-slot>
 
-    <h2 class="text-2xl font-bold text-gray-800">Tendencias</h2>
-    <x-panel cols="1">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Tendencias</h2>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div
+            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+        >
             <div class="flex items-start justify-between">
                 <div>
                     <h4
@@ -26,5 +29,6 @@
                     <span class="text-lg font-bold">+15%</span>
                 </div>
             </div>
-    </x-panel>
+        </div>
+    </div>
 </x-app-layout>
