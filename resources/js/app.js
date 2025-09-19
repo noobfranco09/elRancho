@@ -9,8 +9,6 @@ Alpine.start();
 
 let table = new DataTable("#myTable", {
     layout: {
-        topStart: {
-        },
         topEnd: {
             search: { placeholder: "Buscar…" },
         },

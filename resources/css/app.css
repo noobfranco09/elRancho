@@ -23,6 +23,73 @@
   --color-delete: #dc2626; /* Rojo para eliminar/peligro */
 }
 
+/* === INICIO: NUEVOS ESTILOS PARA EL LAYOUT === */
+
+/*
+  Contenedor principal para alinear el selector de registros y la búsqueda.
+  - Usamos Flexbox para poner los elementos en una misma fila.
+  - `justify-content: space-between` los separa a los extremos.
+  - `flex-wrap: wrap` permite que se apilen en pantallas pequeñas.
+*/
+.dt-layout-row:first-child {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 1rem !important; /* Espacio entre elementos si se apilan */
+  margin-bottom: 1rem !important;
+}
+
+/* === FIN: NUEVOS ESTILOS PARA EL LAYOUT === */
+
+
+/* === INICIO: NUEVOS ESTILOS PARA EL SELECTOR DE REGISTROS === */
+
+/* Contenedor del selector */
+.dt-container .dt-length {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Etiqueta "Mostrar ... registros" */
+.dt-container .dt-length label {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  white-space: nowrap; /* Evita que el texto se parta */
+}
+
+/* Estilos para el <select> */
+.dt-container .dt-length select.dt-input {
+  /* Estilos base (consistentes con el input de búsqueda) */
+  padding: 0.625rem 2.5rem 0.625rem 0.875rem !important; /* Espacio extra a la derecha para la flecha */
+  font-size: 0.875rem !important;
+  background: #fff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  outline: none !important;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s !important;
+
+  /* Quitamos la apariencia por defecto para poder poner una flecha personalizada */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Flecha personalizada usando un SVG como fondo */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+  background-position: right 0.75rem center !important;
+  background-repeat: no-repeat !important;
+  background-size: 1.25em 1.25em !important;
+}
+
+/* Estilo al enfocar el <select> */
+.dt-container .dt-length select.dt-input:focus {
+  border-color: var(--primary-400) !important;
+  box-shadow: 0 0 0 3px rgb(34 197 94 / 0.25) !important;
+}
+
 /* Ejemplos de uso */
 .button-create {
   background-color: var(--color-create);
