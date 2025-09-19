@@ -72,10 +72,10 @@ Slots:
             >
                 <slot name="footer">
                     <!-- Botones por defecto si no se provee un slot de footer -->
-                    <x-button variant="secondary" data-modal-hide="{{ $id }}">
+                    <x-button variant="secondary"  data-modal-hide="{{ $id }}">
                         Cancelar
                     </x-button>
-                    <x-button variant="primary" type="submit">
+                    <x-button variant="primary" type="submit" >
                         Guardar
                     </x-button>
                 </slot>

@@ -25,8 +25,14 @@
                 <td class="px-6 py-4">
                     $2999
                 </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                <td class="px-6 py-4 text-center">
+
+                    <div class="flex items-center justify-center space-x-2">
+                        <x-button variant="secondary" icon="visibility">Ver</x-button>
+                        <x-button variant="primary" icon="add">Crear</x-button>
+                        <x-button variant="warning" icon="edit">Editar</x-button>
+                        <x-button variant="danger" icon="delete">Eliminar</x-button>
+                    </div>
                 </td>
             </x-table-row>
 
@@ -103,20 +109,7 @@
             </div>
 
             <x-slot:footer>
-                <button
-                    type="button"
-                    data-modal-hide="editUserModal" {{-- Importante mantener esto para que el JS de Flowbite/Tailwind funcione --}}
-                    class="px-5 py-2.5 text-sm font-medium rounded-lg text-primary-700 hover:text-primary-800 bg-primary-50 hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300"
-                >
-                    Cancelar
-                </button>
 
-                <button
-                    type="submit"
-                    class="px-5 py-2.5 text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
-                >
-                    Actualizar Usuario
-                </button>
             </x-slot:footer>
 
         </x-modal>
