@@ -17,7 +17,7 @@ Slots:
     class="fixed inset-0 z-[60] hidden w-full p-4 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden flex justify-center items-center"
 >
     <div
-        class="relative w-full max-h-full {{ $maxWidthClass }}"
+        class="relative w-full max-h-full max-w-2xl"
     >
         <form
             action="{{ $action }}"

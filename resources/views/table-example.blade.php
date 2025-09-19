@@ -79,10 +79,10 @@
             title="Editar usuario"
             action="#"
             method="PUT"
-            maxWidth="2x1"
+            maxWidth="2xl"
         >
 
-            <div class="grid grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 gap-6">
 
                 <x-form.input name="first-name" label="First Name"  placeholder="Bonnie" required />
 

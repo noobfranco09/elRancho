@@ -1,14 +1,3 @@
-<!--
-Componente de Input Reutilizable para Formularios
-Props:
-- name: (string) Requerido.
-- label: (string) Requerido.
-- type: (string) Opcional. 'text' por defecto.
-- value: (string) Opcional.
-- placeholder: (string) Opcional.
-- required: (bool) Opcional. false por defecto.
-- span: (string) Opcional. Clases para el grid.
--->
 <div class="{{ $span }}">
     <label for="{{ $name }}" class="block mb-2 text-sm font-medium text-gray-900">{{ $label }}</label>
     <input

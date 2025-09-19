@@ -21,7 +21,7 @@ class Modal extends Component
         string $title,
         string $action = "#",
         string $method = "POST",
-        string $maxWidth = "2x1"
+        string $maxWidth = "2xl"
     ) {
         $this->id = $id;
         $this->title = $title;
