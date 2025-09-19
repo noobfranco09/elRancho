@@ -9,23 +9,6 @@ Alpine.start();
 let table = new DataTable("#myTable", {
     layout: {
         topStart: {
-            buttons: [
-                {
-                    extend: "excelHtml5",
-                    text: '<span class="material-symbols-outlined">grid_on</span><span>Excel</span>',
-                    className: "btn-excel",
-                },
-                {
-                    extend: "pdfHtml5",
-                    text: '<span class="material-symbols-outlined">picture_as_pdf</span><span>PDF</span>',
-                    className: "btn-pdf",
-                },
-                {
-                    extend: "print",
-                    text: '<span class="material-symbols-outlined">print</span><span>Imprimir</span>',
-                    className: "btn-print",
-                },
-            ],
         },
         topEnd: {
             search: { placeholder: "Buscar…" },
