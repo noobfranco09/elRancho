@@ -244,6 +244,27 @@
                 method="PUT"
                 maxWidth="2x1"
             >
+
+                <div class="grid grid-cols-6 gap-6">
+
+                    <x-form.input name="first-name" label="First Name"  placeholder="Bonnie" required />
+
+                    <x-form.input name="last-name" label="Last Name"  placeholder="Green" required />
+
+                    <x-form.input type="email" name="email" label="Email"  placeholder="example@company.com" required />
+
+                    <x-form.input type="number" name="phone-number" label="Phone Number"  placeholder="e.g. +(12)3456 789" required />
+
+                    <x-form.input name="department" label="Department"  placeholder="Development" required />
+
+                    <x-form.input type="number" name="company" label="Company"  placeholder="123456" required />
+
+                    <x-form.input type="password" name="current-password" label="Current Password" placeholder="••••••••" required />
+
+                    <x-form.input type="password" name="new-password" label="New Password" placeholder="••••••••" required />
+
+                </div>
+
                 <x-slot:footer>
                     <button
                         type="button"
