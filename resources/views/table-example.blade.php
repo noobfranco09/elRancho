@@ -74,45 +74,61 @@
                     <div class="flex items-center justify-center space-x-2">
                         <x-button variant="primary" icon="visibility">Ver</x-button>
                         <x-button variant="warning" icon="edit" data-modal-target="editUserModal" data-modal-show="editUserModal">Editar</x-button>
-                        <x-button variant="danger" icon="delete">Eliminar</x-button>
+                        <x-button variant="danger" icon="delete" data-modal-target="delete-modal" data-modal-show="delete-modal">Eliminar</x-button>
                     </div>
                 </td>
             </x-table-row>
         </x-table>
 
-        <x-modal
-            id="editUserModal"
-            title="Editar usuario"
-            action="#"
-            method="PUT"
-            maxWidth="2xl"
-        >
-
-            <div class="grid grid-cols-2 gap-6">
-
-                <x-form.input name="first-name" label="First Name"  placeholder="Bonnie" required />
-
-                <x-form.input name="last-name" label="Last Name"  placeholder="Green" required />
-
-                <x-form.input type="email" name="email" label="Email"  placeholder="example@company.com" required />
-
-                <x-form.input type="number" name="phone-number" label="Phone Number"  placeholder="e.g. +(12)3456 789" required />
-
-                <x-form.input name="department" label="Department"  placeholder="Development" required />
-
-                <x-form.input type="number" name="company" label="Company"  placeholder="123456" required />
-
-                <x-form.input type="password" name="current-password" label="Current Password" placeholder="••••••••" required />
-
-                <x-form.input type="password" name="new-password" label="New Password" placeholder="••••••••" required />
-
-            </div>
-
-            <x-slot:footer>
-
-            </x-slot:footer>
-
-        </x-modal>
         <!--Fin de la tabla-->
     </x-panel>
+    <x-modal
+        id="editUserModal"
+        title="Editar usuario"
+        action="#"
+        method="PUT"
+        maxWidth="2xl"
+    >
+
+        <div class="grid grid-cols-2 gap-6">
+
+            <x-form.input name="first-name" label="First Name"  placeholder="Bonnie" required />
+
+            <x-form.input name="last-name" label="Last Name"  placeholder="Green" required />
+
+            <x-form.input type="email" name="email" label="Email"  placeholder="example@company.com" required />
+
+            <x-form.input type="number" name="phone-number" label="Phone Number"  placeholder="e.g. +(12)3456 789" required />
+
+            <x-form.input name="department" label="Department"  placeholder="Development" required />
+
+            <x-form.input type="number" name="company" label="Company"  placeholder="123456" required />
+
+            <x-form.input type="password" name="current-password" label="Current Password" placeholder="••••••••" required />
+
+            <x-form.input type="password" name="new-password" label="New Password" placeholder="••••••••" required />
+
+        </div>
+
+        <x-slot:footer>
+
+        </x-slot:footer>
+    </x-modal>
+
+    <x-popup id="delete-modal" message="¿Estás seguro de que quieres eliminar este producto?">
+        <!-- Este es el contenido para el slot principal -->
+
+
+        <!-- Este es el contenido para el slot con nombre "footer" -->
+        <x-slot:footer>
+            <x-button variant="danger" data-modal-hide="delete-modal">
+                Si, eliminar
+            </x-button>
+
+            <x-button variant="primary" data-modal-hide="delete-modal">
+                Cancelar
+            </x-button>
+        </x-slot:footer>
+    </x-popup>
+
 </x-app-layout>
