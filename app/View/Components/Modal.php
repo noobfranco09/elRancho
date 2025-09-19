@@ -27,7 +27,7 @@ class Modal extends Component
         $this->title = $title;
         $this->action = $action;
         $this->method = $method;
-        $this->maxWidthClass = $maxWidth;
+        $this->maxWidthClass = $this->getMaxWidthClass($maxWidth);
     }
 
     public function getMaxWidthClass(string $size)
