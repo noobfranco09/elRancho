@@ -14,7 +14,7 @@ class Table extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(array $headings = [], string $name)
+    public function __construct(string $name, array $headings = [])
     {
         $this->headings = $headings;
         $this->name = $name;

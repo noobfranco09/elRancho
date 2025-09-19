@@ -6,7 +6,7 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejemplo de tabla</h2>
 
     @php
-        $headers = ["Nombre", "Color", "Categoria", "Precio", "Acciones"];
+        $headers = ["Nombre", "Estado", "Categoria", "Precio", "Acciones"];
     @endphp
 
     <x-panel>
@@ -17,7 +17,7 @@
                     Apple MacBook Pro 17"
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    <x-status-label label="Activo" active />
                 </td>
                 <td class="px-6 py-4">
                     Laptop
@@ -28,9 +28,8 @@
                 <td class="px-6 py-4 text-center">
 
                     <div class="flex items-center justify-center space-x-2">
-                        <x-button variant="secondary" icon="visibility">Ver</x-button>
-                        <x-button variant="primary" icon="add">Crear</x-button>
-                        <x-button variant="warning" icon="edit">Editar</x-button>
+                        <x-button variant="primary" icon="visibility">Ver</x-button>
+                        <x-button variant="warning" icon="edit" data-modal-target="editUserModal" data-modal-show="editUserModal">Editar</x-button>
                         <x-button variant="danger" icon="delete">Eliminar</x-button>
                     </div>
                 </td>
@@ -41,7 +40,7 @@
                     Microsoft Surface Pro
                 </th>
                 <td class="px-6 py-4">
-                    White
+                    <x-status-label label="Activo" active />
                 </td>
                 <td class="px-6 py-4">
                     Laptop PC
@@ -50,7 +49,11 @@
                     $1999
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                    <div class="flex items-center justify-center space-x-2">
+                        <x-button variant="primary" icon="visibility">Ver</x-button>
+                        <x-button variant="warning" icon="edit" data-modal-target="editUserModal" data-modal-show="editUserModal">Editar</x-button>
+                        <x-button variant="danger" icon="delete">Eliminar</x-button>
+                    </div>
                 </td>
             </x-table-row>
 
@@ -59,7 +62,7 @@
                     Magic Mouse 2
                 </th>
                 <td class="px-6 py-4">
-                    Black
+                    <x-status-label label="Inactivo"/>
                 </td>
                 <td class="px-6 py-4">
                     Accessories
@@ -68,14 +71,11 @@
                     $99
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <a
-                        href="#"
-                        type="button"
-                        data-modal-target="editUserModal"
-                        data-modal-show="editUserModal"
-                        class="font-medium text-blue-600 hover:underline"
-                        >Edit user</a
-                    >
+                    <div class="flex items-center justify-center space-x-2">
+                        <x-button variant="primary" icon="visibility">Ver</x-button>
+                        <x-button variant="warning" icon="edit" data-modal-target="editUserModal" data-modal-show="editUserModal">Editar</x-button>
+                        <x-button variant="danger" icon="delete">Eliminar</x-button>
+                    </div>
                 </td>
             </x-table-row>
         </x-table>
