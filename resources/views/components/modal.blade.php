@@ -72,6 +72,9 @@ Slots:
             >
                 <slot name="footer">
                     <!-- Botones por defecto si no se provee un slot de footer -->
+                    <x-button variant="warning">
+                        Cancelar
+                    </x-button>
                     <button
                         type="button"
                         data-modal-hide="{{ $id }}"
