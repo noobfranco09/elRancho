@@ -37,11 +37,14 @@
             <x-sidebar>
                 <x-sidebar.section icon="dashboard" title="Dashboard" :src="route('dashboard')" :selected="request()->routeIs('dashboard')"/>
 
-                <x-sidebar.section icon="inventory_2" title="Inventario">
-                    <x-sidebar.link icon="search" title="Buscar"/>
-                    <x-sidebar.link icon="bar_chart" title="Estadisticas" selected/>
-                    <x-sidebar.link icon="add_box" title="Añadir producto" src="noce.html"/>
+                <x-sidebar.section icon="pets" title="Animales">
+                    <x-sidebar.link icon="manage_search" title="Gestionar animales"/>
+                    <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected/>
+                    <x-sidebar.link icon="description" title="Registrar documentos" src="noce.html"/>
                 </x-sidebar.section>
+
+                <x-sidebar.section icon="warehouse" title="Establos"/>
+
 
                 <x-sidebar.section icon="factory" title="Produccion" :src="route('table-example')" :selected="request()->routeIs('table-example')"/>
             </x-sidebar>
