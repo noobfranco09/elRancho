@@ -18,4 +18,12 @@ class Venta extends Model
     {
         return $this->belongsTo(Certificado::class);
     }
+    public function empleados()
+    {
+        return $this->belongsTo(Empleado::class);
+    }
+    public function animales()
+    {
+        return $this->hasMany(Animal::class);
+    }
 }

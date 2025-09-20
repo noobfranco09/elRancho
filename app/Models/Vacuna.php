@@ -9,4 +9,9 @@ class Vacuna extends Model
 {
     /** @use HasFactory<\Database\Factories\VacunaFactory> */
     use HasFactory;
+
+    public function animales()
+    {
+        return $this->belongsToMany(Animal::class, "vacunaciones");
+    }
 }

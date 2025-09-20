@@ -9,4 +9,13 @@ class Enfermedad extends Model
 {
     /** @use HasFactory<\Database\Factories\EnfermedadFactory> */
     use HasFactory;
+
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class);
+    }
+    public function animales()
+    {
+        return $this->belongsToMany(Animal::class, "tratamientos");
+    }
 }

@@ -9,4 +9,13 @@ class Estanco extends Model
 {
     /** @use HasFactory<\Database\Factories\EstancoFactory> */
     use HasFactory;
+
+    public function establo()
+    {
+        return $this->belongsTo(Establo::class);
+    }
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class);
+    }
 }

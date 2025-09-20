@@ -9,4 +9,8 @@ class Veterinario extends Model
 {
     /** @use HasFactory<\Database\Factories\VeterinarioFactory> */
     use HasFactory;
+    public function animales()
+    {
+        return $this->belongsToMany(Animal::class, "revisiones");
+    }
 }

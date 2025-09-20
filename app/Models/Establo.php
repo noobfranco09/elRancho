@@ -10,4 +10,9 @@ class Establo extends Model
     /** @use HasFactory<\Database\Factories\EstabloFactory> */
     use HasFactory;
 
+    public function estancos()
+    {
+        return $this->hasMany(Estanco::class);
+    }
+
 }

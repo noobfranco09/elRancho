@@ -9,4 +9,9 @@ class Alimento extends Model
 {
     /** @use HasFactory<\Database\Factories\AlimentoFactory> */
     use HasFactory;
+
+    public function animales()
+    {
+        return $this->belongsToMany(Animal::class, "alimentaciones");
+    }
 }
