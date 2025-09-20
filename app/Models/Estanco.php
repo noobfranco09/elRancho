@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Establo extends Model
+class Estanco extends Model
 {
-    /** @use HasFactory<\Database\Factories\EstabloFactory> */
+    /** @use HasFactory<\Database\Factories\EstancoFactory> */
     use HasFactory;
-
 }
