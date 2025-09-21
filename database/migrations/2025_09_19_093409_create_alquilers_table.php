@@ -17,8 +17,8 @@ return new class extends Migration
             $table->enum('estado', ['activo', 'caducado'])->nullable();
             $table->date('fecha_alquiler');
             $table->date('fecha_devolucion');
-            $table->foreignId('certificado_id')->constrained('certificados');
             $table->integer('costo_total');
+            $table->string("certificado", 200)->nullable(); # La ruta del certificado
             $table->timestamps();
         });
     }

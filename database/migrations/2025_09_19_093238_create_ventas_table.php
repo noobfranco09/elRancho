@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('codigo', 45)->nullable();
             $table->decimal('total', 15, 2)->nullable();
             $table->dateTime('fecha');
+            $table->string("certificado", 45)->nullable();
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('empleado_id')->constrained('empleados');
-            $table->foreignId('certificado_id')->constrained('certificados');
+
             $table->timestamps();
         });
     }

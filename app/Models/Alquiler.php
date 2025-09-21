@@ -14,11 +14,6 @@ class Alquiler extends Model
     {
         return $this->belongsTo(Cliente::class);
     }
-
-    public function certificado()
-    {
-        return $this->belongsTo(Certificado::class);
-    }
     public function animales()
     {
         return $this->belongsToMany(Animal::class, "animales_alquileres");

@@ -14,10 +14,6 @@ class Venta extends Model
     {
         return $this->belongsTo(Cliente::class);
     }
-    public function certificado()
-    {
-        return $this->belongsTo(Certificado::class);
-    }
     public function empleados()
     {
         return $this->belongsTo(Empleado::class);
