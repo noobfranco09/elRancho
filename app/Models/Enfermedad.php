@@ -16,6 +16,6 @@ class Enfermedad extends Model
     }
     public function tratamientos()
     {
-        return $this->hasMany(Tratamiento::class, "tratamientos");
+        return $this->hasMany(Tratamiento::class);
     }
 }

@@ -14,8 +14,8 @@ class Estanco extends Model
     {
         return $this->belongsTo(Establo::class);
     }
-    public function animal()
+    public function animales()
     {
-        return $this->belongsTo(Animal::class);
+        return $this->hasMany(Animal::class);
     }
 }

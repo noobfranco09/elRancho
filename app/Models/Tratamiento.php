@@ -8,6 +8,6 @@ class Tratamiento extends Model
 {
     public function enfermedad()
     {
-        return $this->belongsTo(Enfermedad::class, "enfermedades");
+        return $this->belongsTo(Enfermedad::class);
     }
 }

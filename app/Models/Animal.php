@@ -14,9 +14,9 @@ class Animal extends Model
     {
         return $this->belongsTo(Venta::class);
     }
-    public function estancos()
+    public function estanco()
     {
-        return $this->hasMany(Estanco::class);
+        return $this->belongsTo(Estanco::class);
     }
     public function enfermedades()
     {

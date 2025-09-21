@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('estancos', function (Blueprint $table) {
             $table->id();
             $table->string("codigo")->unique();
-            $table->foreignId("establo_id")->constrained("estancos");
-            $table->foreignId("animal_id")->constrained("animales");
+            $table->foreignId("establo_id")->constrained("establos");
             $table->enum("estado", ["ocupado", "libre"]);
             $table->timestamps();
         });
