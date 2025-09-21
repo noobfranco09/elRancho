@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tratamientos', function (Blueprint $table) {
-            $table->foreignId('animal_id')->constrained('animales');
+            $table->id();
             $table->foreignId('enfermedad_id')->constrained('enfermedades');
             $table->text('descripcion')->nullable();
             $table->date('fecha_prescripcion')->nullable();
 
-            $table->primary(['animal_id', 'enfermedad_id']);
             $table->timestamps();
         });
     }

@@ -14,8 +14,8 @@ class Enfermedad extends Model
     {
         return $this->belongsTo(Animal::class);
     }
-    public function animales()
+    public function tratamientos()
     {
-        return $this->belongsToMany(Animal::class, "tratamientos");
+        return $this->hasMany(Tratamiento::class, "tratamientos");
     }
 }

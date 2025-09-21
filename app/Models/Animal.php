@@ -30,10 +30,6 @@ class Animal extends Model
     {
         return $this->belongsToMany(Vacuna::class, "vacunaciones");
     }
-    public function tratamientos()
-    {
-        return $this->belongsToMany(Enfermedad::class, "tratamientos");
-    }
     public function veterinarios()
     {
         return $this->belongsToMany(Veterinario::class, "revisiones");
