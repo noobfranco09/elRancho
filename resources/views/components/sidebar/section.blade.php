@@ -2,7 +2,7 @@
     'icon',
     'title',
     'selected' => false,
-    'src' => '#'
+    'href' => '#'
 ])
 <!--
     Icon: El icono de la seccion
@@ -45,7 +45,7 @@
 @else
     <a
         class="flex items-center gap-3 rounded-lg {{ ($selected) ? "bg-primary-100 text-primary-700" : "text-gray-600 hover:bg-gray-100" }} px-3 py-2"
-        href="{{ $src }}"
+        href="{{ $href }}"
     >
         <span class="material-symbols-outlined shrink-0"
             >{{ $icon }}</span

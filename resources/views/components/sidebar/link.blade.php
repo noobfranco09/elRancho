@@ -2,10 +2,10 @@
     "icon",
     "title",
     "selected" => false,
-    "src" => "#"
+    "href" => "#"
 ])
 <a
-    href="{{ $src }}"
+    href="{{ $href }}"
     class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ ($selected) ? "bg-primary-100 text-primary-700" : "text-gray-600 hover:bg-gray-100" }}"
 >
     <span
