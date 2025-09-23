@@ -2,10 +2,10 @@
     $headers = ["Nombre", "Precio", "Sexo", "Acción"];
 @endphp
 
-<x-table :headings="$headers" class="sm:rounded-lg" name="myTable">
+<x-table :headings="$headers" class="sm:rounded-lg">
     {{-- El contenido del tbody ahora usa el componente <x-table-row> --}}
     @foreach ($animales as $animal)
-        <x-table-row>
+        <x-table-row wire:key="{{ $animal->id }}">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                 {{ $animal->nombre }}
             </th>

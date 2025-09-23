@@ -4,23 +4,23 @@ namespace App\Livewire\Animal;
 
 use App\Http\Requests\StoreAnimalRequest;
 use App\Models\Animal;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Form extends Component
 {
-    public $id;
-    public $nombre;
-    public $codigo;
-    public $precio;
-    public $imagen;
-    public $sexo;
-    public $color;
-    public $marcas;
-    public $salud;
-    public $fechaNacimiento;
-    public $estado;
+    public $id,
+        $nombre,
+        $codigo,
+        $precio,
+        $imagen,
+        $sexo,
+        $color,
+        $marcas,
+        $salud,
+        $fechaNacimiento,
+        $estado;
 
-    public $mostrarModal = false;
 
     public function cargarAnimal(Animal $animal)
     {
@@ -35,11 +35,10 @@ class Form extends Component
         $this->salud = $animal->salud;
         $this->fechaNacimiento = $animal->fechaNacimiento;
         $this->estado = $animal->estado;
-
-        $this->mostrarModal = true;
     }
 
-    public function save() {
+    public function save()
+    {
         Animal::create([
             "nombre" => $this->nombre,
             "codigo" => $this->codigo,
@@ -49,9 +48,11 @@ class Form extends Component
             "color" => $this->color,
             "marcas" => $this->marcas,
             "salud" => $this->salud,
-            "fechaNacimiento" => $this->fechaNacimiento,
+            "fecha_nacimiento" => $this->fechaNacimiento, // usar el valor del input
             "estado" => $this->estado,
         ]);
+
+        $this->dispatch("animalCreado");
     }
     public function render()
     {

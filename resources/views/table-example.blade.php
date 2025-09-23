@@ -110,9 +110,16 @@
 
         </div>
 
-        <x-slot:footer>
+        <x-slot name="footer">
 
-        </x-slot:footer>
+            <x-button variant="secondary"  data-modal-hide="editUserModal">
+                Cancelar
+            </x-button>
+            <x-button variant="primary">
+                Guardar
+            </x-button>
+
+        </x-slot>
     </x-modal>
 
     <x-popup id="delete-modal" message="¿Estás seguro de que quieres eliminar este producto?">

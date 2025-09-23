@@ -19,9 +19,7 @@ Slots:
     <div
         class="relative w-full max-h-full max-w-2xl"
     >
-        <form
-            action="{{ $action }}"
-            method="{{ $method }}"
+        <div
             class="relative bg-white rounded-2xl border border-primary-100 shadow-xl"
         >
             @csrf
@@ -72,14 +70,9 @@ Slots:
             >
                 <slot name="footer">
                     <!-- Botones por defecto si no se provee un slot de footer -->
-                    <x-button variant="secondary"  data-modal-hide="{{ $id }}">
-                        Cancelar
-                    </x-button>
-                    <x-button variant="primary" wire:click="save" >
-                        Guardar
-                    </x-button>
+                    {{ $footer}}
                 </slot>
             </div>
-        </form>
+        </div>
     </div>
 </div>
