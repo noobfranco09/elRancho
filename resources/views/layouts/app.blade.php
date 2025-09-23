@@ -38,7 +38,7 @@
                 <x-sidebar.section icon="dashboard" title="Dashboard" :href="route('dashboard')" :selected="request()->routeIs('dashboard')"/>
 
                 <x-sidebar.section icon="pets" title="Animales">
-                    <x-sidebar.link icon="manage_search" title="Gestionar animales" :href="route('animales.index')"/>
+                    <x-sidebar.link icon="manage_search" title="Gestionar animales" :href="route('animales')"/>
                     <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected/>
                     <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html"/>
                 </x-sidebar.section>

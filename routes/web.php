@@ -12,13 +12,14 @@ Route::get("/dashboard", function () {
     return view("dashboard");
 })->name("dashboard");
 
+Route::get("/animales", function () {
+    return view("animal.index");
+})->name("animales");
+
 Route::get("/table-example", function () {
     return view("table-example");
 })->name("table-example");
 
-Route::resource("/animales", AnimalController::class)->only([
-    "index", "create"
-])->parameters(["animales" => "animal"]);
 
 
 /* Route::get('/dashboard', function () { */
