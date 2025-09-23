@@ -7,7 +7,7 @@
     @foreach ($animales as $animal)
         <x-table-row>
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                {{ $animal->id }}
+                {{ $animal->nombre }}
             </th>
             <td class="px-6 py-4">
                 {{ $animal->precio }}

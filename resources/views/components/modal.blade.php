@@ -75,7 +75,7 @@ Slots:
                     <x-button variant="secondary"  data-modal-hide="{{ $id }}">
                         Cancelar
                     </x-button>
-                    <x-button variant="primary" type="submit" >
+                    <x-button variant="primary" wire:click="save" >
                         Guardar
                     </x-button>
                 </slot>

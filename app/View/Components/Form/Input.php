@@ -20,7 +20,7 @@ class Input extends Component
      * Create a new component instance.
      */
     public function __construct(
-        string $name,
+        string $name = "defecto hermano",
         string $label,
         string $type = "text",
         ?string $value = null,
