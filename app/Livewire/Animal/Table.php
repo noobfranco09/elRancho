@@ -15,6 +15,32 @@ class Table extends DataTableComponent
     {
         $this->setPrimaryKey('id');
         $this->setDefaultSort('nombre', 'asc');
+
+        // Centrar encabezados (th) según columna
+        $this->setThAttributes(function (Column $column) {
+            // para columnas label-only (sin field) usa $column->getTitle()
+            if (in_array($column->getTitle(), ['Precio', 'Acciones'])) {
+                return ['class' => 'text-center'];
+            }
+
+            // para columnas con campo puedes usar isField('precio')
+            if ($column->isField('precio')) {
+                return ['class' => 'text-center'];
+            }
+
+            return [];
+        });
+
+        // Centrar celdas (td) según columna y fila
+        $this->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
+
+            // Para columnas label-only (ej. 'Acciones') usamos getTitle()
+            if ($column->getTitle() === 'Acciones') {
+                return ['class' => 'text-center align-middle'];
+            }
+
+            return [];
+        });
     }
 
 
@@ -29,7 +55,12 @@ class Table extends DataTableComponent
                 ->sortable(),
 
             Column::make("Sexo", "sexo")
-                ->sortable()
+                ->sortable(),
+            Column::make('Acciones')  // No se pasa campo de BD
+                ->label(function ($row) {
+                    return view('components.animales.actions', ['animal' => $row]);
+                })
+                ->html()
         ];
     }
 }
