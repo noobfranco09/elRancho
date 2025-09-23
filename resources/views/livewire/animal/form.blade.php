@@ -1,3 +1,4 @@
+<div>
 
 <x-modal
     id="modal-animal"
@@ -8,7 +9,6 @@
 >
 
     <div class="grid grid-cols-2 gap-6">
-
         <x-form.input name="nombre" wire:model="nombre" label="Nombre"   required />
 
         <x-form.input name="codigo" wire:model="codigo" label="Codigo"   required />
@@ -32,5 +32,13 @@
 
     <x-slot:footer>
 
+        <x-button variant="secondary" data-modal-hide="modal-animal" >
+            Cancelar
+        </x-button>
+        <x-button variant="primary" wire:click="save" data-modal-hide="modal-animal">
+            Guardar
+        </x-button>
+
     </x-slot:footer>
 </x-modal>
+</div>

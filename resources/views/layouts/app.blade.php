@@ -25,6 +25,7 @@
 
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="bg-gray-50 text-gray-900" x-data="{ sidebarOpen: false, loaded: true }" x-init="window.addEventListener('DOMContentLoaded', () => { setTimeout(() => loaded = false, 500) })">
         <x-preloader />
@@ -62,5 +63,6 @@
                 </section>
             </main>
         </div>
+        @livewireScripts
     </body>
 </html>
