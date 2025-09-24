@@ -43,10 +43,12 @@ class Table extends DataTableComponent
         });
     }
 
-
     public function columns(): array
     {
         return [
+            Column::make("ID", "id")
+                ->sortable()
+                ->searchable(),
             Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),

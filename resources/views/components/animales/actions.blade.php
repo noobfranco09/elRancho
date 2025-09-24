@@ -3,11 +3,11 @@
         Ver
     </x-button>
 
-    <x-button variant="warning" wire:click="editar({{ $animal->id }})" icon="edit">
+    <x-button variant="warning" @click="$dispatch('cargarAnimal')" icon="edit">
         Editar
     </x-button>
 
-    <x-button variant="danger" wire:click="eliminar({{ $animal->id }})" icon="delete">
+    <x-button variant="danger" icon="delete" @click="$dispatch('abrirModalAnimal')" >
         Eliminar
     </x-button>
 </div>
