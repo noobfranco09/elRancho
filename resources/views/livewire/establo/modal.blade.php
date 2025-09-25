@@ -19,10 +19,10 @@
 
     <x-slot:footer>
 
-        <x-button variant="secondary" data-modal-hide="modal-establo" >
+        <x-button variant="secondary"  @click="Livewire.dispatch('closeModal')" >
             Cancelar
         </x-button>
-        <x-button variant="primary" wire:click="save" data-modal-hide="modal-establo">
+        <x-button variant="primary" form="form-establo" wire:click="save">
             Guardar
         </x-button>
 

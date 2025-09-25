@@ -3,7 +3,7 @@
         Ver
     </x-button>
 
-    <x-button variant="warning" wire:click="editar({{ $establo->id }})" icon="edit">
+    <x-button variant="warning" @click="$dispatch('openModal', { component: 'establo.modal', arguments: { establo:{{ $establo->id }} } })"  icon="edit">
         Editar
     </x-button>
 

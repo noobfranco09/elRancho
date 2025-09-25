@@ -3,7 +3,7 @@
 namespace App\Livewire\Establo;
 
 use App\Models\Establo;
-use Livewire\Component;
+use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -44,10 +44,15 @@ class Table extends DataTableComponent
         });
     }
 
-
+    #[On("establoCreado")]
+    #[On("establoEditado")]
     public function columns(): array
     {
         return [
+             Column::make("ID", "id")
+                ->sortable()
+                ->searchable(),
+
             Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),
