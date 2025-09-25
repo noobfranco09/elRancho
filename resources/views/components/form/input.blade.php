@@ -1,9 +1,7 @@
 <div class="{{ $span }}">
-    <label for="{{ $name }}" class="block mb-2 text-sm font-medium text-gray-900">{{ $label }}</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900">{{ $label }}</label>
     <input
         type="{{ $type }}"
-        id="{{ $name }}"
-        name="{{ $name }}"
         value="{{ $value }}"
         placeholder="{{ $placeholder }}"
         @if($required) required @endif

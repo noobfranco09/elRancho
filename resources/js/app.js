@@ -1,37 +1,22 @@
 import "./bootstrap";
 import "flowbite";
+import '../../vendor/rappasoft/laravel-livewire-tables/resources/imports/laravel-livewire-tables-all.js';
+import '../../vendor/wire-elements/modal/resources/js/modal.js';
+import Swal from "sweetalert2";
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast',
+  },
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+})
 
+window.Swal = Swal;
 window.Alpine = Alpine;
+window.Toast = Toast;
 
-
-let table = new DataTable("#myTable", {
-    layout: {
-        topEnd: {
-            search: { placeholder: "Buscar…" },
-        },
-    },
-    language: {
-        decimal: ",",
-        thousands: ".",
-        processing: "Procesando...",
-        lengthMenu: "Mostrar _MENU_ registros",
-        zeroRecords: "No se encontraron resultados",
-        emptyTable: "No hay datos disponibles en la tabla",
-        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-        infoEmpty: "Mostrando 0 a 0 de 0 registros",
-        infoFiltered: "(filtrado de _MAX_ registros totales)",
-        search: "Buscar:",
-        loadingRecords: "Cargando...",
-        paginate: {
-            first: "Primero",
-            last: "Último",
-            next: "Siguiente",
-            previous: "Anterior",
-        },
-        aria: {
-            sortAscending: ": activar para ordenar la columna ascendente",
-            sortDescending: ": activar para ordenar la columna descendente",
-        },
-    },
-});

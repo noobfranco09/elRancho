@@ -3,6 +3,7 @@
 namespace App\Livewire\Animal;
 
 use App\Models\Animal;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -43,10 +44,13 @@ class Table extends DataTableComponent
         });
     }
 
-
+    #[On("animalEditado")]
     public function columns(): array
     {
         return [
+            Column::make("ID", "id")
+                ->sortable()
+                ->searchable(),
             Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),

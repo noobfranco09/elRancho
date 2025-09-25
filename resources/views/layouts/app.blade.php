@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
     <head>
         <meta charset="utf-8" />
         <link
@@ -44,6 +44,14 @@
                     <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html"/>
                 </x-sidebar.section>
 
+
+             
+
+                <x-sidebar.section icon="pets" title="Vacunas">
+                    <x-sidebar.link icon="description" title="Gestionar vacunas" :href="route('vacunas')" :selected="request()->routeIs('vacunas')"/>
+                </x-sidebar.section>
+
+
                 <x-sidebar.section icon="warehouse" title="Establos">
                     
                     <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')" :selected="request()->routeIs('establos')"/>
@@ -51,6 +59,7 @@
                     <x-sidebar.link icon="warehouse" title="Consultar estancos" />
                   
                 </x-sidebar.section>
+
 
                 <x-sidebar.section icon="factory" title="Produccion" :href="route('table-example')" :selected="request()->routeIs('table-example')"/>
             </x-sidebar>
@@ -68,6 +77,7 @@
                 </section>
             </main>
         </div>
+        @livewire('wire-elements-modal')
         @livewireScripts
     </body>
 </html>

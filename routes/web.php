@@ -16,6 +16,10 @@ Route::get("/animales", function () {
     return view("animal.index");
 })->name("animales");
 
+Route::get("/vacunas", function () {
+    return view("vacuna.index");
+})->name("vacunas");
+
 Route::get("/table-example", function () {
     return view("table-example");
 })->name("table-example");

@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public string $name;
     public string $label;
     public string $type;
     public ?string $value;
@@ -20,7 +19,6 @@ class Input extends Component
      * Create a new component instance.
      */
     public function __construct(
-        string $name = "defecto hermano",
         string $label,
         string $type = "text",
         ?string $value = null,
@@ -30,7 +28,6 @@ class Input extends Component
 
     ) {
 
-        $this->name = $name;
         $this->label = $label;
         $this->type = $type;
         $this->value = $value;
