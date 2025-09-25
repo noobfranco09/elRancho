@@ -3,7 +3,7 @@
         Ver
     </x-button>
 
-    <x-button variant="warning" @click="$dispatch('cargarAnimal')" icon="edit">
+    <x-button variant="warning" @click="$dispatch('openModal', { component: 'animal.modal', arguments: { animal:{{ $animal->id }} } })"  icon="edit">
         Editar
     </x-button>
 
@@ -11,3 +11,4 @@
         Eliminar
     </x-button>
 </div>
+

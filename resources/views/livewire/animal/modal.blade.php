@@ -1,4 +1,4 @@
-<div wire:ignore.self>
+<div>
     <x-modal
         id="modal-animal"
         title="Crear animal"
@@ -7,7 +7,7 @@
         maxWidth="2xl"
     >
 
-        <div class="grid grid-cols-2 gap-6">
+        <form id="form-animal" class="grid grid-cols-2 gap-6">
             <x-form.input name="nombre" wire:model="nombre" label="Nombre"   required />
 
             <x-form.input name="codigo" wire:model="codigo" label="Codigo"   required />
@@ -27,27 +27,19 @@
             <x-form.input name="fecha" type="date" wire:model="fechaNacimiento" label="Fecha de nacimiento"   required />
 
             <x-form.input name="estado" wire:model="estado" label="Estado"   required />
-        </div>
+
+        </form>
 
         <x-slot:footer>
 
-            <x-button variant="secondary" data-modal-hide="modal-animal" data-modal-target="modal-animal" >
+            <x-button variant="secondary"  @click="Livewire.dispatch('closeModal')" >
                 Cancelar
             </x-button>
 
-            <x-button variant="primary" wire:click="save" data-modal-hide="modal-animal">
+            <x-button variant="primary" form="form-animal" wire:click="save">
                 Guardar
             </x-button>
 
         </x-slot:footer>
     </x-modal>
 </div>
-@script
-<script>
-    document.addEventListener('abrirModalAnimal', () => {
-        const target = document.querySelector("#modal-animal");
-        modal = new Modal(target);
-        modal.toggle();
-    });
-</script>
-@endscript

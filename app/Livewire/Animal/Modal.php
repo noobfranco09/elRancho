@@ -2,16 +2,12 @@
 
 namespace App\Livewire\Animal;
 
-use App\Http\Requests\StoreAnimalRequest;
 use App\Models\Animal;
-use Carbon\Carbon;
-use Livewire\Attributes\On;
-use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class Form extends Component
+class Modal extends ModalComponent
 {
-    protected $listeners = ["editarAnimal" => "cargarAnimal"];
-
+    public Animal $animal;
     public $id,
         $nombre,
         $codigo,
@@ -24,32 +20,28 @@ class Form extends Component
         $fechaNacimiento,
         $estado;
 
-
-    #[On("cargarAnimal")]
-    public function cargarAnimal()
+    public function mount(Animal $animal)
     {
-        /* $animal = Animal::findOrFail($id); */
-        /* $this->id = $animal->id; */
-        /* $this->nombre = $animal->nombre; */
-        /* $this->codigo = $animal->codigo; */
-        /* $this->precio = $animal->precio; */
-        /* $this->imagen = $animal->imagen; */
-        /* $this->sexo = $animal->sexo; */
-        /* $this->color = $animal->color; */
-        /* $this->marcas = $animal->marcas; */
-        /* $this->salud = $animal->salud; */
-        /* $this->fechaNacimiento = $animal->fechaNacimiento; */
-        /* $this->estado = $animal->estado; */
-        /**/
-        $this->dispatch("abrirModalAnimal");
+        $this->id = $animal->id;
+        $this->animal = $animal;
+        $this->nombre = $animal->nombre;
+        $this->codigo = $animal->codigo;
+        $this->precio = $animal->precio;
+        $this->imagen = $animal->imagen;
+        $this->sexo = $animal->sexo;
+        $this->color = $animal->color;
+        $this->marcas = $animal->marcas;
+        $this->salud = $animal->salud;
+        $this->fechaNacimiento = $animal->fechaNacimiento;
+        $this->estado = $animal->estado;
     }
 
-    public function save(Animal $animal)
+    public function save()
     {
         if ($this->id) {
+            $animal = Animal::findOrFail($this->id);
             $animal->update([
                 "nombre" => $this->nombre,
-                "codigo" => $this->codigo,
                 "precio" => $this->precio,
                 "imagen" => $this->imagen,
                 "sexo" => $this->sexo,
@@ -60,7 +52,9 @@ class Form extends Component
                 "estado" => $this->estado,
             ]);
 
-            $this->dispatch("animalCreado");
+            $this->closeModal();
+            $this->dispatch("animalEditado");
+
         } else {
             Animal::create([
                 "nombre" => $this->nombre,
@@ -75,11 +69,21 @@ class Form extends Component
                 "estado" => $this->estado,
             ]);
 
+            $this->closeModal();
             $this->dispatch("animalCreado");
         }
     }
+
+
     public function render()
     {
-        return view('livewire.animal.form');
+        return view('livewire.animal.modal');
+    }
+    /**
+     * Supported: 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'
+     */
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
     }
 }
