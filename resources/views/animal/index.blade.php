@@ -4,8 +4,8 @@
         <x-header title="Gestión de animales" description="Sección para la gestión de animales"/>
     </x-slot>
 
-    <x-panel class="mb-9" @click="$dispatch('openModal', { component: 'animal.modal' })">
-        <x-button>
+    <x-panel class="mb-9" >
+        <x-button @click="$dispatch('openModal', { component: 'animal.modal' })">
             Crear animal
         </x-button>
     </x-panel>
