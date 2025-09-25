@@ -20,6 +20,10 @@ Route::get("/table-example", function () {
     return view("table-example");
 })->name("table-example");
 
+Route::get("/establos", function (){
+    return view("establo.index");
+})->name("establos");
+
 
 
 /* Route::get('/dashboard', function () { */
