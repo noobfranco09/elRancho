@@ -54,7 +54,6 @@ class Modal extends ModalComponent
 
             $this->closeModal();
             $this->dispatch("animalEditado");
-
         } else {
             Animal::create([
                 "nombre" => $this->nombre,

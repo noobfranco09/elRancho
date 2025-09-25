@@ -46,6 +46,10 @@
 
                 <x-sidebar.section icon="warehouse" title="Establos"/>
 
+                <x-sidebar.section icon="pets" title="Vacunas">
+                    <x-sidebar.link icon="description" title="Gestionar vacunas" :href="route('vacunas')" :selected="request()->routeIs('vacunas')"/>
+                </x-sidebar.section>
+
 
                 <x-sidebar.section icon="factory" title="Produccion" :href="route('table-example')" :selected="request()->routeIs('table-example')"/>
             </x-sidebar>
