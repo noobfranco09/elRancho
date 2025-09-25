@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Establo extends Model
 {
+
+    protected $fillable = ["nombre", "descripcion", "estado"];
     /** @use HasFactory<\Database\Factories\EstabloFactory> */
     use HasFactory;
+   
+    protected $table = "establos";
 
     public function estancos()
     {

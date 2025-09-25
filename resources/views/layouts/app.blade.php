@@ -44,10 +44,20 @@
                     <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html"/>
                 </x-sidebar.section>
 
-                <x-sidebar.section icon="warehouse" title="Establos"/>
+
+             
 
                 <x-sidebar.section icon="pets" title="Vacunas">
                     <x-sidebar.link icon="description" title="Gestionar vacunas" :href="route('vacunas')" :selected="request()->routeIs('vacunas')"/>
+                </x-sidebar.section>
+
+
+                <x-sidebar.section icon="warehouse" title="Establos">
+                    
+                    <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')" :selected="request()->routeIs('establos')"/>
+                    <x-sidebar.link icon="warehouse" title="Gestionar estancos" />
+                    <x-sidebar.link icon="warehouse" title="Consultar estancos" />
+                  
                 </x-sidebar.section>
 
 
