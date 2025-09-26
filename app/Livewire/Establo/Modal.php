@@ -16,7 +16,7 @@ class Modal extends ModalComponent
         $this->id = $establo->id;
         $this->nombre = $establo->nombre;
         $this->descripcion = $establo->descripcion;
-        $this->estado = $establo->estado;
+        $this->estado = $establo->estado ?? 'activo';  // Si no hay estado, usa 'activo' como valor por defecto
     }
 
     public function rules()

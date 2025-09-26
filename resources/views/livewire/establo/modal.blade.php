@@ -19,9 +19,18 @@
             </div>
 
             <div>
-                <x-form.input wire:model="estado" label="Estado" />
-                <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
+                <x-form.select
+                    wire:model="estado" 
+                    label="Estado"
+                    :options="[
+                        'activo' => 'Activo',
+                        'inactivo' => 'Inactivo'
+                    ]"
+                    required
+                    />
+                    <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
             </div>
+
 
         </form>
 
