@@ -3,7 +3,7 @@
 namespace App\Livewire\Establo;
 
 use App\Models\Establo;
-use Livewire\Component;
+use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -44,10 +44,16 @@ class Table extends DataTableComponent
         });
     }
 
-
+    #[On("establoCreado")]
+    #[On("establoEditado")]
+    #[On ("establoEliminado")]
     public function columns(): array
     {
         return [
+             Column::make("ID", "id")
+                ->sortable()
+                ->searchable(),
+
             Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),
@@ -57,6 +63,7 @@ class Table extends DataTableComponent
 
             Column::make("Estado", "estado")
                 ->sortable(),
+                
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
                     return view('components.establos.actions', ['establo' => $row]);
@@ -64,4 +71,5 @@ class Table extends DataTableComponent
                 ->html()
         ];
     }
+
 }

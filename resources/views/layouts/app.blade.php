@@ -28,12 +28,12 @@
 
     <div class="flex min-h-screen" style="font-family: Inter, &quot;Noto Sans&quot;, sans-serif">
 
+
         <x-sidebar>
-            <x-sidebar.section icon="dashboard" title="Dashboard" :href="route('dashboard')"
-                :selected="request()->routeIs('dashboard')" />
+
 
             <x-sidebar.section icon="pets" title="Animales">
-                <x-sidebar.link icon="manage_search" title="Gestionar animales" :href="route('animales')" />
+                <x-sidebar.link icon="pets" title="Gestionar animales" :href="route('animales')" />
                 <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected />
                 <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html" />
             </x-sidebar.section>
@@ -41,9 +41,19 @@
 
 
 
-            <x-sidebar.section icon="pets" title="Vacunas">
-                <x-sidebar.link icon="description" title="Gestionar vacunas" :href="route('vacunas')"
+            <x-sidebar.section icon="vaccines" title="Vacunas">
+                <x-sidebar.link icon="vaccines" title="Gestionar vacunas" :href="route('vacunas')"
                     :selected="request()->routeIs('vacunas')" />
+            </x-sidebar.section>
+
+
+            <x-sidebar.section icon="warehouse" title="Establos" :selected="request()->routeIs('establos')">
+
+                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')"
+                    :selected="request()->routeIs('establos')" />
+                <x-sidebar.link icon="house" title="Gestionar estancos" />
+                <x-sidebar.link icon="house" title="Consultar estancos" />
+
             </x-sidebar.section>
 
 
