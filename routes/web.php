@@ -28,6 +28,8 @@ Route::get("/establos", function (){
     return view("establo.index");
 })->name("establos");
 
+Route::get("/veterinarios", function () { return view("Veterinario.index"); })->name("veterinarios");
+
 
 
 /* Route::get('/dashboard', function () { */
