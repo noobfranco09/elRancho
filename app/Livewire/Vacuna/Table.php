@@ -17,7 +17,10 @@ class Table extends DataTableComponent
         $this->setPrimaryKey('id');
         $this->setDefaultSort('id', 'asc');
     }
+
     #[On("vacunaCreada")]
+    #[On("vacunaEliminada")]
+    #[On("vacunaEditada")]
     public function columns(): array
     {
 
@@ -34,11 +37,11 @@ class Table extends DataTableComponent
 
             Column::make("Dosis", "dosis")
                 ->sortable(),
-            /* Column::make('Acciones')   */
-            /*     ->label(function ($row) { */
-            /*         return view('components.animales.actions', ['animal' => $row]); */
-            /*     }) */
-            /*     ->html() */
+            Column::make('Acciones')
+                ->label(function ($row) {
+                    return view('components.vacuna.actions', ['vacuna' => $row]);
+                })
+                ->html()
         ];
     }
 }

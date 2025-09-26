@@ -16,7 +16,7 @@
 
     <script>
         // este sera el evento que se escucha cuando se edite
-        document.addEventListener("vacunaEditado", () =>{
+        document.addEventListener("vacunaEditada", () =>{
             Toast.fire({
                 icon: "success",
                 title: "Animal actualizado con éxito"
@@ -27,6 +27,13 @@
             Toast.fire({
                 icon: "success",
                 title: "Vacuna creada con éxito"
+            })
+        })
+
+        document.addEventListener("vacunaEliminada", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "Vacuna eliminada con éxito"
             })
         })
     </script>
