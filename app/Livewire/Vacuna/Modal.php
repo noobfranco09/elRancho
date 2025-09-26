@@ -52,10 +52,18 @@ class Modal extends ModalComponent
     public function save()
     {
         $validated = $this->validate();
-        Vacuna::create($validated);
+        if ($this->id) {
+            $vacuna = Vacuna::findOrFail($this->id);
+            $vacuna->update($validated);
 
-        $this->closeModal();
-        $this->dispatch("vacunaCreada");
+            $this->closeModal();
+            $this->dispatch("vacunaEditada");
+        } else {
+            Vacuna::create($validated);
+
+            $this->closeModal();
+            $this->dispatch("vacunaCreada");
+        }
     }
 
     public static function modalMaxWidth(): string
