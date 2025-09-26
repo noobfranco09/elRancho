@@ -7,12 +7,33 @@ use LivewireUI\Modal\ModalComponent;
 
 class Modal extends ModalComponent
 {
-
     public Vacuna $vacuna;
     public $id,
         $nombre,
         $descripcion,
         $dosis;
+
+    public function rules()
+    {
+        return [
+            "nombre" => "required|regex:/^[\pL\s]+$/u",
+            "descripcion" => "required|regex:/^[\pL\s]+$/u",
+            "dosis" => "required|integer|min:0"
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "nombre.required" => "El nombre es obligatorio",
+            "nombre.regex" => "El nombre solo debe contener letras",
+            "descripcion.required" => "La descripción es obligatoria",
+            "descripcion.regex" => "La descripción solo debe contener letras",
+            "dosis.required" => "La dosis es obligatoria",
+            "dosis.integer" => "La dosis debe ser un número",
+            "dosis.min" => "La dosis debe ser al menos 0",
+        ];
+    }
 
     public function mount(Vacuna $vacuna)
     {
@@ -30,11 +51,8 @@ class Modal extends ModalComponent
 
     public function save()
     {
-        Vacuna::create([
-            "nombre" => $this->nombre,
-            "descripcion" => $this->descripcion,
-            "dosis" => $this->dosis,
-        ]);
+        $validated = $this->validate();
+        Vacuna::create($validated);
 
         $this->closeModal();
         $this->dispatch("vacunaCreada");
@@ -42,6 +60,6 @@ class Modal extends ModalComponent
 
     public static function modalMaxWidth(): string
     {
-        return '2xl';
+        return 'xl';
     }
 }

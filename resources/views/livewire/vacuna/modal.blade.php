@@ -5,13 +5,23 @@
         title="Crear vacuna"
     >
 
-        <form class="grid grid-cols-2 gap-6">
+        <form class="grid grid-cols-1 gap-5">
 
-            <x-form.input wire:model="nombre" label="Nombre"   required />
+            <div>
+                <x-form.input wire:model="nombre" label="Nombre"/>
+                <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
+            </div>
 
-            <x-form.input wire:model="descripcion" label="Descripcion" required />
 
-            <x-form.input wire:model="dosis" label="Dosis" required />
+            <div>
+                <x-form.input wire:model="descripcion" label="Descripcion" />
+                <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
+            </div>
+
+            <div>
+                <x-form.input wire:model="dosis" label="Dosis" />
+                <x-error-message> @error('dosis') {{ $message }} @enderror </x-error-message>
+            </div>
 
         </form>
 
