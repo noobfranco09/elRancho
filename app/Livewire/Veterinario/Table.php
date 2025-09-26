@@ -14,6 +14,8 @@ class Table extends DataTableComponent
         $this->setPrimaryKey('id');
         $this->setDefaultSort('id', 'asc');
     }
+    #[On('veterinarioCreado')]
+    #[On('veterinarioEditado')]
     public function columns(): array
     {
         return [
@@ -34,7 +36,12 @@ class Table extends DataTableComponent
                 ->searchable(),
             Column::make("Especialidad", "especialidad")
                 ->sortable()
-                ->searchable()
+                ->searchable(),
+            Column::make('Acciones')  // No se pasa campo de BD
+                ->label(function ($row) {
+                    return view('components.veterinarios.actions', ['veterinario' => $row]);
+                })
+                ->html()
         ];
 
     }
