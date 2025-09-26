@@ -75,7 +75,6 @@ class Modal extends ModalComponent
         
     }
 
-    
 
     public function render()
     {
