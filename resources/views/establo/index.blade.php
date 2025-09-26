@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-panel class="mb-9">
-        <x-button data-modal-target="modal-establo" data-modal-show="modal-establo">
+        <x-button @click="$dispatch('openModal', { component: 'establo.modal' })">
             Crear establo
         </x-button>
     </x-panel>
@@ -14,5 +14,27 @@
         <livewire:establo.table/>
     </x-panel>
 
-    <livewire:establo.form/>
+     <script>
+        document.addEventListener("establoEditado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "Animal actualizado con éxito"
+            })
+        })
+
+        document.addEventListener("establoCreado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "Establo creado con éxito"
+            })
+        })
+
+        document.addEventListener("establoEliminado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "Establo desactivado con éxito"
+            })
+        })
+    </script>
+ 
 </x-app-layout>
