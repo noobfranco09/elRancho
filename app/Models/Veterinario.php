@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Veterinario extends Model
 {
+    protected $fillable = ['nombre','cedula','telefono','correo','especialidad'];
     /** @use HasFactory<\Database\Factories\VeterinarioFactory> */
     use HasFactory;
     public function animales()
