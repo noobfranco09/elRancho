@@ -1,31 +1,40 @@
+
 <div>
+    <x-modal
+        id="modal-establo"
+        title="Crear establo"
+    >
 
-<x-modal
-    id="modal-establo"
-    title="Crear establo"
-    action="#"
-    method="POST"
-    maxWidth="2xl"
->
+        <form class="grid grid-cols-1 gap-5">
 
-    <div class="grid grid-cols-2 gap-6">
-        <x-form.input name="nombre" wire:model="nombre" label="Nombre"   required />
+            <div>
+                <x-form.input wire:model="nombre" label="Nombre"/>
+                <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
+            </div>
 
-        <x-form.input name="descripcion" wire:model="descripcion" label="Descripcion"   required />
 
-        <x-form.input name="estado" wire:model="estado" label="Estado"   required />
-        
-    </div>
+            <div>
+                <x-form.input wire:model="descripcion" label="Descripcion" />
+                <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
+            </div>
 
-    <x-slot:footer>
+            <div>
+                <x-form.input wire:model="estado" label="Estado" />
+                <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
+            </div>
 
-        <x-button variant="secondary"  @click="Livewire.dispatch('closeModal')" >
-            Cancelar
-        </x-button>
-        <x-button variant="primary" form="form-establo" wire:click="save">
-            Guardar
-        </x-button>
+        </form>
 
-    </x-slot:footer>
-</x-modal>
+        <x-slot:footer>
+
+            <x-button variant="secondary"  @click="Livewire.dispatch('closeModal')" >
+                Cancelar
+            </x-button>
+
+            <x-button variant="primary" form="form-establo" wire:click="save">
+                Guardar
+            </x-button>
+
+        </x-slot:footer>
+    </x-modal>
 </div>

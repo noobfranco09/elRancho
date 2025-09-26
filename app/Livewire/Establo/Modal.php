@@ -19,6 +19,31 @@ class Modal extends ModalComponent
         $this->estado = $establo->estado;
     }
 
+    public function rules()
+    {
+        return [
+            "nombre" => "required|regex:/^[\pL\s]+$/u",
+            "descripcion" => "required|regex:/^[\pL\s]+$/u",
+            "estado" => "required|in:activo,inactivo"
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+            "nombre.required" => "El nombre es obligatorio",
+            "nombre.regex" => "El nombre solo debe contener letras",
+
+            "descripcion.required" => "La descripción es obligatoria",
+            "descripcion.regex" => "La descripción solo debe contener letras",
+
+            "estado.required" => "El estado es obligatorio.",
+            "estado.in" => "El estado debe ser 'activo' o 'inactivo'.",
+
+        ];
+    }
+
     public function save()
     {
 
@@ -26,25 +51,21 @@ class Modal extends ModalComponent
             //editamos la informacion del establo en caso de recibir un ID
             $establo = Establo::findOrFail($this->id);
 
-            $establo->update([
+            // validamos los campos del establo
+            $validated = $this->validate();
 
-                "nombre" => $this->nombre,
-                "descripcion" => $this->descripcion,
-                "estado" => $this->estado,
-
-            ]);
+            $establo->update($validated);
 
             $this->closeModal();
             $this->dispatch("establoEditado");
 
         }else{
 
+            // validamos los campos del establo
+            $validated = $this->validate();
+
             //creamos el establo en caso de que no recibamos algun ID
-            Establo::create([
-                "nombre" => $this->nombre,
-                "descripcion" => $this->descripcion,
-                "estado" => $this->estado,
-            ]);
+            Establo::create($validated);
 
             $this->closeModal();
             $this->dispatch("establoCreado");
