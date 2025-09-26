@@ -75,6 +75,8 @@ class Modal extends ModalComponent
         
     }
 
+    
+
     public function render()
     {
         return view('livewire.establo.modal');

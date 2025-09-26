@@ -19,9 +19,7 @@
             </div>
 
             <div>
-                <x-form.select
-                    wire:model="estado" 
-                    label="Estado"
+                <x-form.select wire:model="estado" label="Estado"
                     :options="[
                         'activo' => 'Activo',
                         'inactivo' => 'Inactivo'

@@ -46,6 +46,7 @@ class Table extends DataTableComponent
 
     #[On("establoCreado")]
     #[On("establoEditado")]
+    #[On ("establoEliminado")]
     public function columns(): array
     {
         return [
@@ -62,6 +63,7 @@ class Table extends DataTableComponent
 
             Column::make("Estado", "estado")
                 ->sortable(),
+                
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
                     return view('components.establos.actions', ['establo' => $row]);
@@ -69,4 +71,5 @@ class Table extends DataTableComponent
                 ->html()
         ];
     }
+
 }

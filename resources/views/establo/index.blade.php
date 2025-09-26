@@ -28,6 +28,13 @@
                 title: "Establo creado con éxito"
             })
         })
+
+        document.addEventListener("establoEliminado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "Establo desactivado con éxito"
+            })
+        })
     </script>
  
 </x-app-layout>
