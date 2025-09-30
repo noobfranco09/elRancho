@@ -35,7 +35,7 @@ class Eliminar extends ModalComponent
 
     public static function modalMaxWidth(): string
     {
-        return '2xl';
+        return 'sm';
     }
 
 }

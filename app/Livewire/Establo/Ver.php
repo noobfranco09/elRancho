@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Establo;
 
-use Livewire\Component;
 use App\Models\Establo;
 use LivewireUI\Modal\ModalComponent;
 

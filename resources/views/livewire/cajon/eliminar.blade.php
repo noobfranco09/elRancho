@@ -1,5 +1,5 @@
 <div>
-    <x-alert message="¿Está seguro de que quiere eliminar el establo?">
+    <x-alert message="¿Está seguro de que quiere eliminar el cajon?">
 
         <x-slot name="footer">
             <x-button variant="danger" wire:click="eliminar">Si, eliminar</x-button>
