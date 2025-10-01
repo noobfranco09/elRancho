@@ -50,6 +50,19 @@ export default {
                     900: "#78350f",
                     950: "#451a03",
                 },
+                terciary: {
+                    50: "#e0f7ff",   // Azul muy claro
+                    100: "#b3e0ff",  // Azul claro
+                    200: "#80c8ff",  // Azul más intenso
+                    300: "#4da7ff",  // Azul
+                    400: "#1a86ff",  // Azul medio
+                    500: "#0066cc",  // Azul fuerte (clásico)
+                    600: "#005bb5",  // Azul oscuro
+                    700: "#004f99",  // Azul más oscuro
+                    800: "#00407f",  // Azul muy oscuro
+                    900: "#003366",  // Azul casi navy
+                    950: "#00224d",  // Azul profundo
+                },
             },
         },
     },

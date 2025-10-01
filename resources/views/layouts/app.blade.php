@@ -49,20 +49,8 @@
 
             <x-sidebar.section icon="warehouse" title="Establos" :selected="request()->routeIs('establos')">
 
-                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')"
-                    :selected="request()->routeIs('establos')" />
-                <x-sidebar.link icon="house" title="Gestionar estancos" />
-                <x-sidebar.link icon="house" title="Consultar estancos" />
-
-            </x-sidebar.section>
-
-
-            <x-sidebar.section icon="warehouse" title="Establos">
-
-                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')"
-                    :selected="request()->routeIs('establos')" />
-                <x-sidebar.link icon="warehouse" title="Gestionar estancos" />
-                <x-sidebar.link icon="warehouse" title="Consultar estancos" />
+                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')" :selected="request()->routeIs('establos')" />
+                <x-sidebar.link icon="house" title="Gestionar cajones" :href="route('cajones')" :selected="request()->routeIs('cajones')" />
 
             </x-sidebar.section>
 

@@ -15,6 +15,7 @@
         'secondary' => 'text-sm font-medium rounded-lg text-primary-700 hover:text-primary-800 bg-primary-200 hover:bg-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300',
         'warning' => 'text-sm font-medium rounded-lg text-white hover:text-white bg-secondary-400 hover:bg-secondary-500 focus:outline-none focus:ring-2 focus:ring-secondary-400',
         'danger' => 'text-white bg-red-600 hover:bg-red-700 focus:ring-red-300',
+        'blue' => 'text-sm font-medium rounded-lg text-white bg-terciary-400 hover:bg-terciary-700 focus:outline-none focus:ring-4 focus:ring-terciary-300'
     ][$variant] ?? $variantClasses['primary'];
 
     // Se mantiene el `inline-flex items-center` para alinear el icono y el texto

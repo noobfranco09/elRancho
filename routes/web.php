@@ -28,6 +28,10 @@ Route::get("/establos", function (){
     return view("establo.index");
 })->name("establos");
 
+Route::get("/cajones", function (){
+    return view("cajon.index");
+})->name("cajones");
+
 Route::get("/veterinarios", function () { return view("Veterinario.index"); })->name("veterinarios");
 
 
