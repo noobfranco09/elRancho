@@ -15,7 +15,7 @@
 
             <div>
                 <x-form.select wire:model="establo_id" label="Estado"
-                    :options="$establos"
+                    :options="['' => 'Seleccione un establo'] + $establos"
                     required
                     />
                 <x-error-message> @error('establo_id') {{ $message }} @enderror </x-error-message>
@@ -25,7 +25,7 @@
                 <x-form.select wire:model="estado" label="Estado"
                     :options="[
                         'libre' => 'Libre',
-                        'ocupado' => 'Oucupado'
+                        'ocupado' => 'Ocupado'
                     ]"
                     required
                     />
