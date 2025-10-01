@@ -51,7 +51,6 @@
 
                 <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')" :selected="request()->routeIs('establos')" />
                 <x-sidebar.link icon="house" title="Gestionar cajones" :href="route('cajones')" :selected="request()->routeIs('cajones')" />
-                <x-sidebar.link icon="search" title="Consultar cajones" />
 
             </x-sidebar.section>
 

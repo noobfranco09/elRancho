@@ -5,16 +5,16 @@ namespace App\Livewire\Cajon;
 use App\Models\Estanco;
 use LivewireUI\Modal\ModalComponent;
 
-class Ver extends ModalComponent
+class VerAnimales extends ModalComponent
 {
 
-    public $id, $cajon, $establo;
+    public $id, $cajon, $animales;
 
     public function mount(Estanco $cajon)
     {
         $this->id = $cajon->id;
         $this->cajon = $cajon;
-        $this->establo = $cajon->establo;
+        $this->animales = $cajon->animales;
     }
 
     public static function modalMaxWidth(): string
@@ -24,6 +24,6 @@ class Ver extends ModalComponent
 
     public function render()
     {
-        return view('livewire.cajon.ver');
+        return view('livewire.cajon.ver-animales');
     }
 }
