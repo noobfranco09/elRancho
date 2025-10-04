@@ -16,8 +16,7 @@ class Modal extends ModalComponent
         $sexo,
         $color,
         $marcas,
-        $salud,
-        $fechaNacimiento,
+        $fecha_nacimiento,
         $estado;
 
     public function mount(Animal $animal)
@@ -28,45 +27,74 @@ class Modal extends ModalComponent
         $this->codigo = $animal->codigo;
         $this->precio = $animal->precio;
         $this->imagen = $animal->imagen;
-        $this->sexo = $animal->sexo;
+        $this->sexo = $animal->sexo ?? "M";
         $this->color = $animal->color;
         $this->marcas = $animal->marcas;
-        $this->salud = $animal->salud;
-        $this->fechaNacimiento = $animal->fechaNacimiento;
-        $this->estado = $animal->estado;
+        $this->fecha_nacimiento = $animal->fechaNacimiento;
+        $this->estado = $animal->estado ?? 1;
+    }
+
+    public function rules()
+    {
+        return [
+            "nombre" => "required|string|max:255",
+            "codigo" => "required|string|max:50|unique:animales,codigo," . $this->id,
+            "precio" => "required|numeric|min:0",
+            "imagen" => "nullable", // ignoramos por ahora
+            "sexo" => "required|in:M,F",
+            "color" => "required|string|max:100",
+            "marcas" => "required|string|max:255",
+            "fecha_nacimiento" => "required|date",
+            "estado" => "required|boolean",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "nombre.required" => "El nombre del animal es obligatorio.",
+            "nombre.string" => "El nombre debe ser una cadena de texto.",
+            "nombre.max" => "El nombre no puede superar los 255 caracteres.",
+
+            "codigo.required" => "El código es obligatorio.",
+            "codigo.string" => "El código debe ser una cadena de texto.",
+            "codigo.max" => "El código no puede superar los 50 caracteres.",
+            "codigo.unique" => "Este código ya está registrado para otro animal.",
+
+            "precio.required" => "El precio es obligatorio.",
+            "precio.numeric" => "El precio debe ser un número.",
+            "precio.min" => "El precio no puede ser negativo.",
+
+            "sexo.required" => "El sexo es obligatorio.",
+            "sexo.in" => "El sexo debe ser 'M' (macho) o 'F' (hembra).",
+
+            "color.required" => "El color es obligatorio.",
+            "color.string" => "El color debe ser una cadena de texto.",
+            "color.max" => "El color no puede superar los 100 caracteres.",
+
+            "marcas.required" => "Las marcas son obligatorias.",
+            "marcas.string" => "Las marcas deben ser una cadena de texto.",
+            "marcas.max" => "Las marcas no pueden superar los 255 caracteres.",
+
+            "fecha_nacimiento.required" => "La fecha de nacimiento es obligatoria.",
+            "fecha_nacimiento.date" => "La fecha de nacimiento debe tener un formato válido.",
+
+            "estado.required" => "El estado es obligatorio.",
+            "estado.boolean" => "El estado debe ser verdadero (1) o falso (0).",
+        ];
     }
 
     public function save()
     {
+        $validated = $this->validate();
         if ($this->id) {
             $animal = Animal::findOrFail($this->id);
-            $animal->update([
-                "nombre" => $this->nombre,
-                "precio" => $this->precio,
-                "imagen" => $this->imagen,
-                "sexo" => $this->sexo,
-                "color" => $this->color,
-                "marcas" => $this->marcas,
-                "salud" => $this->salud,
-                "fecha_nacimiento" => $this->fechaNacimiento, // usar el valor del input
-                "estado" => $this->estado,
-            ]);
+            $animal->update($validated);
 
             $this->closeModal();
             $this->dispatch("animalEditado");
         } else {
-            Animal::create([
-                "nombre" => $this->nombre,
-                "codigo" => $this->codigo,
-                "precio" => $this->precio,
-                "imagen" => $this->imagen,
-                "sexo" => $this->sexo,
-                "color" => $this->color,
-                "marcas" => $this->marcas,
-                "salud" => $this->salud,
-                "fecha_nacimiento" => $this->fechaNacimiento, // usar el valor del input
-                "estado" => $this->estado,
-            ]);
+            Animal::create($validated);
 
             $this->closeModal();
             $this->dispatch("animalCreado");

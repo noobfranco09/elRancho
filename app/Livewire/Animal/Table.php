@@ -4,16 +4,35 @@ namespace App\Livewire\Animal;
 
 use App\Models\Animal;
 use Livewire\Attributes\On;
-use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
     protected $model = Animal::class;
 
+    public function bulkActions(): array
+    {
+        return [
+            'cambiarEstadoSeleccionados' => 'Cambiar estado',
+        ];
+    }
+
+
+    public function cambiarEstadoSeleccionados()
+    {
+        foreach ($this->getSelected() as $item) {
+            $this->changeStatus($item);
+        }
+        $this->clearSelected();
+    }
+
     public function configure(): void
     {
+        $this->setHideBulkActionsWhenEmptyStatus(true);
+        $this->setActionsInToolbarEnabled();
         $this->setPrimaryKey('id');
         $this->setDefaultSort('nombre', 'asc');
 
@@ -44,7 +63,9 @@ class Table extends DataTableComponent
         });
     }
 
+
     #[On("animalEditado")]
+    #[On("animalCreado")]
     public function columns(): array
     {
         return [
@@ -54,17 +75,27 @@ class Table extends DataTableComponent
             Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),
-
             Column::make("Precio", "precio")
                 ->sortable(),
-
             Column::make("Sexo", "sexo")
                 ->sortable(),
+            DateColumn::make('Nacimiento', 'fecha_nacimiento')
+                ->outputFormat('d-m-Y H:i:s')
+                ->sortable(),
+            BooleanColumn::make("Estado", "estado")
+                ->setView("components.animales.estado"),
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
                     return view('components.animales.actions', ['animal' => $row]);
                 })
                 ->html()
         ];
+    }
+
+    public function changeStatus(int $id)
+    {
+        $item = $this->model::find($id);
+        $item->estado = !$item->estado;
+        $item->save();
     }
 }

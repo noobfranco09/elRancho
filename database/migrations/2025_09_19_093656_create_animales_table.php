@@ -22,12 +22,11 @@ return new class extends Migration
             $table->enum('sexo', ['M', 'F', 'NA'])->default('NA');
             $table->string('color', 45);
             $table->text('marcas')->nullable();
-            $table->enum('salud', ['enfermo', 'sin enfermedades'])->default('sin enfermedades');
             $table->foreignId('padre1_id')->nullable()->constrained('animales');
             $table->foreignId('padre2_id')->nullable()->constrained('animales');
             $table->date('fecha_nacimiento');
             $table->foreignId('venta_id')->nullable()->constrained('ventas');
-            $table->enum('estado', ['activo', 'inactivo'])->nullable();
+            $table->boolean("estado")->default(1);
             $table->timestamps();
         });
     }
