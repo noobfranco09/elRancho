@@ -83,6 +83,7 @@ class Table extends DataTableComponent
                 ->outputFormat('d-m-Y H:i:s')
                 ->sortable(),
             BooleanColumn::make("Estado", "estado")
+                ->toggleable("changeStatus")
                 ->setView("components.animales.estado"),
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
