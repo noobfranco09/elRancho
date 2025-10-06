@@ -6,14 +6,33 @@ use App\Models\Estanco;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
 
      protected $model = Estanco::class;
 
+    public function bulkActions(): array
+    {
+        return [
+            'cambiarEstadoSeleccionados' => 'Cambiar estado',
+        ];
+    }
+
+    public function cambiarEstadoSeleccionados()
+    {
+        foreach ($this->getSelected() as $item) {
+            $this->changeStatus($item);
+        }
+        $this->clearSelected();
+    }
+
     public function configure(): void
     {
+        $this->setHideBulkActionsWhenEmptyStatus(true);
+        $this->setActionsInToolbarEnabled();
         $this->setPrimaryKey('id');
 
         // Centrar encabezados (th) según columna
@@ -57,8 +76,9 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Estado", "estado")
-                ->sortable(),
+            BooleanColumn::make("Estado", "estado")
+                ->toggleable("changeStatus")
+                ->setView("components.cajones.estado"),
                 
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
@@ -66,6 +86,13 @@ class Table extends DataTableComponent
                 })
                 ->html()
         ];
+    }
+
+    public function changeStatus(int $id)
+    {
+        $item = $this->model::find($id);
+        $item->estado = !$item->estado;
+        $item->save();
     }
 
 }

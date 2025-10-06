@@ -12,7 +12,4 @@
         Editar
     </x-button>
 
-    <x-button variant="danger" @click="$dispatch('openModal', { component: 'cajon.eliminar', arguments: { cajon:{{ $cajon->id }} } })" icon="delete">
-        Eliminar
-    </x-button>
 </div>

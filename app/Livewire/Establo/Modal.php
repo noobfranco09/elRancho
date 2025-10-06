@@ -16,7 +16,7 @@ class Modal extends ModalComponent
         $this->id = $establo->id;
         $this->nombre = $establo->nombre;
         $this->descripcion = $establo->descripcion;
-        $this->estado = $establo->estado ?? 'activo';  // Si no hay estado, usa 'activo' como valor por defecto
+        $this->estado = $establo->estado ?? 1;  // Si no hay estado, usa 'activo' como valor por defecto
     }
 
     public function rules()
@@ -24,7 +24,7 @@ class Modal extends ModalComponent
         return [
             "nombre" => "required|regex:/^[\pL\s]+$/u",
             "descripcion" => "required|regex:/^[\pL\s]+$/u",
-            "estado" => "required|in:activo,inactivo"
+            "estado" => "required|in:1,0"
         ];
     }
 

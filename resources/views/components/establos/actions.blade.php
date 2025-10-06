@@ -7,7 +7,4 @@
         Editar
     </x-button>
 
-    <x-button variant="danger" @click="$dispatch('openModal', { component: 'establo.eliminar', arguments: { establo:{{ $establo->id }} } })" icon="delete">
-        Desactivar
-    </x-button>
 </div>

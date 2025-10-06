@@ -24,8 +24,8 @@
             <div>
                 <x-form.select wire:model="estado" label="Estado"
                     :options="[
-                        'libre' => 'Libre',
-                        'ocupado' => 'Ocupado'
+                        '1' => 'Libre',
+                        '0' => 'Ocupado'
                     ]"
                     required
                     />
