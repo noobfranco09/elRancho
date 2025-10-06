@@ -38,7 +38,7 @@ class Modal extends ModalComponent
     {
         return [
             "nombre" => "required|string|max:255",
-            "codigo" => "required|string|max:50|unique:animales,codigo," . $this->id,
+            "codigo" => "required|integer|max:99999|unique:animales,codigo," . $this->id,
             "precio" => "required|numeric|min:0",
             "imagen" => "nullable", // ignoramos por ahora
             "sexo" => "required|in:M,F",
@@ -57,7 +57,7 @@ class Modal extends ModalComponent
             "nombre.max" => "El nombre no puede superar los 255 caracteres.",
 
             "codigo.required" => "El código es obligatorio.",
-            "codigo.string" => "El código debe ser una cadena de texto.",
+            "codigo.integer" => "El código debe ser una cadena de texto.",
             "codigo.max" => "El código no puede superar los 50 caracteres.",
             "codigo.unique" => "Este código ya está registrado para otro animal.",
 

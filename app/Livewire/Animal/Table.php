@@ -87,9 +87,9 @@ class Table extends DataTableComponent
                 ->setView("components.animales.estado"),
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
-                    return view('components.animales.actions', ['animal' => $row])->render();
+                    return view('components.animales.actions', ['animal' => $row]);
                 })
-                ->html()
+
         ];
     }
 
