@@ -45,42 +45,60 @@
 
                     <!-- Grid de Información con iconos -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                        <x-info-card icon="pets" label="Especie" value="Canino"/>
-                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600 hover:scale-105 transition-transform duration-200">
-                            <dt class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
-                                <i class="fas fa-birthday-cake text-pink-500"></i>
-                                Edad
-                            </dt>
-                            <dd class="text-lg font-bold text-gray-900 dark:text-white">3 años</dd>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600 hover:scale-105 transition-transform duration-200">
-                            <dt class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
-                                <i class="fas fa-weight text-purple-500"></i>
-                                Peso
-                            </dt>
-                            <dd class="text-lg font-bold text-gray-900 dark:text-white">32 kg</dd>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600 hover:scale-105 transition-transform duration-200">
-                            <dt class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
-                                <i class="fas fa-venus-mars text-indigo-500"></i>
-                                Sexo
-                            </dt>
-                            <dd class="text-lg font-bold text-gray-900 dark:text-white">Macho</dd>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600 hover:scale-105 transition-transform duration-200">
-                            <dt class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
-                                <i class="fas fa-palette text-amber-500"></i>
-                                Color
-                            </dt>
-                            <dd class="text-lg font-bold text-gray-900 dark:text-white">Dorado</dd>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600 hover:scale-105 transition-transform duration-200">
-                            <dt class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
-                                <i class="fas fa-user text-green-500"></i>
-                                Propietario
-                            </dt>
-                            <dd class="text-lg font-bold text-gray-900 dark:text-white">Juan Pérez</dd>
-                        </div>
+
+                        <!-- Especie -->
+                        <x-info-card
+                            class="bg-blue-50"
+                            icon="pets"
+                            iconClass="text-blue-500"
+                            label="Especie"
+                            value="Canino"
+                        />
+
+                        <!-- Edad -->
+                        <x-info-card
+                            class="bg-pink-50"
+                            icon="cake"
+                            iconClass="text-pink-500"
+                            label="Edad"
+                            value="3 años"
+                        />
+
+                        <!-- Peso -->
+                        <x-info-card
+                            class="bg-purple-50"
+                            icon="fitness_center"
+                            iconClass="text-purple-500"
+                            label="Peso"
+                            value="32 kg"
+                        />
+
+                        <!-- Sexo -->
+                        <x-info-card
+                            class="bg-indigo-50"
+                            icon="transgender"
+                            iconClass="text-indigo-500"
+                            label="Sexo"
+                            value="Macho"
+                        />
+
+                        <!-- Color -->
+                        <x-info-card
+                            class="bg-amber-50"
+                            icon="palette"
+                            iconClass="text-amber-500"
+                            label="Color"
+                            value="Dorado"
+                        />
+
+                        <!-- Propietario -->
+                        <x-info-card
+                            class="bg-green-50"
+                            icon="person"
+                            iconClass="text-green-500"
+                            label="Propietario"
+                            value="Juan Pérez"
+                        />
                     </div>
 
                     <!-- Sección de Acciones Mejorada -->
