@@ -155,51 +155,21 @@
                                 label="Compartir"
                                 color="indigo"
                             />
-                            <!-- Botón de más opciones con dropdown -->
-                            <div class="relative" @click.away="dropdownOpen = false">
-                                <button
-                                    @click="dropdownOpen = !dropdownOpen"
-                                    class="flex flex-col items-center justify-center gap-2 p-4 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl border border-gray-300 dark:border-gray-600 transition-all hover:-translate-y-0.5 w-full">
-                                    <i class="fas fa-ellipsis-h text-xl"></i>
-                                    <span class="text-xs font-medium">Más</span>
-                                </button>
 
-                                <!-- Dropdown menu -->
-                                <div
-                                    x-show="dropdownOpen"
-                                    x-transition:enter="transition ease-out duration-200"
-                                    x-transition:enter-start="opacity-0 -translate-y-2"
-                                    x-transition:enter-end="opacity-100 translate-y-0"
-                                    x-transition:leave="transition ease-in duration-150"
-                                    x-transition:leave-start="opacity-100 translate-y-0"
-                                    x-transition:leave-end="opacity-0 -translate-y-2"
-                                    class="absolute bottom-full right-0 mb-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-10"
-                                    style="display: none;">
-                                    <div class="p-2">
-                                        <button class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors">
-                                            <i class="fas fa-download text-gray-400"></i>
-                                            Exportar datos
-                                        </button>
-                                        <button class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors">
-                                            <i class="fas fa-print text-gray-400"></i>
-                                            Imprimir perfil
-                                        </button>
-                                        <button class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors">
-                                            <i class="fas fa-bell text-gray-400"></i>
-                                            Recordatorios
-                                        </button>
-                                        <button class="w-full text-left px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors">
-                                            <i class="fas fa-chart-line text-gray-400"></i>
-                                            Estadísticas
-                                        </button>
-                                        <hr class="my-2 border-gray-200 dark:border-gray-700">
-                                        <button class="w-full text-left px-4 py-2.5 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg text-sm text-red-600 dark:text-red-400 flex items-center gap-3 transition-colors">
-                                            <i class="fas fa-trash text-red-500"></i>
-                                            Eliminar perfil
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <x-dropdown.menu label="Más" icon="more_horiz">
+                                <x-dropdown.item icon="download">Exportar datos</x-dropdown.item>
+                                <x-dropdown.item icon="print">Imprimir perfil</x-dropdown.item>
+                                <x-dropdown.item icon="notifications">Recordatorios</x-dropdown.item>
+                                <x-dropdown.item icon="query_stats">Estadísticas</x-dropdown.item>
+                                <hr class="my-2 border-gray-200 dark:border-gray-700">
+                                <x-dropdown.item
+                                    icon="delete"
+                                    class="text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
+                                >
+                                    Eliminar perfil
+                                </x-dropdown.item>
+                            </x-dropdown.menu>
+
                         </div>
                     </div>
                 </div>
