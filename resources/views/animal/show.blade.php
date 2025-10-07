@@ -107,41 +107,54 @@
 
                         <!-- Grid de botones de acción -->
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded-xl border border-blue-200 dark:border-blue-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-edit text-xl"></i>
-                                <span class="text-xs font-medium">Editar</span>
-                            </button>
+                            <!-- Editar -->
+                            <x-action-button
+                                icon="edit"
+                                label="Editar"
+                                color="blue"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/40 rounded-xl border border-purple-200 dark:border-purple-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-history text-xl"></i>
-                                <span class="text-xs font-medium">Historial</span>
-                            </button>
+                            <!-- Historial -->
+                            <x-action-button
+                                icon="history"
+                                label="Historial"
+                                color="purple"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/40 rounded-xl border border-green-200 dark:border-green-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-stethoscope text-xl"></i>
-                                <span class="text-xs font-medium">Nueva cita</span>
-                            </button>
+                            <!-- Nueva cita -->
+                            <x-action-button
+                                icon="stethoscope"
+                                label="Nueva cita"
+                                color="green"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded-xl border border-amber-200 dark:border-amber-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-syringe text-xl"></i>
-                                <span class="text-xs font-medium">Vacunas</span>
-                            </button>
+                            <!-- Vacunas -->
+                            <x-action-button
+                                icon="vaccines"
+                                label="Vacunas"
+                                color="amber"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-xl border border-red-200 dark:border-red-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-pills text-xl"></i>
-                                <span class="text-xs font-medium">Medicinas</span>
-                            </button>
+                            <!-- Medicinas -->
+                            <x-action-button
+                                icon="medication"
+                                label="Medicinas"
+                                color="red"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-xl border border-teal-200 dark:border-teal-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-file-medical text-xl"></i>
-                                <span class="text-xs font-medium">Reportes</span>
-                            </button>
+                            <!-- Reportes -->
+                            <x-action-button
+                                icon="description"
+                                label="Reportes"
+                                color="teal"
+                            />
 
-                            <button class="flex flex-col items-center justify-center gap-2 p-4 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-xl border border-indigo-200 dark:border-indigo-800 transition-all hover:-translate-y-0.5">
-                                <i class="fas fa-share-alt text-xl"></i>
-                                <span class="text-xs font-medium">Compartir</span>
-                            </button>
-
+                            <!-- Compartir -->
+                            <x-action-button
+                                icon="share"
+                                label="Compartir"
+                                color="indigo"
+                            />
                             <!-- Botón de más opciones con dropdown -->
                             <div class="relative" @click.away="dropdownOpen = false">
                                 <button
