@@ -8,6 +8,10 @@
         <x-button @click="$dispatch('openModal', { component: 'animal.modal' })">
             Crear animal
         </x-button>
+
+        <x-button variant="warning" @click="$dispatch('openModal', { component: 'animal.modal-especies' })">
+            Especies
+        </x-button>
     </x-panel>
 
     <x-panel>

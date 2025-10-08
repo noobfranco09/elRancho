@@ -29,7 +29,7 @@
                     <!-- Header con nombre -->
                     <div class="flex justify-between items-start mb-6">
                         <div>
-                            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">Max</h2>
+                            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">{{ $animal->nombre }}</h2>
                             <p class="text-xl text-gray-600 dark:text-gray-400 flex items-center gap-2">
                                 <i class="fas fa-paw text-amber-500"></i>
                                 Golden Retriever
