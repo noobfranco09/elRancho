@@ -35,15 +35,14 @@
 
             <x-sidebar.section icon="security" title="Roles" :href="route('roles')" :selected="request()->routeIs('roles')" />
 
+            <x-sidebar.section icon="person" title="Clientes" :href="route('clientes')" :selected="request()->routeIs('clientes')" />
+
+
             <x-sidebar.section icon="pets" title="Animales">
                 <x-sidebar.link icon="pets" title="Gestionar animales" :href="route('animales')" />
                 <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected />
                 <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html" />
             </x-sidebar.section>
-
-            
-            
-
 
 
             <x-sidebar.section icon="vaccines" title="Vacunas">

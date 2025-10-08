@@ -40,6 +40,10 @@ Route::get("/empleados", function (){
     return view("empleado.index");
 })->name("empleados");
 
+Route::get("/clientes", function (){
+    return view("cliente.index");
+})->name("clientes");
+
 Route::get("/veterinarios", function () { return view("Veterinario.index"); })->name("veterinarios");
 
 
