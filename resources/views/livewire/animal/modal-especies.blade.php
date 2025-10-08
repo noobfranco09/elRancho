@@ -10,10 +10,13 @@
                 label="Nueva especie"
                 span="flex-1"
             />
+
             <x-button wire:click="save">
                 Crear
             </x-button>
         </div>
+
+        @error('nuevaEspecie') <x-error-message> {{ $message }} </x-error-message> @enderror
 
         <!-- Separador -->
         <div class="border-t border-gray-200 dark:border-gray-700"></div>
@@ -26,8 +29,9 @@
                         <div class="flex-1 min-w-0">
                             @if($isEditing === $especie->id)
                                 <x-form.input
-                                    wire:model.defer="nuevaEspecieEditar"
+                                    wire:model.defer="nuevaEspecieEditar.{{ $especie->id }}"
                                 />
+                                @error('nuevaEspecieEditar.$especie->id') <x-error-message> {{ $message }}</x-error-message> @enderror
                             @else
                                 <x-form.input
                                     value="{{ $especie->nombre }}"

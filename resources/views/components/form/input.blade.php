@@ -14,7 +14,7 @@
                        'block px-2.5 pb-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary-600 peer ' .
 
                        //CLASES CONDICIONALES PARA 'disabled'
-                       ((isset($disabled) && $disabled) ? 'text-disabled-500 bg-disabled-200 cursor-not-allowed' : 'bg-white focus:shadow-sm'),
+                       ((isset($disabled) && $disabled) ? 'text-disabled-500 bg-disabled-100 cursor-not-allowed' : 'bg-white focus:shadow-sm'),
 
             'id' => $attributes->get('id', $label)
         ]) }}

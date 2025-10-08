@@ -113,6 +113,11 @@ class Modal extends ModalComponent
         }
     }
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function handleImage($imagenAnterior = null)
     {
         if (!$this->imagen) {
