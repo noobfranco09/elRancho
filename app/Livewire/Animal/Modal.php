@@ -3,6 +3,7 @@
 namespace App\Livewire\Animal;
 
 use App\Models\Animal;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 
@@ -36,13 +37,14 @@ class Modal extends ModalComponent
         $this->estado = $animal->estado ?? 1;
     }
 
+
     public function rules()
     {
         return [
             "nombre" => "required|string|max:255",
             "codigo" => "required|integer|max:99999|unique:animales,codigo," . $this->id,
             "precio" => "required|numeric|min:0",
-            "imagen" => "nullable", // ignoramos por ahora
+            "imagen" => "nullable|image|mimes:jpg,jpeg,png,gif|max:2048",
             "sexo" => "required|in:M,F",
             "color" => "required|string|max:100",
             "marcas" => "required|string|max:255",
@@ -62,6 +64,10 @@ class Modal extends ModalComponent
             "codigo.integer" => "El código debe ser una cadena de texto.",
             "codigo.max" => "El código no puede superar los 50 caracteres.",
             "codigo.unique" => "Este código ya está registrado para otro animal.",
+
+            "imagen.image" => "El archivo debe ser una imagen.",
+            "imagen.mimes" => "Solo se permiten imágenes en formato JPG, JPEG, PNG o GIF.",
+            "imagen.max" => "La imagen no puede superar los 2 MB.",
 
             "precio.required" => "El precio es obligatorio.",
             "precio.numeric" => "El precio debe ser un número.",
@@ -89,22 +95,35 @@ class Modal extends ModalComponent
     public function save()
     {
         $validated = $this->validate();
-        if($this->imagen) {
-            $path = $this->imagen->store("animales", "public");
-            $validated["imagen"] = $path;
-        }
+
         if ($this->id) {
             $animal = Animal::findOrFail($this->id);
+
+            $validated["imagen"] = $this->handleImage($animal->imagen);
             $animal->update($validated);
 
             $this->closeModal();
             $this->dispatch("animalEditado");
         } else {
+            $validated['imagen'] = $this->handleImage();
             Animal::create($validated);
 
             $this->closeModal();
             $this->dispatch("animalCreado");
         }
+    }
+
+    public function handleImage($imagenAnterior = null)
+    {
+        if (!$this->imagen) {
+            return $imagenAnterior;
+        }
+
+        if ($imagenAnterior && Storage::disk("public")->exists($imagenAnterior)) {
+            Storage::disk("public")->delete($imagenAnterior);
+        }
+
+        return $this->imagen->store("animales", "public");
     }
 
 

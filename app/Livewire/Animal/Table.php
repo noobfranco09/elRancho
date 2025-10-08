@@ -74,11 +74,12 @@ class Table extends DataTableComponent
             Column::make("Imagen", "imagen")->hideIf(true),
             ImageColumn::make("Imagen", "imagen")
                 ->location(
-                    fn($row) => asset('storage/' . $row->imagen)
+                    fn($row) => ($row->imagen) ? asset('storage/' . $row->imagen) : "https://placehold.net/400x400.png"
                 )
                 ->attributes(fn($row) => [
                     'class' => 'aspect-square w-16 max-w-[4rem] object-cover rounded-lg shadow-sm transition-transform duration-200 hover:scale-105 mx-auto',
                     'style' => 'min-width: 4rem; height: auto;',
+                    'alt' => "https://placehold.net/400x400.png"
                 ]),
             Column::make("ID", "id")
                 ->sortable()
@@ -91,7 +92,7 @@ class Table extends DataTableComponent
             Column::make("Sexo", "sexo")
                 ->sortable(),
             DateColumn::make('Nacimiento', 'fecha_nacimiento')
-                ->outputFormat('d-m-Y H:i:s')
+                ->outputFormat('d-m-Y')
                 ->sortable(),
 
             BooleanColumn::make("Estado", "estado")

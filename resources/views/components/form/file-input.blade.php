@@ -7,15 +7,15 @@
     'showPreview' => false,
     'maxSize' => null, // en MB
     'helper' => null,
-    'error' => null,
+    'errorKey' => null
 ])
+@php $errKey = $errorKey ?? $name; @endphp
 <div
     x-data="{
         fileName: '',
         fileUrl: null,
         fileSize: null,
         isDragging: false,
-        error: '{{ $error }}',
         onFileChange(e) {
             const file = e.target.files[0];
             if (!file) {
@@ -23,16 +23,6 @@
                 return;
             }
 
-            // Validar tamaño si está definido
-            @if($maxSize)
-            if (file.size > {{ $maxSize }} * 1024 * 1024) {
-                this.error = 'El archivo excede el tamaño máximo de {{ $maxSize }}MB';
-                this.reset();
-                return;
-            }
-            @endif
-
-            this.error = '';
             this.fileName = file.name;
             this.fileSize = this.formatFileSize(file.size);
 
@@ -75,10 +65,9 @@
         @drop.prevent="onDrop($event)"
         :class="{
             'border-blue-500 bg-blue-50': isDragging,
-            'border-red-300 bg-red-50': error,
-            'border-gray-300 bg-gray-50': !isDragging && !error
+            'border-gray-300 bg-gray-50': !isDragging
         }"
-        class="relative rounded-xl border-2 border-dashed transition-all duration-200 hover:border-gray-400"
+        class="relative rounded-xl border-2 border-dashed transition-all duration-200 hover:border-gray-400 {{ $errors->has($errKey) ? 'border-red-300 bg-red-50' : '' }}"
     >
         <!-- Estado sin archivo -->
         <div x-show="!fileName" class="p-8 text-center">
@@ -167,12 +156,12 @@
         >
     </div>
 
-    <!-- Mensaje de error -->
-    <template x-if="error">
+    <!-- Mensaje de error Livewire -->
+    @error($errKey)
         <div class="mt-2 flex items-center gap-2 text-sm text-red-600">
             <span class="material-symbols-outlined text-base">error</span>
-            <span x-text="error"></span>
+            <span>{{ $message }}</span>
         </div>
-    </template>
+    @enderror
 
 </div>

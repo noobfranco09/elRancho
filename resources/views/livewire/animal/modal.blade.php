@@ -64,8 +64,16 @@
             </div>
         </form>
 
-        <x-form.file-input label="Subir imagen" wire:model="imagen" accept="image/*" helper="Formatos: JPG, PNG, GIF" showPreview="true"/>
-        <x-error-message> @error('imagen') {{ $message }} @enderror </x-error-message>
+        <x-form.file-input
+            label="Subir imagen"
+            max-size="5"
+            wire:model="imagen"
+            errorKey="imagen"
+            accept="image/*"
+            helper="Formatos: JPG, PNG, GIF"
+            showPreview="true"
+        />
+
 
         <x-slot:footer>
 
