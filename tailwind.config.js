@@ -12,6 +12,7 @@ export default {
         "./vendor/wire-elements/modal/resources/views/*.blade.php",
     ],
     safelist: [
+        "bg-gray-100",
         {
             pattern: /max-w-(sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl)/,
             variants: ["sm", "md", "lg", "xl", "2xl"],
@@ -51,17 +52,25 @@ export default {
                     950: "#451a03",
                 },
                 terciary: {
-                    50: "#e0f7ff",   // Azul muy claro
-                    100: "#b3e0ff",  // Azul claro
-                    200: "#80c8ff",  // Azul más intenso
-                    300: "#4da7ff",  // Azul
-                    400: "#1a86ff",  // Azul medio
-                    500: "#0066cc",  // Azul fuerte (clásico)
-                    600: "#005bb5",  // Azul oscuro
-                    700: "#004f99",  // Azul más oscuro
-                    800: "#00407f",  // Azul muy oscuro
-                    900: "#003366",  // Azul casi navy
-                    950: "#00224d",  // Azul profundo
+                    50: "#e0f7ff", // Azul muy claro
+                    100: "#b3e0ff", // Azul claro
+                    200: "#80c8ff", // Azul más intenso
+                    300: "#4da7ff", // Azul
+                    400: "#1a86ff", // Azul medio
+                    500: "#0066cc", // Azul fuerte (clásico)
+                    600: "#005bb5", // Azul oscuro
+                    700: "#004f99", // Azul más oscuro
+                    800: "#00407f", // Azul muy oscuro
+                    900: "#003366", // Azul casi navy
+                    950: "#00224d", // Azul profundo
+                },
+                disabled: {
+                    50: "#fafafa",
+                    100: "#f3f4f6",
+                    200: "#e5e7eb",
+                    300: "#d1d5db",
+                    400: "#9ca3af",
+                    500: "#6b7280",
                 },
             },
         },

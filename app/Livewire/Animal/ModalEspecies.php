@@ -9,10 +9,24 @@ class ModalEspecies extends ModalComponent
 {
     public $especies;
     public $nuevaEspecie;
+    public $isEditing = null;
+    public $nuevaEspecieEditar;
 
     public function mount()
     {
         $this->especies = Especie::all();
+    }
+
+    public function toggleEdit($id)
+    {
+        if ($this->isEditing === $id) {
+            $this->save($id, $this->nuevaEspecieEditar);
+            $this->isEditing = null;
+        } else {
+            $this->isEditing = $id;
+            $especie = Especie::findOrFail($id);
+            $this->nuevaEspecieEditar = $especie->nombre;
+        }
     }
 
     public function save($id = null, $nombre = null)
