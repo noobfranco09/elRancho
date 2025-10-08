@@ -8,6 +8,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class Table extends DataTableComponent
 {
@@ -69,6 +70,16 @@ class Table extends DataTableComponent
     public function columns(): array
     {
         return [
+
+            Column::make("Imagen", "imagen")->hideIf(true),
+            ImageColumn::make("Imagen", "imagen")
+                ->location(
+                    fn($row) => asset('storage/' . $row->imagen)
+                )
+                ->attributes(fn($row) => [
+                    'class' => 'aspect-square w-16 max-w-[4rem] object-cover rounded-lg shadow-sm transition-transform duration-200 hover:scale-105 mx-auto',
+                    'style' => 'min-width: 4rem; height: auto;',
+                ]),
             Column::make("ID", "id")
                 ->sortable()
                 ->searchable(),
@@ -82,6 +93,7 @@ class Table extends DataTableComponent
             DateColumn::make('Nacimiento', 'fecha_nacimiento')
                 ->outputFormat('d-m-Y H:i:s')
                 ->sortable(),
+
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")
                 ->setView("components.animales.estado"),
