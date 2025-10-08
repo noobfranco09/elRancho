@@ -2,7 +2,7 @@
     <x-slot name="header">
         <x-header title="Información del animal" description=""/>
     </x-slot>
-<div class="max-w-6xl mx-auto" x-data="{ dropdownOpen: false, isFavorite: false }">
+    <div class="max-w-6xl mx-auto" x-data="{ dropdownOpen: false, isFavorite: false }">
         <!-- Card Principal del Animal -->
         <div class="bg-white border border-gray-200 rounded-2xl shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden mb-6 hover:shadow-xl transition-shadow duration-300">
             <div class="flex flex-col lg:flex-row">
@@ -48,7 +48,6 @@
 
                         <!-- Especie -->
                         <x-info-card
-                            class="bg-blue-50"
                             icon="pets"
                             iconClass="text-blue-500"
                             label="Especie"
@@ -57,7 +56,6 @@
 
                         <!-- Edad -->
                         <x-info-card
-                            class="bg-pink-50"
                             icon="cake"
                             iconClass="text-pink-500"
                             label="Edad"
@@ -66,7 +64,6 @@
 
                         <!-- Peso -->
                         <x-info-card
-                            class="bg-purple-50"
                             icon="fitness_center"
                             iconClass="text-purple-500"
                             label="Peso"
@@ -75,7 +72,6 @@
 
                         <!-- Sexo -->
                         <x-info-card
-                            class="bg-indigo-50"
                             icon="transgender"
                             iconClass="text-indigo-500"
                             label="Sexo"
@@ -84,7 +80,6 @@
 
                         <!-- Color -->
                         <x-info-card
-                            class="bg-amber-50"
                             icon="palette"
                             iconClass="text-amber-500"
                             label="Color"
@@ -93,7 +88,6 @@
 
                         <!-- Propietario -->
                         <x-info-card
-                            class="bg-green-50"
                             icon="person"
                             iconClass="text-green-500"
                             label="Propietario"

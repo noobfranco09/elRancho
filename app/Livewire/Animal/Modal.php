@@ -3,10 +3,12 @@
 namespace App\Livewire\Animal;
 
 use App\Models\Animal;
+use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 
 class Modal extends ModalComponent
 {
+    use WithFileUploads;
     public Animal $animal;
     public $id,
         $nombre,
@@ -87,6 +89,10 @@ class Modal extends ModalComponent
     public function save()
     {
         $validated = $this->validate();
+        if($this->imagen) {
+            $path = $this->imagen->store("animales", "public");
+            $validated["imagen"] = $path;
+        }
         if ($this->id) {
             $animal = Animal::findOrFail($this->id);
             $animal->update($validated);

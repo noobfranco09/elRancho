@@ -24,13 +24,6 @@
             </div>
 
             <div>
-                <x-form.input wire:model="imagen" label="Imagen"   required />
-                <x-error-message> @error('imagen') {{ $message }} @enderror </x-error-message>
-            </div>
-
-
-
-            <div>
                 <x-form.select wire:model="sexo" label="Estado"
                     value="1"
                     :options="[
@@ -70,6 +63,9 @@
                     <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
             </div>
         </form>
+
+        <x-form.file-input label="Subir imagen" wire:model="imagen" accept="image/*" helper="Formatos: JPG, PNG, GIF" showPreview="true"/>
+        <x-error-message> @error('imagen') {{ $message }} @enderror </x-error-message>
 
         <x-slot:footer>
 
