@@ -3,6 +3,7 @@
 namespace App\Livewire\Animal;
 
 use App\Models\Animal;
+use App\Models\Especie;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
@@ -11,12 +12,14 @@ class Modal extends ModalComponent
 {
     use WithFileUploads;
     public Animal $animal;
+    public $especies = [];
     public $id,
         $nombre,
         $codigo,
         $precio,
         $imagen,
         $sexo,
+        $especie_id,
         $color,
         $marcas,
         $fecha_nacimiento,
@@ -31,6 +34,8 @@ class Modal extends ModalComponent
         $this->precio = $animal->precio;
         $this->imagen = $animal->imagen;
         $this->sexo = $animal->sexo ?? "M";
+        $this->especie_id = $animal->especie;
+        $this->especies = Especie::pluck("nombre", "id")->toArray();
         $this->color = $animal->color;
         $this->marcas = $animal->marcas;
         $this->fecha_nacimiento = $animal->fechaNacimiento;
@@ -46,6 +51,7 @@ class Modal extends ModalComponent
             "precio" => "required|numeric|min:0",
             "imagen" => "nullable|image|mimes:jpg,jpeg,png,gif|max:2048",
             "sexo" => "required|in:M,F",
+            "especie_id" => "",
             "color" => "required|string|max:100",
             "marcas" => "required|string|max:255",
             "fecha_nacimiento" => "required|date",

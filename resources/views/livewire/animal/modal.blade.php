@@ -24,7 +24,7 @@
             </div>
 
             <div>
-                <x-form.select wire:model.live="sexo" label="Estado"
+                <x-form.select wire:model.live="sexo" label="Sexo"
                     value="1"
                     :options="[
                         'M' => 'Macho',
@@ -33,6 +33,15 @@
                     required
                     />
                     <x-error-message> @error('sexo') {{ $message }} @enderror </x-error-message>
+            </div>
+
+            <div>
+                <x-form.select wire:model.live="especie_id" label="Especie"
+                    :options="['' => 'Seleccionar una especie'] + $especies"
+                    value="1"
+                    required
+                    />
+                    <x-error-message> @error('especie_id') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
