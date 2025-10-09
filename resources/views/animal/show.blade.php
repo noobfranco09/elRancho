@@ -63,27 +63,76 @@
                 <!-- Columna derecha (info general) -->
                 <div class="flex-1 w-full">
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <x-info-card icon="cake" iconClass="text-pink-500" label="Edad">
-                            {{ $animal->edad }}
+
+                        <x-info-card icon="cake" iconClass="text-pink-500" label="Nacimiento">
+                            {{ $animal->fecha_nacimiento }}
                         </x-info-card>
-                        <x-info-card icon="fitness_center" iconClass="text-purple-500" label="Codigo">
+
+                        <x-info-card icon="badge" iconClass="text-blue-500" label="Código">
                             {{ $animal->codigo }}
                         </x-info-card>
-                        <x-info-card icon="fitness_center" iconClass="text-purple-500" label="Precio">
+
+                        <x-info-card icon="attach_money" iconClass="text-emerald-500" label="Precio">
                             ${{ $animal->precio }}
                         </x-info-card>
-                        <x-info-card icon="transgender" iconClass="text-indigo-500" label="Sexo">
-                            {{ ($animal->sexo === "M") ? "Macho" : "Hembra" }}
+
+                        <x-info-card icon="transgender" iconClass="{{ $animal->sexo === 'M' ? 'text-blue-500' : 'text-pink-500' }}" label="Sexo">
+                            {{ $animal->sexo === 'M' ? 'Macho' : 'Hembra' }}
                         </x-info-card>
+
                         <x-info-card icon="palette" iconClass="text-amber-500" label="Color">
                             {{ $animal->color }}
                         </x-info-card>
-                        <x-info-card icon="person" iconClass="text-green-500" label="Marcas">
-                            {{ $animal->marcas}}
+
+                        <x-info-card icon="pets" iconClass="text-purple-500" label="Marcas">
+                            {{ $animal->marcas }}
                         </x-info-card>
                     </div>
                 </div>
             </div>
+
+            <x-tab.container id="animalTab">
+                <x-slot name="navigation">
+                    <x-tab.nav-item target="vacunas" :active="true">
+                        Vacunas
+                    </x-tab.nav-item>
+
+                    <x-tab.nav-item target="enfermedades">
+                        Enfermedades
+                    </x-tab.nav-item>
+
+                    <x-tab.nav-item target="citas">
+                        Citas
+                    </x-tab.nav-item>
+                </x-slot>
+
+                <x-tab.panel id="vacunas" :active="true">
+                    <x-tab.panel-header title="Registro de vacunas">
+                        <x-button>Asignar vacunacion</x-button>
+                    </x-tab.panel-header>
+
+                    El pepe
+                </x-tab.panel>
+
+                <x-tab.panel id="enfermedades">
+                    <x-tab.panel-header title="Enfermedades">
+                        <x-button>Registrar enfermedad</x-button>
+                    </x-tab.panel-header>
+
+                    El pepe
+                </x-tab.panel>
+
+                <x-tab.panel id="citas">
+                    <x-tab.panel-header title="Citas">
+                        <x-button>Citas</x-button>
+                    </x-tab.panel-header>
+
+                    El pepe
+                </x-tab.panel>
+
+            </x-tab.container>
+
+
 
             <!-- Acciones -->
             <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
