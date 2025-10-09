@@ -9,6 +9,7 @@ class Enfermedad extends Model
 {
     /** @use HasFactory<\Database\Factories\EnfermedadFactory> */
     use HasFactory;
+    protected $table = "enfermedades";
 
     public function animal()
     {

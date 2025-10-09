@@ -111,7 +111,6 @@
                         <x-button>Asignar vacunacion</x-button>
                     </x-tab.panel-header>
 
-                    El pepe
                 </x-tab.panel>
 
                 <x-tab.panel id="enfermedades">
@@ -119,7 +118,7 @@
                         <x-button>Registrar enfermedad</x-button>
                     </x-tab.panel-header>
 
-                    El pepe
+                    <livewire:enfermedad.table :animalId="$animal->id"/>
                 </x-tab.panel>
 
                 <x-tab.panel id="citas">
