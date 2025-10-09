@@ -51,7 +51,7 @@ class Modal extends ModalComponent
             "precio" => "required|numeric|min:0",
             "imagen" => "nullable|image|mimes:jpg,jpeg,png,gif|max:2048",
             "sexo" => "required|in:M,F",
-            "especie_id" => "",
+            "especie_id" => "required",
             "color" => "required|string|max:100",
             "marcas" => "required|string|max:255",
             "fecha_nacimiento" => "required|date",

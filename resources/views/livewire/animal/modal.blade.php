@@ -36,9 +36,8 @@
             </div>
 
             <div>
-                <x-form.select wire:model.live="especie_id" label="Especie"
+                <x-form.select wire:model="especie_id" label="Especie"
                     :options="['' => 'Seleccionar una especie'] + $especies"
-                    value="1"
                     required
                     />
                     <x-error-message> @error('especie_id') {{ $message }} @enderror </x-error-message>

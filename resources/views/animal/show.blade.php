@@ -21,18 +21,19 @@
                             alt="{{ $animal->nombre }}"
                         >
 
-                        <!-- Overlay cambiar foto -->
+                        <!-- Overlay cambiar foto
                         <div class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <button class="text-white bg-white/20 backdrop-blur-sm hover:bg-white/30 font-medium rounded-full text-sm px-4 py-2 flex items-center gap-2 transition-colors duration-300">
                                 <i class="fas fa-camera"></i>
                                 Cambiar foto
                             </button>
                         </div>
+                        -->
 
                         <!-- Estado -->
                         <div class="absolute bottom-2 right-2">
-                            <span class="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                                Activo
+                            <span class="{{ ($animal->estado === 1) ? 'bg-green-500' : 'bg-red-500'}} text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+                                {{ ($animal->estado === 1) ? "Activo" : "Inactivo" }}
                             </span>
                         </div>
                     </div>
@@ -46,7 +47,7 @@
                                 </h2>
                                 <p class="text-lg text-gray-600 dark:text-gray-400 flex items-center gap-2">
                                     <i class="fas fa-paw text-amber-500"></i>
-                                    Golden Retriever
+                                    {{ $animal->especie->nombre ?? "Sin especie" }}
                                 </p>
                             </div>
                             <button
@@ -62,43 +63,44 @@
                 <!-- Columna derecha (info general) -->
                 <div class="flex-1 w-full">
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <x-info-card icon="pets" iconClass="text-blue-500" label="Especie" value="Canino" />
-                        <x-info-card icon="cake" iconClass="text-pink-500" label="Edad" value="3 años" />
-                        <x-info-card icon="fitness_center" iconClass="text-purple-500" label="Peso" value="32 kg" />
-                        <x-info-card icon="transgender" iconClass="text-indigo-500" label="Sexo" value="Macho" />
-                        <x-info-card icon="palette" iconClass="text-amber-500" label="Color" value="Dorado" />
-                        <x-info-card icon="person" iconClass="text-green-500" label="Propietario" value="Juan Pérez" />
+                        <x-info-card icon="cake" iconClass="text-pink-500" label="Edad">
+                            {{ $animal->edad }}
+                        </x-info-card>
+                        <x-info-card icon="fitness_center" iconClass="text-purple-500" label="Codigo">
+                            {{ $animal->codigo }}
+                        </x-info-card>
+                        <x-info-card icon="fitness_center" iconClass="text-purple-500" label="Precio">
+                            ${{ $animal->precio }}
+                        </x-info-card>
+                        <x-info-card icon="transgender" iconClass="text-indigo-500" label="Sexo">
+                            {{ ($animal->sexo === "M") ? "Macho" : "Hembra" }}
+                        </x-info-card>
+                        <x-info-card icon="palette" iconClass="text-amber-500" label="Color">
+                            {{ $animal->color }}
+                        </x-info-card>
+                        <x-info-card icon="person" iconClass="text-green-500" label="Marcas">
+                            {{ $animal->marcas}}
+                        </x-info-card>
                     </div>
                 </div>
             </div>
 
             <!-- Acciones -->
-            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Acciones Rápidas</p>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Acciones Rápidas</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Gestiona el perfil del animal</p>
+                    </div>
+                </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <x-action-button icon="edit" label="Editar" color="blue" />
-                    <x-action-button icon="history" label="Historial" color="purple" />
-                    <x-action-button icon="stethoscope" label="Nueva cita" color="green" />
+                <!-- Acciones principales -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+                    <x-action-button icon="edit" label="Editar perfil" color="blue" />
+                    <x-action-button icon="history" label="Ver historial" color="purple" />
+                    <x-action-button icon="event" label="Nueva cita" color="green" badge="3" />
                     <x-action-button icon="vaccines" label="Vacunas" color="amber" />
-                    <x-action-button icon="medication" label="Medicinas" color="red" />
-                    <x-action-button icon="description" label="Reportes" color="teal" />
-                    <x-action-button icon="share" label="Compartir" color="indigo" />
 
-                    <!-- Menú desplegable -->
-                    <x-dropdown.menu label="Más" icon="more_horiz">
-                        <x-dropdown.item icon="download">Exportar datos</x-dropdown.item>
-                        <x-dropdown.item icon="print">Imprimir perfil</x-dropdown.item>
-                        <x-dropdown.item icon="notifications">Recordatorios</x-dropdown.item>
-                        <x-dropdown.item icon="query_stats">Estadísticas</x-dropdown.item>
-                        <hr class="my-2 border-gray-200 dark:border-gray-700">
-                        <x-dropdown.item
-                            icon="delete"
-                            class="text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
-                        >
-                            Eliminar perfil
-                        </x-dropdown.item>
-                    </x-dropdown.menu>
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 @props([
     'icon',
     'label',
-    'value',
     'iconClass' => 'text-blue-500', // color por defecto
 ])
 
@@ -16,6 +15,6 @@
         {{ $label }}
     </dt>
     <dd class="text-lg font-bold text-gray-900 dark:text-white">
-        {{ $value }}
+        {{ $slot}}
     </dd>
 </div>
