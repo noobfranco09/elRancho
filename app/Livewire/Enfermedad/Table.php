@@ -12,7 +12,8 @@ class Table extends DataTableComponent
 {
     protected $listeners = [
         "enfermedadCreada" => '$refresh',
-        "enfermedadEditada" => '$refresh'
+        "enfermedadEditada" => '$refresh',
+        "enfermedadEliminada" => '$refresh'
     ];
     public $animalId;
     public function configure(): void

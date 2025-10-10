@@ -176,5 +176,12 @@
                 title: "Enfermedad editada con éxito"
             })
         })
+
+        document.addEventListener("enfermedadEliminada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Enfermedad eliminada con éxito"
+            })
+        })
     </script>
 </x-app-layout>

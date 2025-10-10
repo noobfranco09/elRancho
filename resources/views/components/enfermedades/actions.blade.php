@@ -13,5 +13,14 @@
         icon="edit"
     />
 
-    <x-button variant="danger" @click="..." icon="delete"/>
+    <x-button
+        variant="danger"
+        @click="$dispatch('openModal', {
+            component: 'enfermedad.alert',
+            arguments: {
+                enfermedad:{{ $enfermedad->id }},
+            }
+        })"
+        icon="delete"
+    />
 </div>
