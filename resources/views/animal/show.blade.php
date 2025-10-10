@@ -111,11 +111,19 @@
                         <x-button>Asignar vacunacion</x-button>
                     </x-tab.panel-header>
 
+
+
+
+
                 </x-tab.panel>
 
                 <x-tab.panel id="enfermedades">
                     <x-tab.panel-header title="Enfermedades">
-                        <x-button>Registrar enfermedad</x-button>
+
+                        <x-button @click="$dispatch('openModal', { component: 'enfermedad.modal', arguments: { animal_id: {{ $animal->id }} }  })">
+                            Registrar enfermedad
+                        </x-button>
+
                     </x-tab.panel-header>
 
                     <livewire:enfermedad.table :animalId="$animal->id"/>
@@ -153,4 +161,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("enfermedadCreada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Enfermedad creada con éxito"
+            })
+        })
+
+        document.addEventListener("enfermedadEditada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Enfermedad editada con éxito"
+            })
+        })
+    </script>
 </x-app-layout>

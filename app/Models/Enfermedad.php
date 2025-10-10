@@ -10,6 +10,7 @@ class Enfermedad extends Model
     /** @use HasFactory<\Database\Factories\EnfermedadFactory> */
     use HasFactory;
     protected $table = "enfermedades";
+    protected $fillable = ["animal_id", "fecha", "descripcion", "estado"];
 
     public function animal()
     {
