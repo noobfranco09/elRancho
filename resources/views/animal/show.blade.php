@@ -108,7 +108,9 @@
 
                 <x-tab.panel id="vacunas" :active="true">
                     <x-tab.panel-header title="Registro de vacunas">
-                        <x-button>Asignar vacunacion</x-button>
+                        <x-button @click="$dispatch('openModal', {component: 'vacunacion.modal', arguments: { animalId:{{ $animal->id }} }})">
+                            Asignar vacunacion
+                        </x-button>
                     </x-tab.panel-header>
 
                     <livewire:vacunacion.table :animalId="$animal->id"/>

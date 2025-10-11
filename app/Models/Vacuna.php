@@ -19,4 +19,11 @@ class Vacuna extends Model
     {
         return $this->belongsToMany(Animal::class, "vacunaciones");
     }
+
+    public function vacunaciones()
+    {
+
+        return $this->hasMany(Vacunacion::class, "vacuna_id");
+    }
+
 }

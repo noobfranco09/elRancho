@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vacunaciones', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('animal_id')->constrained('animales');
             $table->foreignId('vacuna_id')->constrained('vacunas');
             $table->date('fecha_vacunacion')->nullable();
-
-            $table->primary(['animal_id', 'vacuna_id']);
             $table->timestamps();
         });
     }
