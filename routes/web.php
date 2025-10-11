@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 /*     return view('welcome'); */
 /* }); */
 
-Route::get("/dashboard", function () {
+Route::get("/dashboard", function(){
     return view("dashboard");
 })->name("dashboard");
 
@@ -36,6 +35,8 @@ Route::get("/cajones", function () {
 Route::get("/veterinarios", function () {
     return view("Veterinario.index");
 })->name("veterinarios");
+
+
 
 Route::get("/animales/{id}", function ($id) {
     $animal = Animal::find($id);

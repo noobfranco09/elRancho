@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Vacunacion;
 
-use App\Models\Vacuna;
 use App\Models\Vacunacion;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;

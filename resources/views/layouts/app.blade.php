@@ -31,14 +31,13 @@
 
         <x-sidebar>
 
+            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard"/>
 
             <x-sidebar.section icon="pets" title="Animales">
                 <x-sidebar.link icon="pets" title="Gestionar animales" :href="route('animales')" />
                 <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected />
                 <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html" />
             </x-sidebar.section>
-
-
 
 
             <x-sidebar.section icon="vaccines" title="Vacunas">
