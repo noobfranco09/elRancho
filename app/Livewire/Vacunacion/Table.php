@@ -27,11 +27,10 @@ class Table extends DataTableComponent
     }
 
     #[On("vacunacionCreada")]
+    #[On("vacunacionEliminada")]
     public function columns(): array
     {
-
         return [
-
             Column::make("ID", "id")
                 ->sortable(),
             Column::make('Vacuna', 'vacuna.nombre')
@@ -41,10 +40,13 @@ class Table extends DataTableComponent
                 ->searchable(),
             Column::make('Descripcion', 'vacuna.descripcion')
                 ->searchable(),
-
             Column::make('Dosis', 'vacuna.dosis')
                 ->searchable(),
 
+            Column::make('Acciones')
+                ->label(function ($row) {
+                    return view('components.vacunaciones.actions', ['vacunacion' => $row]);
+                })
         ];
     }
 }

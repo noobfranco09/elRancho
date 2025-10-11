@@ -183,5 +183,19 @@
                 title: "Enfermedad eliminada con éxito"
             })
         })
+
+        document.addEventListener("vacunacionCreada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Vacunación creada con éxito"
+            })
+        })
+
+        document.addEventListener("vacunacionEliminada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Vacunación eliminada con éxito"
+            })
+        })
     </script>
 </x-app-layout>

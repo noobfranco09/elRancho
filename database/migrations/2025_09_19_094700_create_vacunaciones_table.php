@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('animal_id')->constrained('animales');
             $table->foreignId('vacuna_id')->constrained('vacunas');
             $table->date('fecha_vacunacion')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
