@@ -64,4 +64,9 @@ class ModalEspecies extends ModalComponent
     {
         return view('livewire.animal.modal-especies');
     }
+
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
+    }
 }

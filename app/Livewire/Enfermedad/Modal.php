@@ -73,6 +73,12 @@ class Modal extends ModalComponent
             $this->closeModal();
         }
     }
+
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
+    }
+
     public function render()
     {
         return view('livewire.enfermedad.modal');

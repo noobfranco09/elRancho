@@ -65,4 +65,9 @@ class Modal extends ModalComponent
     {
         return view('livewire.vacunacion.modal');
     }
+
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
+    }
 }
