@@ -32,9 +32,19 @@ Route::get("/cajones", function () {
     return view("cajon.index");
 })->name("cajones");
 
-Route::get("/veterinarios", function () {
-    return view("Veterinario.index");
-})->name("veterinarios");
+Route::get("/roles", function (){
+    return view("rol.index");
+})->name("roles");
+
+Route::get("/empleados", function (){
+    return view("empleado.index");
+})->name("empleados");
+
+Route::get("/clientes", function (){
+    return view("cliente.index");
+})->name("clientes");
+
+Route::get("/veterinarios", function () { return view("Veterinario.index"); })->name("veterinarios");
 
 
 

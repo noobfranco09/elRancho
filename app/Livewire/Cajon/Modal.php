@@ -21,7 +21,7 @@ class Modal extends ModalComponent
         $this->codigo = $cajon->codigo;
         $this->establo_id = $cajon->establo_id;
         $this->establos = Establo::pluck('nombre', 'id')->toArray();
-        $this->estado = $cajon->estado ?? 'libre';  // Si no hay estado, usa 'activo' como valor por defecto
+        $this->estado = $cajon->estado ?? 1;  // Si no hay estado, usa 'activo' como valor por defecto
     }
 
     public function rules()
@@ -33,7 +33,7 @@ class Modal extends ModalComponent
                 Rule::unique('estancos', 'codigo')->ignore($this->id),
             ],
             "establo_id" => "",
-            "estado" => "required|in:libre,ocupado"
+            "estado" => "required|in:1,0"
         ];
     }
 

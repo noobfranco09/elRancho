@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Livewire\Cajon;
+namespace App\Livewire\Cliente;
 
-use App\Models\Estanco;
+use App\Models\Cliente;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
-
-    protected $model = Estanco::class;
+    protected $model = Cliente::class;
 
     public function bulkActions(): array
     {
@@ -58,9 +56,9 @@ class Table extends DataTableComponent
         });
     }
 
-    #[On("cajonCreado")]
-    #[On("cajonEditado")]
-    #[On ("cajonEliminado")]
+    #[On("clienteCreado")]
+    #[On("clienteEditado")]
+    #[On ("clienteEliminado")]
     public function columns(): array
     {
         return [
@@ -68,21 +66,32 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Codigo", "codigo")
+            Column::make("Nombre", "nombre")
+                ->sortable()
+                ->searchable(),
+                
+            Column::make("Cedula", "cedula")
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Establo", "establo_id")
+            Column::make("Telefono", "telefono")
                 ->sortable()
                 ->searchable(),
+
+            Column::make("Correo Electronico", "correo")
+                ->sortable()
+                ->searchable(),
+            
+            Column::make("Direccion", "direccion")
+                ->sortable(),
 
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")
-                ->setView("components.cajones.estado"),
+                ->setView("components.clientes.estado"),
                 
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
-                    return view('components.cajones.actions', ['cajon' => $row]);
+                    return view('components.clientes.actions', ['cliente' => $row]);
                 })
                 ->html()
         ];
@@ -94,5 +103,5 @@ class Table extends DataTableComponent
         $item->estado = !$item->estado;
         $item->save();
     }
-
+    
 }

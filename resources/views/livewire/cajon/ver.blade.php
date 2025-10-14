@@ -31,12 +31,12 @@
                 <div class="flex justify-between items-center bg-gray-100 p-6 rounded-lg shadow-sm">
                     <h4 class="text-xl font-semibold text-gray-800">Estado</h4>
                     <div class="flex items-center space-x-2">
-                        @if($cajon->estado == "libre")
+                        @if($cajon->estado == 1)
                         <div class="h-3 w-3 bg-green-500 rounded-full"></div>
-                        <span class="text-lg text-green-700 font-medium">{{ $cajon->estado}}</span>
+                        <span class="text-lg text-green-700 font-medium">Libre</span>
                         @else
                         <div class="h-3 w-3 bg-red-500 rounded-full"></div>
-                        <span class="text-lg text-red-700 font-medium">{{ $cajon->estado}}</span>
+                        <span class="text-lg text-red-700 font-medium">Ocupado</span>
                         @endif
                     </div>
                 </div>
@@ -68,12 +68,12 @@
                 <div class="flex justify-between items-center bg-gray-100 p-6 rounded-lg shadow-sm">
                     <h4 class="text-xl font-semibold text-gray-800">Estado</h4>
                     <div class="flex items-center space-x-2">
-                        @if($establo->estado == "activo")
+                        @if($establo->estado == 1)
                         <div class="h-3 w-3 bg-green-500 rounded-full"></div>
-                        <span class="text-lg text-green-700 font-medium">{{ $establo->estado}}</span>
+                        <span class="text-lg text-green-700 font-medium">Activo</span>
                         @else
                         <div class="h-3 w-3 bg-red-500 rounded-full"></div>
-                        <span class="text-lg text-red-700 font-medium">{{ $establo->estado}}</span>
+                        <span class="text-lg text-red-700 font-medium">Inactivo</span>
                         @endif
                     </div>
                 </div>

@@ -31,6 +31,12 @@
 
         <x-sidebar>
 
+            <x-sidebar.section icon="people_alt" title="Empleados" :href="route('empleados')" :selected="request()->routeIs('empleados')" />
+
+            <x-sidebar.section icon="security" title="Roles" :href="route('roles')" :selected="request()->routeIs('roles')" />
+
+            <x-sidebar.section icon="person" title="Clientes" :href="route('clientes')" :selected="request()->routeIs('clientes')" />
+
             <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard"/>
 
             <x-sidebar.section icon="pets" title="Animales">

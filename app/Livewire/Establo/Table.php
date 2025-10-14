@@ -6,14 +6,33 @@ use App\Models\Establo;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
 
     protected $model = Establo::class;
 
+    public function bulkActions(): array
+    {
+        return [
+            'cambiarEstadoSeleccionados' => 'Cambiar estado',
+        ];
+    }
+
+    public function cambiarEstadoSeleccionados()
+    {
+        foreach ($this->getSelected() as $item) {
+            $this->changeStatus($item);
+        }
+        $this->clearSelected();
+    }
+
     public function configure(): void
     {
+        $this->setHideBulkActionsWhenEmptyStatus(true);
+        $this->setActionsInToolbarEnabled();
         $this->setPrimaryKey('id');
         $this->setDefaultSort('nombre', 'asc');
 
@@ -61,8 +80,9 @@ class Table extends DataTableComponent
             Column::make("Descripcion", "descripcion")
                 ->sortable(),
 
-            Column::make("Estado", "estado")
-                ->sortable(),
+            BooleanColumn::make("Estado", "estado")
+                ->toggleable("changeStatus")
+                ->setView("components.establos.estado"),
                 
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
@@ -70,6 +90,13 @@ class Table extends DataTableComponent
                 })
                 ->html()
         ];
+    }
+    
+    public function changeStatus(int $id)
+    {
+        $item = $this->model::find($id);
+        $item->estado = !$item->estado;
+        $item->save();
     }
 
 }

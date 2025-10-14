@@ -1,8 +1,7 @@
-
 <div>
     <x-modal
-        id="modal-establo"
-        title="Crear establo"
+        id="modal-cliente"
+        title="Crear cliente"
     >
 
         <form class="grid grid-cols-1 gap-5">
@@ -14,8 +13,23 @@
 
 
             <div>
-                <x-form.input wire:model="descripcion" label="Descripcion" />
-                <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
+                <x-form.input type="number" wire:model="cedula" label="Cedula" />
+                <x-error-message> @error('cedula') {{ $message }} @enderror </x-error-message>
+            </div>
+
+            <div>
+                <x-form.input type="number" wire:model="telefono" label="Telefono" />
+                <x-error-message> @error('telefono') {{ $message }} @enderror </x-error-message>
+            </div>
+
+            <div>
+                <x-form.input type="email" wire:model="correo" label="Correo Electronico" />
+                <x-error-message> @error('correo') {{ $message }} @enderror </x-error-message>
+            </div>
+            
+            <div>
+                <x-form.input wire:model="direccion" label="Direccion"/>
+                <x-error-message> @error('direccion') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>

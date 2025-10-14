@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("codigo")->unique();
             $table->foreignId("establo_id")->constrained("establos");
-            $table->enum("estado", ["ocupado", "libre"]);
+            $table->boolean("estado")->default(1);
             $table->softDeletes();
 
             

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Cajon;
+namespace App\Livewire\Empleado;
 
-use App\Models\Estanco;
+use App\Models\Empleado;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -11,8 +11,7 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
-
-    protected $model = Estanco::class;
+    protected $model = Empleado::class;
 
     public function bulkActions(): array
     {
@@ -58,9 +57,9 @@ class Table extends DataTableComponent
         });
     }
 
-    #[On("cajonCreado")]
-    #[On("cajonEditado")]
-    #[On ("cajonEliminado")]
+    #[On("empleadoCreado")]
+    #[On("empleadoEditado")]
+    #[On ("empleadoEliminado")]
     public function columns(): array
     {
         return [
@@ -68,21 +67,38 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Codigo", "codigo")
+            Column::make("Nombre", "nombre")
+                ->sortable()
+                ->searchable(),
+                
+            DateColumn::make("Fecha Nacimiento", "fecha_nacimiento")
+                ->outputFormat('d-m-Y')
+                ->sortable(),
+            Column::make("Cedula", "cedula")
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Establo", "establo_id")
+            Column::make("Telefono", "telefono")
                 ->sortable()
                 ->searchable(),
+
+            Column::make("Correo Electronico", "correo")
+                ->sortable()
+                ->searchable(),
+            
+            Column::make("Direccion", "direccion")
+                ->sortable(),
+            
+            Column::make("Rol", "rol_id")
+                ->sortable(),
 
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")
-                ->setView("components.cajones.estado"),
+                ->setView("components.empleados.estado"),
                 
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
-                    return view('components.cajones.actions', ['cajon' => $row]);
+                    return view('components.empleados.actions', ['empleado' => $row]);
                 })
                 ->html()
         ];
@@ -94,5 +110,4 @@ class Table extends DataTableComponent
         $item->estado = !$item->estado;
         $item->save();
     }
-
 }

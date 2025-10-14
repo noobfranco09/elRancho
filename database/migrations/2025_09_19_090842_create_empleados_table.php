@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('telefono', 45);
             $table->string('correo', 100)->unique();
             $table->text('direccion')->nullable();
-            $table->enum('estado', ['activo', 'inactivo'])->default('inactivo');
+            $table->boolean('estado')->default(1);
             $table->foreignId('rol_id')->nullable()->constrained('roles');
             $table->timestamps();
         });

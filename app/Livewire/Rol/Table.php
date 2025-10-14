@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Livewire\Cajon;
+namespace App\Livewire\Rol;
 
-use App\Models\Estanco;
+use App\Models\Rol;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class Table extends DataTableComponent
 {
-
-    protected $model = Estanco::class;
+    protected $model = Rol::class;
 
     public function bulkActions(): array
     {
@@ -38,7 +36,7 @@ class Table extends DataTableComponent
         // Centrar encabezados (th) según columna
         $this->setThAttributes(function (Column $column) {
             // para columnas label-only (sin field) usa $column->getTitle()
-            if (in_array($column->getTitle(), ['Codigo', 'Acciones', "Establo", "Estado", "ID"])) {
+            if (in_array($column->getTitle(), ['nombre', 'Acciones', "ID"])) {
                 return ['class' => 'text-center'];
             }
 
@@ -58,9 +56,9 @@ class Table extends DataTableComponent
         });
     }
 
-    #[On("cajonCreado")]
-    #[On("cajonEditado")]
-    #[On ("cajonEliminado")]
+    #[On("rolCreado")]
+    #[On("rolEditado")]
+    #[On ("rolEliminado")]
     public function columns(): array
     {
         return [
@@ -68,21 +66,17 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Codigo", "codigo")
-                ->sortable()
-                ->searchable(),
-
-            Column::make("Establo", "establo_id")
+            Column::make("Nombre", "nombre")
                 ->sortable()
                 ->searchable(),
 
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")
-                ->setView("components.cajones.estado"),
+                ->setView("components.roles.estado"),
                 
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
-                    return view('components.cajones.actions', ['cajon' => $row]);
+                    return view('components.roles.actions', ['rol' => $row]);
                 })
                 ->html()
         ];
@@ -94,5 +88,4 @@ class Table extends DataTableComponent
         $item->estado = !$item->estado;
         $item->save();
     }
-
 }

@@ -1,8 +1,8 @@
 
 <div>
     <x-modal
-        id="modal-establo"
-        title="Crear establo"
+        id="modal-rol"
+        title="Crear rol"
     >
 
         <form class="grid grid-cols-1 gap-5">
@@ -10,12 +10,6 @@
             <div>
                 <x-form.input wire:model="nombre" label="Nombre"/>
                 <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
-            </div>
-
-
-            <div>
-                <x-form.input wire:model="descripcion" label="Descripcion" />
-                <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
@@ -28,7 +22,6 @@
                     />
                     <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
             </div>
-
 
         </form>
 
