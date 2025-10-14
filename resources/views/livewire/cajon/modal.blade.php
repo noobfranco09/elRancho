@@ -12,6 +12,10 @@
                 <x-error-message> @error('codigo') {{ $message }} @enderror </x-error-message>
             </div>
 
+            <div>
+                <x-form.input type="number" wire:model.live="capacidad" label="Capacidad" />
+                <x-error-message> @error('capacidad') {{ $message }} @enderror </x-error-message>
+            </div>
 
             <div>
                 <x-form.select wire:model="establo_id" label="Estado"

@@ -8,7 +8,7 @@ use LivewireUI\Modal\ModalComponent;
 class Modal extends ModalComponent
 {
 
-    public $id, $nombre, $descripcion, $estado;
+    public $id, $nombre, $descripcion, $capacidad, $estado;
 
 
     public function mount(Establo $establo)
@@ -16,6 +16,7 @@ class Modal extends ModalComponent
         $this->id = $establo->id;
         $this->nombre = $establo->nombre;
         $this->descripcion = $establo->descripcion;
+        $this->capacidad = $establo->capacidad;
         $this->estado = $establo->estado ?? 1;  // Si no hay estado, usa 'activo' como valor por defecto
     }
 
@@ -24,6 +25,7 @@ class Modal extends ModalComponent
         return [
             "nombre" => "required|regex:/^[\pL\s]+$/u",
             "descripcion" => "required|regex:/^[\pL\s]+$/u",
+            "capacidad" => "required|regex:/^[0-9+\s-]{1,15}$/",
             "estado" => "required|in:1,0"
         ];
     }
@@ -37,6 +39,9 @@ class Modal extends ModalComponent
 
             "descripcion.required" => "La descripción es obligatoria",
             "descripcion.regex" => "La descripción solo debe contener letras",
+
+            "capacidad.required" => "La capacidad es obligatoria",
+            "capacidad.regex" => "La capacidad solo debe ser numero y no permite letras o simbolos",
 
             "estado.required" => "El estado es obligatorio.",
             "estado.in" => "El estado debe ser 'activo' o 'inactivo'.",
@@ -73,6 +78,11 @@ class Modal extends ModalComponent
         }
 
         
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
 

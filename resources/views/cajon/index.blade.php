@@ -22,6 +22,13 @@
             })
         })
 
+        document.addEventListener("capacidadError", () =>{
+            Toast.fire({
+                icon: "error",
+                title: "La cantidad total de los cajones supera la capacidad del establo."
+            })
+        })
+
         document.addEventListener("cajonCreado", () =>{
             Toast.fire({
                 icon: "success",

@@ -38,7 +38,7 @@ class Modal extends ModalComponent
                 Rule::unique('empleados', 'cedula')->ignore($this->id),
             ],
             "fecha_nacimiento" => 'required|date|before:today',
-            "telefono" => 'required|regex:/^[0-9+\s-]{7,15}$/',
+            "telefono" => 'required|regex:/^[0-9+\s-]{5,15}$/',
             "correo" => [
                 'required',
                 'email',

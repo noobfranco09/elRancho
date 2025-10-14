@@ -61,6 +61,7 @@ class Table extends DataTableComponent
     #[On("cajonCreado")]
     #[On("cajonEditado")]
     #[On ("cajonEliminado")]
+    #[On ("capacidadError")]
     public function columns(): array
     {
         return [
@@ -75,6 +76,9 @@ class Table extends DataTableComponent
             Column::make("Establo", "establo_id")
                 ->sortable()
                 ->searchable(),
+            
+            Column::make("Capacidad", "capacidad")
+                ->sortable(),
 
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")

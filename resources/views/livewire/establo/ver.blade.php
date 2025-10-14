@@ -44,6 +44,12 @@
 
             </div>
 
+            <!-- Sección de Capacidad -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm space-y-4">
+                <h4 class="text-xl font-semibold text-gray-800">Capacidad</h4>
+                <p class="text-lg text-gray-700">{{ $establo->capacidad}} Cajones</p>
+            </div>
+
             <!-- Sección de Descripcion -->
             <div class="bg-gray-50 p-6 rounded-lg shadow-sm space-y-4">
                 <h4 class="text-xl font-semibold text-gray-800">Descripcion</h4>

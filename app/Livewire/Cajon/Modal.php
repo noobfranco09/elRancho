@@ -6,12 +6,13 @@ use App\Models\Establo;
 use App\Models\Estanco;
 use LivewireUI\Modal\ModalComponent;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class Modal extends ModalComponent
 {
 
 
-     public $id, $codigo, $establo_id, $estado;
+     public $id, $codigo, $establo_id, $capacidad, $estado;
      public $establos = [];
 
 
@@ -19,6 +20,7 @@ class Modal extends ModalComponent
     {
         $this->id = $cajon->id;
         $this->codigo = $cajon->codigo;
+        $this->capacidad =$cajon->capacidad;
         $this->establo_id = $cajon->establo_id;
         $this->establos = Establo::pluck('nombre', 'id')->toArray();
         $this->estado = $cajon->estado ?? 1;  // Si no hay estado, usa 'activo' como valor por defecto
@@ -32,6 +34,7 @@ class Modal extends ModalComponent
                 'regex:/^[\pL\pN\s]+$/u',
                 Rule::unique('estancos', 'codigo')->ignore($this->id),
             ],
+            "capacidad" => "required|regex:/^[0-9+\s-]{1,15}$/",
             "establo_id" => "",
             "estado" => "required|in:1,0"
         ];
@@ -45,6 +48,9 @@ class Modal extends ModalComponent
             "codigo.regex" => "El código solo debe contener letras y números.",
             "codigo.unique" => "El código ya está en uso, por favor elige otro.",
 
+            "capacidad.required" => "La capacidad es obligatoria",
+            "capacidad.regex" => "La capacidad solo debe ser numero y no permite letras o simbolos",
+
             "establo_id.required" => "El ID del establo es obligatorio.",
             "establo_id.numeric" => "El ID del establo debe ser un número.",
 
@@ -56,6 +62,17 @@ class Modal extends ModalComponent
 
     public function save()
     {
+        // Obtén el establo relacionado con el cajón
+        $establo = Establo::findOrFail($this->establo_id);
+        
+        // Calcula la capacidad total ocupada por los cajones en ese establo
+        $capacidadCajones = DB::table('estancos')->where("establo_id", $this->establo_id)->count();
+
+        if($capacidadCajones >= $establo->capacidad)
+        {
+            $this->dispatch("capacidadError");
+            return;
+        }
 
         if($this->id){
             //editamos la informacion del establo en caso de recibir un ID
@@ -83,6 +100,11 @@ class Modal extends ModalComponent
         }
 
         
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     public function render()
