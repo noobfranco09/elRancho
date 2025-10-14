@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('fecha')->nullable();
             $table->text('descripcion');
             $table->string('estado', 45)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

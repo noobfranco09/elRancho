@@ -37,6 +37,7 @@
 
             <x-sidebar.section icon="person" title="Clientes" :href="route('clientes')" :selected="request()->routeIs('clientes')" />
 
+            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard"/>
 
             <x-sidebar.section icon="pets" title="Animales">
                 <x-sidebar.link icon="pets" title="Gestionar animales" :href="route('animales')" />

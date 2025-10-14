@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    protected $fillable = ["nombre", "codigo", "precio", "imagen", "sexo", "color", "marcas", "fecha_nacimiento", "estado"];
+    protected $fillable = ["nombre", "codigo", "precio", "imagen", "sexo", "especie_id", "color", "marcas", "fecha_nacimiento", "estado"];
     /** @use HasFactory<\Database\Factories\AnimalFactory> */
     use HasFactory;
     protected $table = "animales";
@@ -19,6 +19,10 @@ class Animal extends Model
     public function estanco()
     {
         return $this->belongsTo(Estanco::class);
+    }
+    public function especie()
+    {
+        return $this->belongsTo(Especie::class);
     }
     public function enfermedades()
     {
