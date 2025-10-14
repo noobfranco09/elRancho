@@ -9,29 +9,22 @@
 
         <form id="form-animal" class="grid grid-cols-2 gap-6">
             <div>
-                <x-form.input wire:model="nombre" label="Nombre"   required />
+                <x-form.input wire:model.live="nombre" label="Nombre"   required />
                 <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input wire:model="codigo" label="Codigo"   required />
+                <x-form.input wire:model.live="codigo" label="Codigo"   required />
                 <x-error-message> @error('codigo') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input type="number" wire:model="precio" label="Precio"   required />
+                <x-form.input type="number" wire:model.live="precio" label="Precio"   required />
                 <x-error-message> @error('precio') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input wire:model="imagen" label="Imagen"   required />
-                <x-error-message> @error('imagen') {{ $message }} @enderror </x-error-message>
-            </div>
-
-
-
-            <div>
-                <x-form.select wire:model="sexo" label="Estado"
+                <x-form.select wire:model.live="sexo" label="Sexo"
                     value="1"
                     :options="[
                         'M' => 'Macho',
@@ -43,23 +36,31 @@
             </div>
 
             <div>
-                <x-form.input wire:model="color" label="Color"   required />
+                <x-form.select wire:model="especie_id" label="Especie"
+                    :options="['' => 'Seleccionar una especie'] + $especies"
+                    required
+                    />
+                    <x-error-message> @error('especie_id') {{ $message }} @enderror </x-error-message>
+            </div>
+
+            <div>
+                <x-form.input wire:model.live="color" label="Color"   required />
                 <x-error-message> @error('color') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input wire:model="marcas" label="Marcas"   required />
+                <x-form.input wire:model.live="marcas" label="Marcas"   required />
                 <x-error-message> @error('marcas') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input type="date" wire:model="fecha_nacimiento" label="Fecha de nacimiento"   required />
+                <x-form.input type="date" wire:model.live="fecha_nacimiento" label="Fecha de nacimiento"   required />
                 <x-error-message> @error('fecha_nacimiento') {{ $message }} @enderror </x-error-message>
             </div>
 
 
             <div>
-                <x-form.select wire:model="estado" label="Estado"
+                <x-form.select wire:model.live="estado" label="Estado"
                     value="1"
                     :options="[
                         '1' => 'Activo',
@@ -70,6 +71,17 @@
                     <x-error-message> @error('estado') {{ $message }} @enderror </x-error-message>
             </div>
         </form>
+
+        <x-form.file-input
+            label="Subir imagen"
+            max-size="5"
+            wire:model="imagen"
+            errorKey="imagen"
+            accept="image/*"
+            helper="Formatos: JPG, PNG, GIF"
+            showPreview="true"
+        />
+
 
         <x-slot:footer>
 
