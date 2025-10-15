@@ -17,7 +17,7 @@
         {{ $attributes }}
     >
         @foreach($options as $value => $text)
-            <option class="bg-gray-100" value="{{ $value }}" {{ $value == $this->estado ? 'selected' : '' }}>{{ $text }}</option>
+            <option class="bg-gray-100" value="{{ $value }}" @selected($attributes->wire('model')->value() && $value == $attributes->wire('model')->value())> {{ $text }}</option>
         @endforeach
     </select>
 

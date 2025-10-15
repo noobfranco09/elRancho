@@ -8,6 +8,9 @@
         <x-button @click="$dispatch('openModal', { component: 'cajon.modal' })">
             Crear cajon
         </x-button>
+        <x-button variant="blue" @click="$dispatch('openModal', { component: 'cajon.asignar-animales' })">
+            Asignar Animales
+        </x-button>
     </x-panel>
 
     <x-panel>
@@ -25,7 +28,7 @@
         document.addEventListener("capacidadError", () =>{
             Toast.fire({
                 icon: "error",
-                title: "La cantidad total de los cajones supera la capacidad del establo."
+                title: "La capacidad del establo seleccionado ya no puede ser vinculado a mas cajones"
             })
         })
 
