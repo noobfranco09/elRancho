@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Animal;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 
 /* Route::get('/', function () { */
 /*     return view('welcome'); */
 /* }); */
 
-Route::get("/dashboard", function(){
+Route::get("/dashboard", function () {
     return view("dashboard");
 })->name("dashboard");
 
@@ -32,19 +33,22 @@ Route::get("/cajones", function () {
     return view("cajon.index");
 })->name("cajones");
 
-Route::get("/roles", function (){
+Route::get("/roles", function () {
     return view("rol.index");
 })->name("roles");
 
-Route::get("/empleados", function (){
+Route::get("/empleados", function () {
     return view("empleado.index");
 })->name("empleados");
 
-Route::get("/clientes", function (){
+Route::get("/clientes", function () {
     return view("cliente.index");
 })->name("clientes");
 
-Route::get("/veterinarios", function () { return view("Veterinario.index"); })->name("veterinarios");
+
+Route::get("/veterinarios", function () {
+    return view("Veterinario.index");
+})->name("veterinarios");
 
 
 
@@ -52,6 +56,11 @@ Route::get("/animales/{id}", function ($id) {
     $animal = Animal::find($id);
     return view("animal.show", compact("animal"));
 })->name("animales.show");
+
+Route::get("/clientes/{id}", function ($id) {
+    $cliente = Cliente::find($id);
+    return view("cliente.create", compact("cliente"));
+})->name("clientes.create");
 
 
 /* Route::get('/dashboard', function () { */

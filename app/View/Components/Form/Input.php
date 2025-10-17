@@ -26,7 +26,7 @@ class Input extends Component
         string $placeholder = "",
         bool $disabled = false,
         bool $required = false,
-        string $span = "col-span-6 sm:col-span-3"
+        string $span = "col-span-6 sm:col-span-3",
 
     ) {
 
