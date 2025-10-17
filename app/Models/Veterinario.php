@@ -14,4 +14,9 @@ class Veterinario extends Model
     {
         return $this->belongsToMany(Animal::class, "revisiones");
     }
+
+       public function revisiones()
+    {
+        return $this->hasMany(Revision::class, "veterinario_id");
+    }
 }

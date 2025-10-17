@@ -5,10 +5,37 @@ use App\Models\Veterinario;
 use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
 class Table extends DataTableComponent
 {
     protected $model = Veterinario::class;
+
+    /*     para cambiar el estado de los registros de la tabla y en la db
+     */
+
+    public function bulkActions(): array
+    {
+        return [
+            'cambiarEstadoSeleccionados' => 'Cambiar estado',
+        ];
+    }
+
+    public function cambiarEstadoSeleccionados()
+    {
+        foreach ($this->getSelected() as $item) {
+            $this->changeStatus($item);
+        }
+        $this->clearSelected();
+    }
+    public function changeStatus(int $id)
+    {
+        $item = $this->model::find($id);
+        $item->estado = !$item->estado;
+        $item->save();
+    }
+
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');
@@ -37,6 +64,9 @@ class Table extends DataTableComponent
             Column::make("Especialidad", "especialidad")
                 ->sortable()
                 ->searchable(),
+            BooleanColumn::make("Estado", "estado")//el segundo campo que se le pasa es el de la db
+                ->toggleable("changeStatus")
+                ->setView("components.veterinarios.estado"),
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
                     return view('components.veterinarios.actions', ['veterinario' => $row]);

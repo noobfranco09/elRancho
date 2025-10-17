@@ -26,6 +26,12 @@ class Table extends DataTableComponent
         }
         $this->clearSelected();
     }
+    public function changeStatus(int $id)
+    {
+        $item = $this->model::find($id);
+        $item->estado = !$item->estado;
+        $item->save();
+    }
 
     public function configure(): void
     {
@@ -42,7 +48,7 @@ class Table extends DataTableComponent
 
             return [];
         });
-        
+
 
         // Centrar celdas (td) según columna y fila
         $this->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
@@ -58,7 +64,7 @@ class Table extends DataTableComponent
 
     #[On("rolCreado")]
     #[On("rolEditado")]
-    #[On ("rolEliminado")]
+    #[On("rolEliminado")]
     public function columns(): array
     {
         return [
@@ -73,7 +79,7 @@ class Table extends DataTableComponent
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")
                 ->setView("components.roles.estado"),
-                
+
             Column::make('Acciones')  // No se pasa campo de BD
                 ->label(function ($row) {
                     return view('components.roles.actions', ['rol' => $row]);
@@ -82,10 +88,5 @@ class Table extends DataTableComponent
         ];
     }
 
-    public function changeStatus(int $id)
-    {
-        $item = $this->model::find($id);
-        $item->estado = !$item->estado;
-        $item->save();
-    }
+
 }
