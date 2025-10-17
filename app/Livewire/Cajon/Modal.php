@@ -78,10 +78,26 @@ class Modal extends ModalComponent
             //editamos la informacion del establo en caso de recibir un ID
             $cajon = Estanco::findOrFail($this->id);
 
+            // Obtener cuántos animales ya están asignados
+            $animalesAsignados = DB::table('animales')->where("estanco_id", $this->id)->count();
+
+            // Validar que no reduzca por debajo del número de animales ya asignados
+            if ($this->capacidad < $animalesAsignados) {
+                $this->addError('capacidad', "No puedes reducir la capacidad a menos de $animalesAsignados animales ya asignados. Elimina animales antes de reducir.");
+                return;
+            }
+
             // validamos los campos del establo
             $validated = $this->validate();
 
             $cajon->update($validated);
+
+            // ahora calculamos animales asignados
+            $capacidadAnimales = DB::table('animales')->where("estanco_id", $this->id)->count();
+
+            // actualizamos estado
+            $cajon->estado = ($capacidadAnimales >= $cajon->capacidad) ? 0 : 1;
+            $cajon->save();
 
             $this->closeModal();
             $this->dispatch("cajonEditado");

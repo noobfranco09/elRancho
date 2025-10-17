@@ -29,14 +29,14 @@
 
         <div class="flex-1">
             <x-form.select wire:model="animal_id" label="Animal encontrado"
-                :options="$animales"
+                :options="['' => 'Seleccione un animal'] + $animales"
                 placeholder="Seleccione un animal"
             />
         </div>
 
         <div class="flex-1">
             <x-form.select wire:model="cajon_id" label="Cajon encontrado"
-                :options="$cajones"
+                :options="['' => 'Seleccione un cajon'] + $cajones"
                 placeholder="Seleccione un cajon"
             />
         </div>

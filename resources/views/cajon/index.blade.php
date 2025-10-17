@@ -32,6 +32,20 @@
             })
         })
 
+        document.addEventListener("animalAsignado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "El animal a sido asignado con exito"
+            })
+        })
+
+        document.addEventListener("animalEliminado", () =>{
+            Toast.fire({
+                icon: "success",
+                title: "El animal a sido eliminado con exito"
+            })
+        })
+
         document.addEventListener("cajonCreado", () =>{
             Toast.fire({
                 icon: "success",

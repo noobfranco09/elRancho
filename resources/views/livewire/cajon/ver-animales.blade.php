@@ -31,6 +31,9 @@
                     <li>
     
                         <p class="text-lg text-gray-700">{{ $animal->nombre }}</p>
+                        <x-button variant="danger" @click="$dispatch('openModal', { component: 'cajon.eliminar-animal-asignado', arguments: { animal_id:{{ $animal->id }}, cajon_id: {{ $cajon->id }}  } })">
+                            Eliminar
+                        </x-button>
                         
                     </li>
 

@@ -62,6 +62,8 @@ class Table extends DataTableComponent
     #[On("cajonEditado")]
     #[On ("cajonEliminado")]
     #[On ("capacidadError")]
+    #[On ("animalAsignado")]
+    #[On ("animalEliminado")]
     public function columns(): array
     {
         return [
