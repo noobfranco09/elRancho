@@ -79,6 +79,9 @@ class Table extends DataTableComponent
 
             Column::make("Descripcion", "descripcion")
                 ->sortable(),
+            
+            Column::make("Capacidad", "capacidad")
+                ->sortable(),
 
             BooleanColumn::make("Estado", "estado")
                 ->toggleable("changeStatus")

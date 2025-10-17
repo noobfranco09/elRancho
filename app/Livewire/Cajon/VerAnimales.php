@@ -4,6 +4,7 @@ namespace App\Livewire\Cajon;
 
 use App\Models\Estanco;
 use LivewireUI\Modal\ModalComponent;
+use Livewire\Attributes\On;
 
 class VerAnimales extends ModalComponent
 {

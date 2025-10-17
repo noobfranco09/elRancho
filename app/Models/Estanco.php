@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Estanco extends Model
 {
     /** @use HasFactory<\Database\Factories\EstancoFactory> */
-    protected $fillable = ["codigo", "establo_id", "estado"];
+    protected $fillable = ["codigo", "establo_id", "capacidad", "estado"];
 
     use HasFactory;
     use SoftDeletes;

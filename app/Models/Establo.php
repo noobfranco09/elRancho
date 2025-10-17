@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Establo extends Model
 {
 
-    protected $fillable = ["nombre", "descripcion", "estado"];
+    protected $fillable = ["nombre", "descripcion", "capacidad", "estado"];
     /** @use HasFactory<\Database\Factories\EstabloFactory> */
     use HasFactory;
    
