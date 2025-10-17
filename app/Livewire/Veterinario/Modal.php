@@ -3,6 +3,7 @@
 namespace App\Livewire\Veterinario;
 use App\Models\Vacuna;
 use App\Models\Veterinario;
+use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
 
 class Modal extends ModalComponent
@@ -21,53 +22,54 @@ class Modal extends ModalComponent
     {
         return [
             "nombre" => "required|regex:/^[\pL\s]+$/u",
-            "cedula" => "required|integer|min:0",
-            "correo" => "required|email",
-            "telefono" => "required|integer|min:0",
+            "cedula" => ['required','integer','min:0', Rule::unique('veterinarios','cedula')->ignore($this->id)],
+            "correo" => [
+                'required',
+                'email',
+                Rule::unique('veterinarios', 'correo')->ignore($this->id),
+            ],
+            "telefono" =>['required','integer','min:0', Rule::unique('veterinarios','telefono')->ignore($this->id)],
             "especialidad" => "required|regex:/^[\pL\s]+$/u",
-            
+
         ];
     }
 
-public function messages()
-{
-    return [
-        // Nombre
-        "nombre.required" => "El nombre es obligatorio",
-        "nombre.regex"    => "El nombre no puede contener números ni caracteres especiales",
+    public function messages()
+    {
+        return [
+            // Nombre
+            "nombre.required" => "El nombre es obligatorio",
+            "nombre.regex" => "El nombre no puede contener números ni caracteres especiales",
 
-        // Cédula
-        "cedula.required" => "La cédula es obligatoria",
-        "cedula.integer"  => "La cédula debe ser un número entero",
-        "cedula.min"      => "La cédula no puede ser menor que cero",
+            // Cédula
+            "cedula.required" => "La cédula es obligatoria",
+            "cedula.integer" => "La cédula debe ser un número entero",
+            "cedula.min" => "La cédula no puede ser menor que cero",
 
-        // Correo
-        "correo.required" => "El correo es obligatorio",
-        "correo.email"    => "El correo debe tener un formato válido",
+            // Correo
+            "correo.required" => "El correo es obligatorio",
+            "correo.email" => "El correo debe tener un formato válido",
+            "correo.unique" => "Este correo ya está en uso",
 
-        // Teléfono
-        "telefono.required" => "El teléfono es obligatorio",
-        "telefono.integer"  => "El teléfono debe contener solo números",
-        "telefono.min"      => "El teléfono no puede ser un número negativo",
+            // Teléfono
+            "telefono.required" => "El teléfono es obligatorio",
+            "telefono.integer" => "El teléfono debe contener solo números",
+            "telefono.min" => "El teléfono no puede ser un número negativo",
+            "telefono.unique"=>"Este telefono ya está asignado a otro veterinario",
 
-        // Especialidad
-        "especialidad.required" => "La especialidad es obligatoria",
-        "especialidad.regex"    => "La especialidad no puede contener números ni caracteres especiales",
-    ];
-}
+            // Especialidad
+            "especialidad.required" => "La especialidad es obligatoria",
+            "especialidad.regex" => "La especialidad no puede contener números ni caracteres especiales",
+        ];
+    }
 
     public function save()
     {
-        $this->validate();
+        $validar = $this->validate();
+
         if ($this->id) {
             $veterinario = Veterinario::findOrFail($this->id);
-            $veterinario->update([
-                'nombre' => $this->nombre,
-                'cedula' => $this->cedula,
-                'correo' => $this->correo,
-                'telefono' => $this->telefono,
-                'especialidad' => $this->especialidad,
-            ]);
+            $veterinario->update($validar);
             $this->closeModal();
             $this->dispatch("veterinarioEditado");
         } else {
@@ -80,6 +82,7 @@ public function messages()
             ]);
             $this->closeModal();
             $this->dispatch("veterinarioCreado");
+
         }
 
     }

@@ -17,7 +17,7 @@
                 title: "Veterinario creado con éxito",
             })
         })
-                document.addEventListener("veterinarioEditado", () => {
+            document.addEventListener("veterinarioEditado", () => {
             Toast.fire({
                 icon: "success",
                 title: "Veterinario editado con éxito",
