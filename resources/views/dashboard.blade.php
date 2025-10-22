@@ -19,7 +19,7 @@
                         label="Registrar venta"
                         description="Registrar una nueva venta de animal."
                         color="green"
-                        @click="$dispatch('openModal', { component: 'venta.modal-cliente' })"
+                        :href="route('clientes.create')"
                     />
 
                     <x-action

@@ -57,13 +57,8 @@ Route::get("/animales/{id}", function ($id) {
     return view("animal.show", compact("animal"));
 })->name("animales.show");
 
-Route::get("/clientes/{id}", function ($id) {
-    $cliente = Cliente::query()
-        ->where("cedula", $id)
-        ->orWhere("telefono", $id)
-        ->first();
-
-    return view("cliente.create", compact("cliente"));
+Route::get("/cliente/", function () {
+    return view("cliente.create");
 })->name("clientes.create");
 
 

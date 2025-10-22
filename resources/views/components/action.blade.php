@@ -5,6 +5,7 @@
     'shortcut' => null,     // Ej: "CTRL+N"
     'color' => 'blue',      // Colores base
     'iconClass' => '',      // Clases extra para el ícono SVG o material
+    'href' => null,         // URL opcional
 ])
 
 @php
@@ -68,36 +69,44 @@ $colorConfig = match($color) {
 };
 @endphp
 
-<div {{ $attributes->merge([
-    'class' => "bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-transparent group {$colorConfig['borderHover']}"
-]) }}>
-    <div class="flex items-center justify-between mb-4">
-        <div class="w-12 h-12 {{ $colorConfig['bg'] }} rounded-lg flex items-center justify-center transition-colors {{ $colorConfig['hoverBg'] }}">
-            @if(Str::startsWith($icon, '<svg'))
-                {{-- Si el usuario pasa un SVG completo --}}
-                {!! $icon !!}
-            @else
-                {{-- Si pasa el nombre de un ícono de Material Symbols --}}
-                <span class="material-symbols-outlined w-6 h-6 {{ $colorConfig['text'] }} transition-colors {{ $colorConfig['hoverIcon'] }} {{ $iconClass }}">
-                    {{ $icon }}
+@php
+$containerClasses = "bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent group {$colorConfig['borderHover']}";
+@endphp
+
+@if($href)
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $containerClasses . ' cursor-pointer block']) }}>
+@else
+    <div {{ $attributes->merge(['class' => $containerClasses . ' cursor-pointer']) }}>
+@endif
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 {{ $colorConfig['bg'] }} rounded-lg flex items-center justify-center transition-colors {{ $colorConfig['hoverBg'] }}">
+                @if(Str::startsWith($icon, '<svg'))
+                    {!! $icon !!}
+                @else
+                    <span class="material-symbols-outlined w-6 h-6 {{ $colorConfig['text'] }} transition-colors {{ $colorConfig['hoverIcon'] }} {{ $iconClass }}">
+                        {{ $icon }}
+                    </span>
+                @endif
+            </div>
+
+            @if($shortcut)
+                <span class="text-xs font-semibold text-gray-400 transition-colors {{ $colorConfig['hoverText'] }}">
+                    {{ $shortcut }}
                 </span>
             @endif
         </div>
 
-        @if($shortcut)
-            <span class="text-xs font-semibold text-gray-400 transition-colors {{ $colorConfig['hoverText'] }}">
-                {{ $shortcut }}
-            </span>
+        <h3 class="text-lg font-semibold text-gray-900 mb-1">
+            {{ $label }}
+        </h3>
+
+        @if($description)
+            <p class="text-sm text-gray-600">
+                {{ $description }}
+            </p>
         @endif
+@if($href)
+    </a>
+@else
     </div>
-
-    <h3 class="text-lg font-semibold text-gray-900 mb-1">
-        {{ $label }}
-    </h3>
-
-    @if($description)
-        <p class="text-sm text-gray-600">
-            {{ $description }}
-        </p>
-    @endif
-</div>
+@endif
