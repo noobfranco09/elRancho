@@ -26,11 +26,10 @@ class Form extends Component
             $this->telefono = $cliente->telefono;
             $this->correo = $cliente->correo;
             $this->direccion = $cliente->direccion;
-
-            session()->flash("success", "Datos del cliente cargados");
         } else {
             $this->clearInputs();
         }
+        $this->resetErrorBag();
     }
 
     public function updated($propertyName)
