@@ -11,7 +11,7 @@
             </div>
 
             <div>
-                <x-form.input wire:model.live="telefono" icon="phone" type="number" label="Teléfono"/>
+                <x-form.input wire:model.live="telefono" icon="phone" label="Teléfono"/>
                 <x-error-message> @error('telefono') {{ $message }} @enderror </x-error-message>
             </div>
         </div>
@@ -35,8 +35,8 @@
                 Cancelar
             </x-button>
 
-            <x-button type="submit">
-                Guardar / Continuar
+            <x-button type="button" wire:click="save">
+                Continuar
             </x-button>
         </div>
     </form>

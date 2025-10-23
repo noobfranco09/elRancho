@@ -7,7 +7,7 @@
     {{-- CONTENEDOR DEL ICONO (MODIFICADO para usar la propiedad $icon) --}}
     @if ($icon)
         {{-- Clases para el Icon Group: --}}
-        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-lg dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+        <span class="inline-flex items-center px-3 text-sm text-primary-900 bg-primary-100 border border-e-0 border-gray-300 rounded-s-lg dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
             <span class="material-symbols-outlined shrink-0 text-lg">
                 {{ $icon }}
             </span>
