@@ -51,6 +51,11 @@ Route::get("/veterinarios", function () {
 })->name("veterinarios");
 
 
+Route::get("/inventario", function () {
+    return view("Inventario.index");
+})->name("inventario");
+
+
 
 Route::get("/animales/{id}", function ($id) {
     $animal = Animal::find($id);
@@ -61,6 +66,8 @@ Route::get("/clientes/{id}", function ($id) {
     $cliente = Cliente::find($id);
     return view("cliente.create", compact("cliente"));
 })->name("clientes.create");
+
+
 
 
 /* Route::get('/dashboard', function () { */
