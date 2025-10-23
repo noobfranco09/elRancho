@@ -8,7 +8,7 @@
         <form class="grid grid-cols-1 gap-5">
 
             <div>
-                <x-form.input wire:model="nombre" label="Nombre"/>
+                <x-form.input wire:model.live="nombre" label="Nombre"/>
                 <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
             </div>
 
