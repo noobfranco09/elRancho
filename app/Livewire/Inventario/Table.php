@@ -36,7 +36,17 @@ class Table extends DataTableComponent
         $item->estado = !$item->estado;
         $item->save();
     }
+    // public function changeStatus(int $id)
+    // {
+    //     $item = $this->model::find($id);
 
+    //     // Cambiar entre "disponible" y "agotado"
+    //     $item->estado = $item->estado === 'disponible'
+    //         ? 'agotado'
+    //         : 'disponible';
+
+    //     $item->save();
+    // }
 
     public function configure(): void
     {

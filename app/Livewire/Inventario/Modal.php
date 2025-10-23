@@ -54,7 +54,7 @@ class Modal extends ModalComponent
         } else {
             Inventario::create([
                 'nombre' => $this->nombre,
-                'cantidad' => $this->cedula,
+                'cantidad' => $this->cantidad,
             ]);
             $this->closeModal();
             $this->dispatch("inventarioCreado");
@@ -66,6 +66,6 @@ class Modal extends ModalComponent
     {
         $this->id = $inventario->id;
         $this->nombre = $inventario->nombre;
-        $this->cantidad = $inventario->cedula;
+        $this->cantidad = $inventario->cantidad;
     }
 }

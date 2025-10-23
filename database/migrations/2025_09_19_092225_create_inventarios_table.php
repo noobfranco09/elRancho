@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 45);
             $table->integer('cantidad')->nullable();
-            $table->enum('estado', ['disponible', 'agotado'])->nullable();
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }
