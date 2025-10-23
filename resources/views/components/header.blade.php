@@ -322,15 +322,15 @@
                     </nav>
                     <div class="h-px bg-gray-100"></div>
                     <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button
-                        class="flex w-full items-center gap-3 px-3 py-3 text-left text-sm text-gray-700 hover:bg-gray-50"
-                        type="submit"
-                    >
-                        <span class="material-symbols-outlined">logout</span>
-                        <span>Cerrar sesión</span>
-                    </button>
-                </form>
+                        @csrf
+                        <button
+                            class="flex w-full items-center gap-3 px-3 py-3 text-left text-sm text-gray-700 hover:bg-gray-50"
+                            type="submit"
+                        >
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
