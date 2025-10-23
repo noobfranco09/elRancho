@@ -1,6 +1,7 @@
 <div class="flex items-center justify-center space-x-2">
-    <x-button variant="primary" wire:click="" icon="visibility">
-        Ver
+
+    <x-button variant="blue" @click="$dispatch('openModal', { component: 'vacuna.ver-animales', arguments: { vacuna:{{ $vacuna->id }} } })" icon="search">
+        Ver animales
     </x-button>
 
     <x-button variant="warning" @click="$dispatch('openModal', { component: 'vacuna.modal', arguments: { vacuna:{{ $vacuna->id }} } })" icon="edit">
