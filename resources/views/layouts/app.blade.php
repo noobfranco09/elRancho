@@ -79,9 +79,10 @@
 
                 <x-sidebar.link icon="inventory" title="Gestión de inventario" :href="route('inventario')"
                     :selected="request()->routeIs('inventario')" />
-
-
             </x-sidebar.section>
+
+            <x-sidebar.section icon="eco" title="Alimentos" :href="route('alimentos')"
+                    :selected="request()->routeIs('alimentos')"/>
 
 
             <x-sidebar.section icon="factory" title="Produccion" :href="route('table-example')"
