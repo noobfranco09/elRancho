@@ -67,22 +67,19 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Nombre", "nombre")
+            Column::make("Nombre", "name")
                 ->sortable()
                 ->searchable(),
                 
             DateColumn::make("Fecha Nacimiento", "fecha_nacimiento")
                 ->outputFormat('d-m-Y')
                 ->sortable(),
-            Column::make("Cedula", "cedula")
-                ->sortable()
-                ->searchable(),
 
             Column::make("Telefono", "telefono")
                 ->sortable()
                 ->searchable(),
 
-            Column::make("Correo Electronico", "correo")
+            Column::make("Correo Electronico", "email")
                 ->sortable()
                 ->searchable(),
             

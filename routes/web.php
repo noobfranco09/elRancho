@@ -4,10 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Animal;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
- Route::get('/', function () { 
-     return view('login'); 
- });
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest');
 
 Route::get("/dashboard", function () {
     return view("dashboard");
