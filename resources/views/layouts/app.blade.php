@@ -31,12 +31,15 @@
 
         <x-sidebar>
 
-            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard"/>
+            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard" />
 
             <x-sidebar.section icon="people_alt" title="Usuarios">
-                <x-sidebar.section icon="people_alt" title="Empleados" :href="route('empleados')" :selected="request()->routeIs('empleados')" />
-                <x-sidebar.section icon="security" title="Roles" :href="route('roles')" :selected="request()->routeIs('roles')" />
-                <x-sidebar.section icon="person" title="Clientes" :href="route('clientes')" :selected="request()->routeIs('clientes')" />
+                <x-sidebar.section icon="people_alt" title="Empleados" :href="route('empleados')"
+                    :selected="request()->routeIs('empleados')" />
+                <x-sidebar.section icon="security" title="Roles" :href="route('roles')"
+                    :selected="request()->routeIs('roles')" />
+                <x-sidebar.section icon="person" title="Clientes" :href="route('clientes')"
+                    :selected="request()->routeIs('clientes')" />
             </x-sidebar.section>
 
 
@@ -53,14 +56,24 @@
 
             <x-sidebar.section icon="warehouse" title="Establos" :selected="request()->routeIs('establos')">
 
-                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')" :selected="request()->routeIs('establos')" />
-                <x-sidebar.link icon="house" title="Gestionar cajones" :href="route('cajones')" :selected="request()->routeIs('cajones')" />
+                <x-sidebar.link icon="warehouse" title="Gestionar establos" :href="route('establos')"
+                    :selected="request()->routeIs('establos')" />
+                <x-sidebar.link icon="house" title="Gestionar cajones" :href="route('cajones')"
+                    :selected="request()->routeIs('cajones')" />
 
             </x-sidebar.section>
 
 
             <x-sidebar.section icon="stethoscope" title="Veterinarios" :selected="request()->routeIs('veterinarios')" :href="route('veterinarios')"/>
 
+
+            <x-sidebar.section icon="inventory_2" title="Inventario">
+
+                <x-sidebar.link icon="inventory" title="Gestión de inventario" :href="route('inventario')"
+                    :selected="request()->routeIs('inventario')" />
+
+
+            </x-sidebar.section>
 
 
         </x-sidebar>

@@ -55,6 +55,11 @@ Route::get("/veterinarios", function () {
 })->middleware(['auth', 'verified'])->name("veterinarios");
 
 
+Route::get("/inventario", function () {
+    return view("Inventario.index");
+})->name("inventario");
+
+
 
 Route::get("/animales/{id}", function ($id) {
     $animal = Animal::find($id);
