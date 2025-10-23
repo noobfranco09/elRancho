@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Información del perfil') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Actualice la información de su perfil y la dirección de correo electrónico de su cuenta.") }}
         </p>
     </header>
 
@@ -18,12 +18,12 @@
         @method('patch')
 
         <div>
-            <x-form.input id="name" label="hola" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-form.input id="name" label="Nombre" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-error-message class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-form.input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-form.input id="email" label="Correo Electronico" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-error-message class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -46,7 +46,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-button type="submit">{{ __('Save') }}</x-button>
+            <x-button type="submit">{{ __('Actualizar') }}</x-button>
 
             @if (session('status') === 'profile-updated')
                 <p
