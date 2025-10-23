@@ -61,10 +61,15 @@ Route::get("/animales/{id}", function ($id) {
     return view("animal.show", compact("animal"));
 })->middleware(['auth', 'verified'])->name("animales.show");
 
-Route::get("/clientes/{id}", function ($id) {
-    $cliente = Cliente::find($id);
-    return view("cliente.create", compact("cliente"));
-})->middleware(['auth', 'verified'])->name("clientes.create");
+Route::get("/cliente/", function () {
+    return view("cliente.create");
+})->name("clientes.create");
+
+
+Route::get("/venta/{cliente}", function (Cliente $cliente) {
+    return view("venta.registro", compact("cliente"));
+})->name("venta.registro");
+
 
 
 /* Route::get('/dashboard', function () { */
