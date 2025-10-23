@@ -8,18 +8,18 @@
         <form class="grid grid-cols-1 gap-5">
 
             <div>
-                <x-form.input wire:model="nombre" label="Nombre"/>
+                <x-form.input wire:model.live="nombre" label="Nombre"/>
                 <x-error-message> @error('nombre') {{ $message }} @enderror </x-error-message>
             </div>
 
 
             <div>
-                <x-form.input wire:model="descripcion" label="Descripcion" />
+                <x-form.input wire:model.live="descripcion" label="Descripcion" />
                 <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.input wire:model="dosis" label="Dosis" />
+                <x-form.input wire:model.live="dosis" label="Dosis" />
                 <x-error-message> @error('dosis') {{ $message }} @enderror </x-error-message>
             </div>
 
