@@ -75,6 +75,8 @@
 
             </x-sidebar.section>
 
+            <x-sidebar.section icon="eco" title="Alimentos" :selected="request()->routeIs('alimentos')" :href="route('alimentos')"/>
+
 
         </x-sidebar>
 

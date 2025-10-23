@@ -19,9 +19,6 @@
                     <h1 class="text-base font-bold text-gray-800">
                         Rancho Feliz
                     </h1>
-                    <p class="text-sm text-gray-500">
-                        Administrador
-                    </p>
                 </div>
             </div>
             <nav class="mt-8 flex flex-col gap-2">
