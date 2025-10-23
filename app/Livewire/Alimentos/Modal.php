@@ -22,12 +22,12 @@ class Modal extends ModalComponent
     public function rules()
     {
         return [
-            "nombre" => ['required','regex:/^[\pL\s]+$/u'],
+            "nombre" => ['required', 'regex:/^[\pL\s]+$/u'],
             // permite letras, números, espacios, y puntuación básica (. , - ( ) :)
-            "observaciones" => ['nullable','regex:/^[\pL0-9\s.,()\-:;]+$/u'],
-            "precio" => ['required', 'integer', 'min:0'],
-            "unidad" => ['required','regex:/^[\pL\s]+$/u'],
-            "cantidad" => ['required', 'integer', 'min:0'],
+            "observaciones" => ['nullable', 'regex:/^[\pL0-9\s.,()\-:;]+$/u'],
+            "precio" => ['required', 'integer', 'min:0', 'max:999999999'],
+            "unidad" => ['required', 'regex:/^[\pL\s]+$/u'],
+            "cantidad" => ['required', 'integer', 'min:0', 'max:999999999'],
         ];
     }
 
@@ -45,11 +45,14 @@ class Modal extends ModalComponent
             "cantidad.required" => "La cantidad es obligatoria",
             "cantidad.integer" => "La cantidad debe ser un número entero",
             "cantidad.min" => "La cantidad no puede ser menor que cero",
+            "cantidad.max" => "El precio es demasiado grande",
+
 
             // Precio
             "precio.required" => "El precio es obligatorio",
             "precio.integer" => "El precio debe ser un número entero",
             "precio.min" => "El precio no puede ser menor que cero",
+            "precio.max" => "El precio es demasiado grande",
 
             // Unidad
             "unidad.required" => "La unidad es obligatoria",
@@ -86,9 +89,9 @@ class Modal extends ModalComponent
     {
         $this->id = $alimentos->id;
         $this->nombre = $alimentos->nombre;
-        $this->observaciones=$alimentos->observaciones;
-        $this->precio= $alimentos->precio;
-        $this->unidad= $alimentos->unidad;
+        $this->observaciones = $alimentos->observaciones;
+        $this->precio = $alimentos->precio;
+        $this->unidad = $alimentos->unidad;
         $this->cantidad = $alimentos->cantidad;
 
     }
