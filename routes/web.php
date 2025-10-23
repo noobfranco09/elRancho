@@ -62,6 +62,12 @@ Route::get("/cliente/", function () {
 })->name("clientes.create");
 
 
+Route::get("/venta/{cliente}", function (Cliente $cliente) {
+    return view("venta.registro", compact("cliente"));
+})->name("venta.registro");
+
+
+
 /* Route::get('/dashboard', function () { */
 /*     return view('dashboard'); */
 /* })->middleware(['auth', 'verified'])->name('dashboard'); */

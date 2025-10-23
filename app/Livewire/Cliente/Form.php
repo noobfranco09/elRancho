@@ -92,7 +92,7 @@ class Form extends Component
             collect($this)->only(["nombre", "telefono", "correo", "direccion"])->toArray()
         );
 
-        dd($cliente);
+        return redirect()->route("venta.registro", $cliente);
     }
 
     #[On("setCedula")]
