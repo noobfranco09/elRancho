@@ -42,17 +42,13 @@
                     >Configuración</span
                 >
             </a>
-            <a
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100"
-                href="#"
-            >
-                <span class="material-symbols-outlined shrink-0"
-                    >logout</span
-                >
-                <span class="sidebar-text text-sm font-medium"
-                    >Cerrar Sesión</span
-                >
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                <button class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100" type="submit">
+                    <span class="material-symbols-outlined shrink-0">logout</span>
+                    <span class="sidebar-text text-sm font-medium">Cerrar sesión</span>
+                </button>
+            </form>
         </div>
     </div>
 </aside>
