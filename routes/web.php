@@ -4,58 +4,62 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Animal;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-/* Route::get('/', function () { */
-/*     return view('welcome'); */
-/* }); */
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest');
 
 Route::get("/dashboard", function () {
     return view("dashboard");
-})->name("dashboard");
+})->middleware(['auth', 'verified'])->name("dashboard");
 
 Route::get("/animales", function () {
     return view("animal.index");
-})->name("animales");
+})->middleware(['auth', 'verified'])->name("animales");
 
 Route::get("/vacunas", function () {
     return view("vacuna.index");
-})->name("vacunas");
+})->middleware(['auth', 'verified'])->name("vacunas");
 
 Route::get("/table-example", function () {
     return view("table-example");
-})->name("table-example");
+})->middleware(['auth', 'verified'])->name("table-example");
 
 Route::get("/establos", function () {
     return view("establo.index");
-})->name("establos");
+})->middleware(['auth', 'verified'])->name("establos");
 
 Route::get("/cajones", function () {
     return view("cajon.index");
-})->name("cajones");
+})->middleware(['auth', 'verified'])->name("cajones");
 
 Route::get("/roles", function () {
     return view("rol.index");
-})->name("roles");
+})->middleware(['auth', 'verified'])->name("roles");
 
 Route::get("/empleados", function () {
     return view("empleado.index");
-})->name("empleados");
+})->middleware(['auth', 'verified'])->name("empleados");
 
 Route::get("/clientes", function () {
     return view("cliente.index");
-})->name("clientes");
+})->middleware(['auth', 'verified'])->name("clientes");
 
 
 Route::get("/veterinarios", function () {
     return view("Veterinario.index");
-})->name("veterinarios");
+})->middleware(['auth', 'verified'])->name("veterinarios");
 
 
 
 Route::get("/animales/{id}", function ($id) {
     $animal = Animal::find($id);
     return view("animal.show", compact("animal"));
-})->name("animales.show");
+})->middleware(['auth', 'verified'])->name("animales.show");
 
 Route::get("/cliente/", function () {
     return view("cliente.create");

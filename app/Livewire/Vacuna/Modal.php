@@ -66,6 +66,11 @@ class Modal extends ModalComponent
         }
     }
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public static function modalMaxWidth(): string
     {
         return 'xl';
