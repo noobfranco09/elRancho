@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Veterinario;
+
 use App\Models\Vacuna;
 use App\Models\Veterinario;
 use Illuminate\Validation\Rule;
@@ -22,17 +23,23 @@ class Modal extends ModalComponent
     {
         return [
             "nombre" => "required|regex:/^[\pL\s]+$/u",
-            "cedula" => ['required','integer','min:0', Rule::unique('veterinarios','cedula')->ignore($this->id)],
+            "cedula" => ['required', 'integer', 'min:0', Rule::unique('veterinarios', 'cedula')->ignore($this->id)],
             "correo" => [
                 'required',
                 'email',
                 Rule::unique('veterinarios', 'correo')->ignore($this->id),
             ],
-            "telefono" =>['required','integer','min:0', Rule::unique('veterinarios','telefono')->ignore($this->id)],
+            "telefono" => ['required', 'integer', 'min:0', Rule::unique('veterinarios', 'telefono')->ignore($this->id)],
             "especialidad" => "required|regex:/^[\pL\s]+$/u",
 
         ];
     }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
 
     public function messages()
     {
@@ -55,7 +62,7 @@ class Modal extends ModalComponent
             "telefono.required" => "El teléfono es obligatorio",
             "telefono.integer" => "El teléfono debe contener solo números",
             "telefono.min" => "El teléfono no puede ser un número negativo",
-            "telefono.unique"=>"Este telefono ya está asignado a otro veterinario",
+            "telefono.unique" => "Este telefono ya está asignado a otro veterinario",
 
             // Especialidad
             "especialidad.required" => "La especialidad es obligatoria",
@@ -82,9 +89,7 @@ class Modal extends ModalComponent
             ]);
             $this->closeModal();
             $this->dispatch("veterinarioCreado");
-
         }
-
     }
     public function mount(Veterinario $veterinario)
     {
