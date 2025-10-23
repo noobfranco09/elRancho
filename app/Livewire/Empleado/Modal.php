@@ -6,43 +6,44 @@ use App\Models\Empleado;
 use App\Models\Rol;
 use LivewireUI\Modal\ModalComponent;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class Modal extends ModalComponent
 {
-    public $id, $nombre, $cedula, $fecha_nacimiento, $telefono, $correo, $direccion, $rol_id, $estado;
+    public $id, $name, $fecha_nacimiento, $telefono, $email, $direccion, $rol_id, $estado, $password;
     public $roles = [];
 
 
     public function mount(Empleado $empleado)
     {
         $this->id = $empleado->id;
-        $this->nombre = $empleado->nombre;
-        $this->cedula = $empleado->cedula;
+        $this->name = $empleado->name;
         $this->fecha_nacimiento = $empleado->fecha_nacimiento;
         $this->telefono = $empleado->telefono;
-        $this->correo = $empleado->correo;
+        $this->email = $empleado->email;
         $this->direccion = $empleado->direccion;
         $this->rol_id = $empleado->rol_id;
         $this->roles = Rol::pluck('nombre', 'id')->toArray();
         $this->estado = $empleado->estado ?? 1;
+        // ⚠️ No encriptamos aquí, solo si es un empleado nuevo se pondría vacío.
+        $this->password = $empleado->exists ? '' : $empleado->password;
     }
 
     public function rules()
     {
         return [
-            "nombre" => 'required|regex:/^[\pL\s]+$/u|min:3|max:100', // solo letras y espacios
-            "cedula" => [
-                'required',
-                'numeric',
-                'digits_between:6,12',
-                Rule::unique('empleados', 'cedula')->ignore($this->id),
+            "name" => 'required|regex:/^[\pL\s]+$/u|min:3|max:100', // solo letras y espacios
+            "password" => [
+                $this->id ? 'nullable' : 'required',
+                'min:8',
+                Rule::unique('empleados', 'password')->ignore($this->id),
             ],
             "fecha_nacimiento" => 'required|date|before:today',
             "telefono" => 'required|regex:/^[0-9+\s-]{5,15}$/',
-            "correo" => [
+            "email" => [
                 'required',
                 'email',
-                Rule::unique('empleados', 'correo')->ignore($this->id),
+                Rule::unique('empleados', 'email')->ignore($this->id),
             ],
             "direccion" => 'required|string|max:255',
             "rol_id" => 'required|exists:roles,id',
@@ -55,15 +56,14 @@ class Modal extends ModalComponent
     public function messages()
     {
         return [
-            "nombre.required" => "El nombre es obligatorio.",
-            "nombre.regex" => "El nombre solo debe contener letras y espacios.",
-            "nombre.min" => "El nombre debe tener al menos 3 caracteres.",
-            "nombre.max" => "El nombre no debe superar los 100 caracteres.",
+            "name.required" => "El nombre es obligatorio.",
+            "name.regex" => "El nombre solo debe contener letras y espacios.",
+            "name.min" => "El nombre debe tener al menos 3 caracteres.",
+            "name.max" => "El nombre no debe superar los 100 caracteres.",
 
-            "cedula.required" => "La cédula es obligatoria.",
-            "cedula.numeric" => "La cédula debe contener solo números.",
-            "cedula.digits_between" => "La cédula debe tener entre 6 y 12 dígitos.",
-            "cedula.unique" => "Esta cédula ya está registrada.",
+            "password.required" => "La contraseña es obligatoria.",
+            "password.min" => "La contraseña debe tener al menos 8 caracteres.",
+            "password.unique" => "Esta contraseña ya está registrada.",
 
             "fecha_nacimiento.required" => "La fecha de nacimiento es obligatoria.",
             "fecha_nacimiento.date" => "Debe ingresar una fecha válida.",
@@ -72,9 +72,9 @@ class Modal extends ModalComponent
             "telefono.required" => "El teléfono es obligatorio.",
             "telefono.regex" => "El teléfono debe contener solo números, espacios, guiones o el símbolo '+'.",
 
-            "correo.required" => "El correo electrónico es obligatorio.",
-            "correo.email" => "Debe ingresar un correo electrónico válido.",
-            "correo.unique" => "Este correo ya está registrado.",
+            "email.required" => "El correo electrónico es obligatorio.",
+            "email.email" => "Debe ingresar un correo electrónico válido.",
+            "email.unique" => "Este correo ya está registrado.",
 
             "direccion.required" => "La dirección es obligatoria.",
             "direccion.max" => "La dirección no puede superar los 255 caracteres.",
@@ -91,12 +91,18 @@ class Modal extends ModalComponent
     public function save()
     {
 
+        $validated = $this->validate();
+
+        // 🔐 Aplicar bcrypt SOLO si se escribió una contraseña nueva
+        if (!empty($validated['password']) && !str_starts_with($validated['password'], '$2y$')) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']); // no modificar si no se cambió
+        }
+
         if($this->id){
             //editamos la informacion del establo en caso de recibir un ID
             $empleado = Empleado::findOrFail($this->id);
-
-            // validamos los campos del establo
-            $validated = $this->validate();
 
             $empleado->update($validated);
 
@@ -104,9 +110,6 @@ class Modal extends ModalComponent
             $this->dispatch("empleadoEditado");
 
         }else{
-
-            // validamos los campos del establo
-            $validated = $this->validate();
 
             //creamos el establo en caso de que no recibamos algun ID
             Empleado::create($validated);
@@ -117,6 +120,11 @@ class Modal extends ModalComponent
         }
 
         
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     public function render()

@@ -19,6 +19,12 @@ class Modalver extends ModalComponent
     {
         $this->revisiones = $veterinario->revisiones;
     }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public static function modalMaxWidth(): string
     {
         return '2xl';

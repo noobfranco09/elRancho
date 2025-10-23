@@ -1,5 +1,6 @@
 
 <x-app-layout>
+
     <x-slot name="header">
         <x-header title="Información del animal" description=""/>
     </x-slot>
@@ -134,7 +135,7 @@
                         <x-button>Citas</x-button>
                     </x-tab.panel-header>
 
-                    El pepe
+                    marrano
                 </x-tab.panel>
 
             </x-tab.container>

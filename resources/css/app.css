@@ -2,26 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  /* Paleta base de verdes */
-  --primary-50: #f0fdf4;
-  --primary-100: #dcfce7;
-  --primary-200: #bbf7d0;
-  --primary-300: #86efac;
-  --primary-400: #4ade80;
-  --primary-500: #22c55e;
-  --primary-600: #16a34a;
-  --primary-700: #15803d;
-  --primary-800: #166534;
-  --primary-900: #14532d;
-  --primary-950: #052e16;
+    /* Paleta base de verdes */
+    --primary-50: #f0fdf4;
+    --primary-100: #dcfce7;
+    --primary-200: #bbf7d0;
+    --primary-300: #86efac;
+    --primary-400: #4ade80;
+    --primary-500: #22c55e;
+    --primary-600: #16a34a;
+    --primary-700: #15803d;
+    --primary-800: #166534;
+    --primary-900: #14532d;
+    --primary-950: #052e16;
 
-  /* Colores para acciones */
-  --color-create: var(--primary-500); /* Un verde vibrante para crear */
-  --color-edit: #fcd34d;   /* Amarillo para editar */
-  --color-view: #3b82f6;   /* Azul para ver o leer */
-  --color-delete: #dc2626; /* Rojo para eliminar/peligro */
+    /* Colores para acciones */
+    --color-create: var(--primary-500); /* Un verde vibrante para crear */
+    --color-edit: #fcd34d; /* Amarillo para editar */
+    --color-view: #3b82f6; /* Azul para ver o leer */
+    --color-delete: #dc2626; /* Rojo para eliminar/peligro */
 }
 
 /* === INICIO: NUEVOS ESTILOS PARA EL LAYOUT === */
@@ -37,38 +36,53 @@
     transition-delay: 0.15s;
 }
 
-
 /*TOAST SWEETALERT*/
 
 .colored-toast.swal2-icon-success {
-  background-color: #a5dc86 !important;
+    background-color: #a5dc86 !important;
 }
 
 .colored-toast.swal2-icon-error {
-  background-color: #f27474 !important;
+    background-color: #f27474 !important;
 }
 
 .colored-toast.swal2-icon-warning {
-  background-color: #f8bb86 !important;
+    background-color: #f8bb86 !important;
 }
 
 .colored-toast.swal2-icon-info {
-  background-color: #3fc3ee !important;
+    background-color: #3fc3ee !important;
 }
 
 .colored-toast.swal2-icon-question {
-  background-color: #87adbd !important;
+    background-color: #87adbd !important;
 }
 
 .colored-toast .swal2-title {
-  color: white;
+    color: white;
 }
 
 .colored-toast .swal2-close {
-  color: white;
+    color: white;
 }
 
 .colored-toast .swal2-html-container {
-  color: white;
+    color: white;
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+[x-cloak] {
+    display: none !important;
+}
