@@ -13,7 +13,7 @@ class SearchInput extends Component
     public function updatedQuery()
     {
         // Si la cadena está vacía, limpia los resultados
-        if (strlen($this->query) < 1) {
+        if (strlen($this->query) < 2) {
             $this->results = [];
             return;
         }

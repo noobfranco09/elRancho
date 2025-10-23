@@ -1,5 +1,5 @@
 <x-panel>
-    <form wire:submit.prevent="save" class="space-y-6">
+    <form  class="space-y-6">
         <div class="mb-3">
             <livewire:cliente.search-input />
         </div>

@@ -2,7 +2,7 @@
     x-data="{ open: false }"
     class="relative w-full max-w-md mx-auto"
 >
-    <form @submit.prevent class="relative">
+    <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -12,7 +12,6 @@
         </div>
 
         <input
-            type="search"
             wire:model.live="query"
             @focus="open = true"
             @click.away="open = false"
@@ -25,14 +24,15 @@
 
 
         <button
-            type="submit"
+            type="button"
+            wire:click="searchClient"
             class="text-white absolute end-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800
                    focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium
                    rounded-lg text-sm px-4 py-2
                    dark:focus:ring-blue-800">
             Buscar
         </button>
-    </form>
+    </div>
 
     <div
         x-show="open && $wire.results.length > 0"
