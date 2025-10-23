@@ -55,6 +55,10 @@ Route::get("/inventario", function () {
     return view("Inventario.index");
 })->name("inventario");
 
+Route::get("/alimentos", function () {
+    return view("alimentos.index");
+})->name("alimentos");
+
 
 
 Route::get("/animales/{id}", function ($id) {
