@@ -104,6 +104,11 @@ class Modal extends ModalComponent
         
     }
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function render()
     {
         return view('livewire.cliente.modal');

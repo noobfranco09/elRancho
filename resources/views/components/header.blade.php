@@ -1,6 +1,7 @@
 @props([
     'title',
-    'description'
+    'description',
+    'user' => null,
 ])
 <header class="mb-8">
     <div
@@ -272,15 +273,11 @@
                     </div>
 
                     <div class="hidden text-left sm:block">
-                        <p
-                            class="text-sm font-semibold text-gray-800"
-                        >
-                            Musharof
+                        <p class="text-sm font-semibold text-gray-800">
+                            {{ $user?->name ?? 'Invitado' }}
                         </p>
-                        <p
-                            class="hidden max-w-[160px] truncate text-xs text-gray-500 lg:block"
-                        >
-                            randomuser@pinjo.com
+                        <p class="hidden max-w-[160px] truncate text-xs text-gray-500 lg:block">
+                            {{ $user?->email ?? '' }}
                         </p>
                     </div>
                     <span
@@ -305,62 +302,35 @@
                             class="h-10 w-10 aspect-square rounded-full object-cover shrink-0"
                         />
                         <div class="min-w-0">
-                            <p
-                                class="truncate text-sm font-semibold text-gray-800"
-                            >
-                                Musharof Chowdhury
+                            <p class="text-sm font-semibold text-gray-800">
+                                {{ $user?->name ?? 'Invitado' }}
                             </p>
-                            <p
-                                class="truncate text-xs text-gray-500"
-                            >
-                                randomuser@pinjo.com
+                            <p class="hidden max-w-[160px] truncate text-xs text-gray-500 lg:block">
+                                {{ $user?->email ?? '' }}
                             </p>
                         </div>
                     </div>
                     <div class="h-px bg-gray-100"></div>
                     <nav class="p-2">
-                        <a
-                            href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
+                        <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                             <span
                                 class="material-symbols-outlined"
                                 >account_circle</span
                             >
-                            <span>Edit profile</span>
-                        </a>
-                        <a
-                            href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                            <span
-                                class="material-symbols-outlined"
-                                >admin_panel_settings</span
-                            >
-                            <span>Account settings</span>
-                        </a>
-                        <a
-                            href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                            <span
-                                class="material-symbols-outlined"
-                                >help</span
-                            >
-                            <span>Support</span>
+                            <span>Editar perfil</span>
                         </a>
                     </nav>
                     <div class="h-px bg-gray-100"></div>
-                    <button
-                        class="flex w-full items-center gap-3 px-3 py-3 text-left text-sm text-gray-700 hover:bg-gray-50"
-                        type="button"
-                        @click="/* logout */"
-                    >
-                        <span class="material-symbols-outlined"
-                            >logout</span
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button
+                            class="flex w-full items-center gap-3 px-3 py-3 text-left text-sm text-gray-700 hover:bg-gray-50"
+                            type="submit"
                         >
-                        <span>Sign out</span>
-                    </button>
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
