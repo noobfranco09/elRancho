@@ -35,7 +35,7 @@ class Modal extends ModalComponent
             "name" => 'required|regex:/^[\pL\s]+$/u|min:3|max:100', // solo letras y espacios
             "password" => [
                 $this->id ? 'nullable' : 'required',
-                'min:5',
+                'min:8',
                 Rule::unique('empleados', 'password')->ignore($this->id),
             ],
             "fecha_nacimiento" => 'required|date|before:today',
@@ -62,7 +62,7 @@ class Modal extends ModalComponent
             "name.max" => "El nombre no debe superar los 100 caracteres.",
 
             "password.required" => "La contraseña es obligatoria.",
-            "password.min" => "La contraseña debe tener al menos 6 caracteres.",
+            "password.min" => "La contraseña debe tener al menos 8 caracteres.",
             "password.unique" => "Esta contraseña ya está registrada.",
 
             "fecha_nacimiento.required" => "La fecha de nacimiento es obligatoria.",

@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 class Modal extends Component
 {
-    public string $id;
+    public string $id = "";
     public string $title;
     public string $maxWidthClass;
     public string $action;
@@ -17,7 +17,7 @@ class Modal extends Component
      * Create a new component instance.
      */
     public function __construct(
-        string $id,
+        string $id = "",
         string $title,
         string $action = "#",
         string $method = "POST",
