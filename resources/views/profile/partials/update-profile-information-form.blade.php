@@ -18,7 +18,7 @@
         @method('patch')
 
         <div>
-            <x-form.input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-form.input id="name" label="hola" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-error-message class="mt-2" :messages="$errors->get('name')" />
         </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-button>{{ __('Save') }}</x-button>
+            <x-button type="submit">{{ __('Save') }}</x-button>
 
             @if (session('status') === 'profile-updated')
                 <p
