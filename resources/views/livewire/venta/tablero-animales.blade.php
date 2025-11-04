@@ -48,20 +48,19 @@
                 @php
                     $filtered = $this->filteredAnimals;
                 @endphp
-                @foreach ($animales as $animal)
+
+                @forelse ($filtered as $animal)
                     <x-animales.card
-                        id="1"
-                        name="nose"
-                        price="200"
-                        image="nose"
-                        sexo="Macho"
-                        color="amarillo"
+                        id="{{ $animal->id }}"
+                        name="{{ $animal->nombre }}"
+                        price="{{ $animal->precio}}"
+                        image="{{ $animal->imagen ? asset('storage/' . $animal->imagen) : 'https://placehold.net/400x400.png' }}"
+                        sexo="{{ $animal->sexo }}"
+                        color="{{ $animal->color }}"
                     />
-                @endforeach
-
-
-
-
+                @empty
+                    <div class="text-center py-8 text-gray-400 col-span-full">No hay animales para esta especie o búsqueda</div>
+                @endforelse
             </div>
         </div>
 

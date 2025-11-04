@@ -30,7 +30,16 @@ class TableroAnimales extends Component
         $this->activeTab = $this->especies[0] ?? "";
     }
 
-    public function getFilteredAnimalsProperty() {}
+    public function getFilteredAnimalsProperty()
+    {
+        $collection = collect($this->animales);
+
+        if ($this->activeTab) {
+            $collection = $collection->where("especie_id", $this->activeTab);
+        }
+
+        return $collection->values()->all();
+    }
 
     public function setActiveTab($especieId)
     {

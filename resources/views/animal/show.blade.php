@@ -18,7 +18,7 @@
                     <div class="relative group">
                         <img
                             class="w-48 h-48 object-cover rounded-2xl border-4 border-gray-300 dark:border-gray-600 shadow-lg"
-                            src="{{ $animal->imagen ? asset('storage/'.$animal->imagen) : asset('storage/default.jpg')}}"
+                            src="{{ $animal->imagen ? asset('storage/'.$animal->imagen) : 'https://placehold.net/400x400.png'}}"
                             alt="{{ $animal->nombre }}"
                         >
 
