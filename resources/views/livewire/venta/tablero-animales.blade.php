@@ -1,7 +1,7 @@
-<div x-data="{ searchQuery: '', activeTab: 'Cerdos', selectedAnimals: [] }" x-cloak class="container mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div x-data="{ searchQuery: '', activeTab: 'Cerdos', selectedAnimals: [] }" x-cloak class="w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Sección Izquierda: Lista de Animales -->
-        <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+        <div class="lg:col-span-9 bg-white rounded-lg shadow-md p-6">
             <div class="mb-4">
                 <label for="search" class="sr-only">Buscar animal</label>
 
@@ -55,27 +55,23 @@
             <!-- Grid de Animales - Aquí cargarás los datos con Livewire -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[600px] overflow-y-auto pr-2">
                 <!-- Ejemplo de card - Repetir con Livewire -->
-                <div
-                    @click="selectedAnimals.push({ id: 1, name: 'Animal Ejemplo', price: 250000, image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop' })"
-                    class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer hover:border-blue-300">
-                    <img
-                        src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop"
-                        alt="Animal"
-                        class="rounded-t-lg w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h5 class="text-lg font-bold text-gray-900 mb-2">Animal Ejemplo</h5>
-                        <div class="space-y-1 text-sm text-gray-600 mb-3">
-                            <p><span class="font-semibold">Sexo:</span> Macho</p>
-                            <p><span class="font-semibold">Color:</span> Rojo</p>
-                        </div>
-                        <p class="text-xl font-bold text-green-600">$250,000</p>
-                    </div>
-                </div>
+                <x-animales.card
+                    id="1"
+                    name="nose"
+                    price="200"
+                    image="nose"
+                    sexo="Macho"
+                    color="amarillo"
+                />
+
+
+
+
             </div>
         </div>
 
         <!-- Sección Derecha: Resumen de Venta -->
-        <div class="lg:col-span-1">
+        <div class="lg:col-span-3">
             <div class="bg-white rounded-lg shadow-md p-6 sticky top-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Resumen de Venta</h2>
 
