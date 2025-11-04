@@ -9,7 +9,10 @@
 
 <div
     @click="selectedAnimals.push({ id: {{ $id }}, name: '{{ $name }}', price: {{ $price }}, image: '{{ $image }}' })"
-    class="group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1"
+    {{ $attributes->merge([
+        'class' => 'group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1'
+    ]) }}
+
 >
     <div class="relative overflow-hidden rounded-t-xl">
         <img
@@ -30,5 +33,6 @@
         <div class="pt-2">
             <p class="text-xl font-bold text-green-600">${{ number_format($price, 0, ',', '.') }}</p>
         </div>
+
     </div>
 </div>

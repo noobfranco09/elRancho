@@ -38,12 +38,49 @@ class TableroAnimales extends Component
             $collection = $collection->where("especie_id", $this->activeTab);
         }
 
+        if ($this->searchQuery) {
+            $query = mb_strtolower($this->searchQuery);
+
+            $collection = $collection->filter(
+                fn($animal) =>
+                mb_strpos($animal["nombre"], $query) !== false
+            );
+        }
+
         return $collection->values()->all();
+    }
+
+    public function addToCart($id)
+    {
+
+        foreach ($this->selectedAnimals as $animal) {
+            if (isset($animal["id"]) && $animal["id"] == $id) {
+                return;
+            }
+        }
+
+        $found = collect($this->animales)->firstWhere("id", (int) $id);
+
+        if ($found) {
+            $this->selectedAnimals[] = $found;
+        }
+    }
+
+    public function removeFromCart($id)
+    {
+        if (isset($this->selectedAnimals[$id])) {
+            array_splice($this->selectedAnimals, $id, 1);
+        }
     }
 
     public function setActiveTab($especieId)
     {
         $this->activeTab = $especieId;
+    }
+
+    public function registerSale()
+    {
+        dd($this->selectedAnimals);
     }
 
     public function render()

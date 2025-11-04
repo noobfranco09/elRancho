@@ -14,7 +14,8 @@
                                 search
                             </span>
                         </div>
-                        <x-form.input label="nombre" icon="search"/>
+                        <x-form.input label="nombre" icon="search" wire:model.live="searchQuery"/>
+                        <h1>{{ $searchQuery }}</h1>
                     </div>
                 </div>
 
@@ -51,12 +52,13 @@
 
                 @forelse ($filtered as $animal)
                     <x-animales.card
-                        id="{{ $animal->id }}"
-                        name="{{ $animal->nombre }}"
-                        price="{{ $animal->precio}}"
-                        image="{{ $animal->imagen ? asset('storage/' . $animal->imagen) : 'https://placehold.net/400x400.png' }}"
-                        sexo="{{ $animal->sexo }}"
-                        color="{{ $animal->color }}"
+                        :id="$animal->id"
+                        :name="$animal->nombre"
+                        :price="$animal->precio"
+                        :image="$animal->imagen ? asset('storage/' . $animal->imagen) : 'https://placehold.net/400x400.png'"
+                        :sexo="$animal->sexo"
+                        :color="$animal->color"
+                        wire:click="addToCart({{ $animal->id }})"
                     />
                 @empty
                     <div class="text-center py-8 text-gray-400 col-span-full">No hay animales para esta especie o búsqueda</div>
@@ -92,6 +94,7 @@
                             </div>
                             <button
                                 @click="selectedAnimals.splice(index, 1)"
+                                wire:click="removeFromCart(item.id)"
                                 class="text-red-500 hover:text-red-700 transition-colors">
 
                                 <span class="material-symbols-outlined shrink-0 text-2xl">
@@ -116,7 +119,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <x-action-button icon="note_add" color="indigo" label="Observación" />
 
-                    <x-action-button icon="check_circle" color="green" label="Registrar" />
+                    <x-action-button icon="check_circle" color="green" wire:click="registerSale" label="Registrar" />
                 </div>
             </div>
         </div>
