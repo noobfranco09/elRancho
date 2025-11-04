@@ -1,4 +1,5 @@
-<div x-data="{ searchQuery: '', activeTab: 'Cerdos', selectedAnimals: [] }" x-cloak class="w-full">
+<div
+    x-data="{ searchQuery: '', activeTab: '{{ $especies->first() }}', selectedAnimals: [] }" x-cloak class="w-full">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Sección Izquierda: Lista de Animales -->
         <div class="lg:col-span-9 bg-white rounded-lg shadow-md p-6">
@@ -22,47 +23,41 @@
             <!-- Tabs de Especies -->
             <div class="mb-6 border-b border-gray-200">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" role="tablist">
-                    <li class="mr-2" role="presentation">
-                        <button
-                            @click="activeTab = 'Cerdos'"
-                            :class="activeTab === 'Cerdos' ? 'text-primary-600 border-primary-600' : 'text-gray-500 border-transparent hover:text-gray-600 hover:border-gray-300'"
-                            class="inline-block p-4 border-b-2 rounded-t-lg transition-colors"
-                            type="button">
-                            Cerdos
-                        </button>
-                    </li>
-                    <li class="mr-2" role="presentation">
-                        <button
-                            @click="activeTab = 'Pollos'"
-                            :class="activeTab === 'Pollos' ? 'text-primary-600 border-primary-600' : 'text-gray-500 border-transparent hover:text-gray-600 hover:border-gray-300'"
-                            class="inline-block p-4 border-b-2 rounded-t-lg transition-colors"
-                            type="button">
-                            Pollos
-                        </button>
-                    </li>
-                    <li class="mr-2" role="presentation">
-                        <button
-                            @click="activeTab = 'Vacas'"
-                            :class="activeTab === 'Vacas' ? 'text-primary-600 border-primary-600' : 'text-gray-500 border-transparent hover:text-gray-600 hover:border-gray-300'"
-                            class="inline-block p-4 border-b-2 rounded-t-lg transition-colors"
-                            type="button">
-                            Vacas
-                        </button>
-                    </li>
+                    @forelse ($especies as $id => $especie)
+                        <li class="mr-2" role="presentation">
+                            <button
+                                @click="activeTab = '{{ $especie }}'"
+                                wire:click="setActiveTab('{{ $id }}')"
+                                :class="activeTab === '{{ $especie }}' ? 'text-primary-600 border-primary-600' : 'text-gray-500 border-transparent hover:text-gray-600 hover:border-gray-300'"
+                                class="inline-block p-4 border-b-2 rounded-t-lg transition-colors"
+                                type="button">
+                                    {{ $especie }}
+                            </button>
+                        </li>
+                    @empty
+                         <li class="mr-2">
+                            <div class="p-2 text-sm text-gray-500">No hay especies</div>
+                        </li>
+                    @endforelse
                 </ul>
             </div>
 
             <!-- Grid de Animales - Aquí cargarás los datos con Livewire -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[600px] overflow-y-auto pr-2">
                 <!-- Ejemplo de card - Repetir con Livewire -->
-                <x-animales.card
-                    id="1"
-                    name="nose"
-                    price="200"
-                    image="nose"
-                    sexo="Macho"
-                    color="amarillo"
-                />
+                @php
+                    $filtered = $this->filteredAnimals;
+                @endphp
+                @foreach ($animales as $animal)
+                    <x-animales.card
+                        id="1"
+                        name="nose"
+                        price="200"
+                        image="nose"
+                        sexo="Macho"
+                        color="amarillo"
+                    />
+                @endforeach
 
 
 

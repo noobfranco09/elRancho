@@ -10,6 +10,9 @@ class TableroAnimales extends Component
 {
     public $animales = [];
     public $especies = [];
+    public $activeTab = null;
+    public $searchQuery = "";
+    public $selectedAnimals = [];
 
     public function mount()
     {
@@ -23,7 +26,15 @@ class TableroAnimales extends Component
 
         )->get();
 
-        $this->especies = Especie::pluck("especie")->unique()->values();
+        $this->especies = Especie::pluck("nombre", "id");;
+        $this->activeTab = $this->especies[0] ?? "";
+    }
+
+    public function getFilteredAnimalsProperty() {}
+
+    public function setActiveTab($especieId)
+    {
+        $this->activeTab = $especieId;
     }
 
     public function render()
