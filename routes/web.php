@@ -79,6 +79,10 @@ Route::get("/venta/{cliente}", function (Cliente $cliente) {
     return view("venta.registro", compact("cliente"));
 })->name("venta.registro");
 
+use App\Http\Controllers\InventarioPdfController;
+
+Route::get('/inventario/pdf', [InventarioPdfController::class, 'generarPdf'])->name('inventario.pdf');
+
 
 
 /* Route::get('/dashboard', function () { */
