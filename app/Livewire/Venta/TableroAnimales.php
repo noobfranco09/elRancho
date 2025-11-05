@@ -4,6 +4,7 @@ namespace App\Livewire\Venta;
 
 use App\Models\Animal;
 use App\Models\Especie;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class TableroAnimales extends Component
@@ -78,7 +79,8 @@ class TableroAnimales extends Component
         $this->activeTab = $especieId;
     }
 
-    public function registerSale()
+    #[On("registrarVenta")]
+    public function registerVenta()
     {
         # Esta es la funcion que se encargara de registrar la venta
     }
