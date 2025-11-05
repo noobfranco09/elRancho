@@ -80,7 +80,7 @@ class TableroAnimales extends Component
 
     public function registerSale()
     {
-        dd($this->selectedAnimals);
+        # Esta es la funcion que se encargara de registrar la venta
     }
 
     public function render()

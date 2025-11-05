@@ -29,13 +29,13 @@ class Modal extends ModalComponent
                 'required',
                 'numeric',
                 'digits_between:6,12',
-                Rule::unique('empleados', 'cedula')->ignore($this->id),
+                Rule::unique('clientes', 'cedula')->ignore($this->id),
             ],
             "telefono" => 'required|regex:/^[0-9+\s-]{7,15}$/',
             "correo" => [
                 'required',
                 'email',
-                Rule::unique('empleados', 'correo')->ignore($this->id),
+                Rule::unique('clientes', 'correo')->ignore($this->id),
             ],
             "direccion" => 'required|string|max:255',
             "estado" => 'required|in:1,0'
@@ -101,7 +101,7 @@ class Modal extends ModalComponent
 
         }
 
-        
+
     }
 
     public function updated($propertyName)
