@@ -9,9 +9,13 @@
         <!-- Sección Izquierda: Lista de Animales -->
         <div class="lg:col-span-9 bg-white rounded-lg shadow-md p-6">
 
-    <x-button icon="arrow_back">
-        Hola
-    </x-button>
+            <div class="flex justify-start gap-3 mb-4">
+                <x-button @click="window.history.back()"  icon="person_add"/>
+                <x-button :href="route('dashboard')"  variant="secondary" icon="home"/>
+
+            </div>
+
+
             <div class="mb-4">
                 <label for="search" class="sr-only">Buscar animal</label>
 
@@ -24,7 +28,6 @@
                             </span>
                         </div>
                         <x-form.input label="nombre" icon="search" wire:model.live="searchQuery"/>
-                        <h1>{{ $searchQuery }}</h1>
                     </div>
                 </div>
 
