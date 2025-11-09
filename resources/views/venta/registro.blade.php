@@ -24,6 +24,16 @@
                 title: message
             })
         })
+
+        document.addEventListener("observacionAsignada", (event) => {
+            const message = event.detail.message;
+
+            Toast.fire({
+                icon: "success",
+                title: message
+            })
+        })
+
     </script>
 
 </x-app-layout>

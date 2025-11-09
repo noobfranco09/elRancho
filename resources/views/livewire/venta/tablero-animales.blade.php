@@ -4,9 +4,14 @@
         document.addEventListener('ventaRegistrada', () => selectedAnimals = []);
     "
     >
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Sección Izquierda: Lista de Animales -->
         <div class="lg:col-span-9 bg-white rounded-lg shadow-md p-6">
+
+    <x-button icon="arrow_back">
+        Hola
+    </x-button>
             <div class="mb-4">
                 <label for="search" class="sr-only">Buscar animal</label>
 
@@ -131,7 +136,12 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
-                    <x-action-button icon="note_add" color="indigo" label="Observación" />
+                    <x-action-button
+                        icon="note_add"
+                        color="indigo"
+                        label="Observación"
+                        @click="$dispatch('openModal', { component: 'venta.modal-observacion' })"
+                    />
 
                     <x-action-button
                         icon="check_circle"

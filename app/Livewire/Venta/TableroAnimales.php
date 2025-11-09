@@ -23,6 +23,7 @@ class TableroAnimales extends Component
     public $especies = [];
     public $activeTab = null;
     public $searchQuery = "";
+    public $observacion;
     public Collection $selectedAnimals;
 
     public function mount($cliente)
@@ -126,6 +127,7 @@ class TableroAnimales extends Component
                     "codigo" => Str::uuid(),
                     "fecha" => Carbon::now(),
                     "total" => $total,
+                    "observacion" => $this->observacion,
                     "cliente_id" => $this->cliente->id,
                     "empleado_id" => Auth::user()->id,
                 ]);
@@ -139,7 +141,8 @@ class TableroAnimales extends Component
                         "venta_id" => $venta_nueva->id
                     ]);
 
-                $this->animales = collect($this->animales)->reject(fn ($animal) =>
+                $this->animales = collect($this->animales)->reject(
+                    fn($animal) =>
                     in_array($animal->id, $ids_animales)
                 );
             });
@@ -150,6 +153,13 @@ class TableroAnimales extends Component
             Log::error($e->getMessage());
             $this->dispatch("error", message: "Error al registrar la venta");
         }
+    }
+
+    #[On("asignarObservacion")]
+    public function asignarObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+        $this->dispatch("observacionAsignada", message: "Observación creada.");
     }
 
     public function render()
