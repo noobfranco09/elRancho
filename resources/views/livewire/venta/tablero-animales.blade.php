@@ -1,5 +1,7 @@
 <div
-    x-data="{ searchQuery: '', activeTab: '{{ $especies->first() }}', selectedAnimals: [] }" x-cloak class="w-full">
+    x-data="{ searchQuery: '', activeTab: '{{ $especies->first() }}', selectedAnimals: [] }" x-cloak class="w-full"
+    @clear.window="selectedAnimals=[]"
+    >
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Sección Izquierda: Lista de Animales -->
         <div class="lg:col-span-9 bg-white rounded-lg shadow-md p-6">
@@ -71,17 +73,16 @@
             <div class="bg-white rounded-lg shadow-md p-6 sticky top-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Resumen de Venta</h2>
 
-{{ dd($cliente) }}
+                <!-- Datos del Cliente -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Datos del Cliente</h3>
 
-<!-- Datos del Cliente -->
-<div class="mb-6">
-    <h3 class="text-lg font-semibold text-gray-700 mb-2">Datos del Cliente</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><span class="font-medium text-gray-600">Nombre:</span> {{ $cliente->nombre }}</p>
+                        <p><span class="font-medium text-gray-600">Cédula:</span> {{ $cliente->cedula }}</p>
+                    </div>
+                </div>
 
-    <div class="space-y-2 text-sm">
-        <p><span class="font-medium text-gray-600">Nombre:</span> {{ $cliente->nombre }}</p>
-        <p><span class="font-medium text-gray-600">Cédula:</span> {{ $cliente->cedula }}</p>
-    </div>
-</div>
                 <div class="space-y-3 mb-6 max-h-[400px] overflow-y-auto">
                     <template x-if="selectedAnimals.length === 0">
                         <div class="text-center py-8 text-gray-400">
@@ -134,7 +135,7 @@
                         icon="check_circle"
                         color="green"
                         label="Registrar"
-                        @click="$dispatch('openModal', { component: 'venta.modal-registrar' })"
+                        wire:click="confirmRegister"
                     />
                 </div>
             </div>

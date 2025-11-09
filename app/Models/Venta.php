@@ -10,6 +10,8 @@ class Venta extends Model
     /** @use HasFactory<\Database\Factories\VentaFactory> */
     use HasFactory;
 
+    protected $fillable = ["codigo", "total", "fecha", "cliente_id", "empleado_id"];
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
