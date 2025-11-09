@@ -144,7 +144,7 @@ class TableroAnimales extends Component
                 );
             });
 
-            $this->dispatch("success", message: "Venta creada con exito");
+            $this->dispatch("ventaRegistrada", message: "Venta creada con exito");
             $this->dispatch("closeModal", 'venta.modal-registrar');
         } catch (Exception $e) {
             Log::error($e->getMessage());

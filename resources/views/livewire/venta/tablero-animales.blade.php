@@ -1,6 +1,8 @@
 <div
     x-data="{ searchQuery: '', activeTab: '{{ $especies->first() }}', selectedAnimals: [] }" x-cloak class="w-full"
-    @clear.window="selectedAnimals=[]"
+    x-init="
+        document.addEventListener('ventaRegistrada', () => selectedAnimals = []);
+    "
     >
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Sección Izquierda: Lista de Animales -->

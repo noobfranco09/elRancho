@@ -16,7 +16,7 @@
             })
         })
 
-        document.addEventListener("success", (event) => {
+        document.addEventListener("ventaRegistrada", (event) => {
             const message = event.detail.message;
 
             Toast.fire({
