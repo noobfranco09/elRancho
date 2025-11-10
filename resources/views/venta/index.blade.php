@@ -3,5 +3,8 @@
         <x-header title="Ventass" description="Gestión de ventas"/>
     </x-slot>
 
-    <h1>Que mierda</h1>
+    <x-panel>
+        <livewire:venta.table />
+    </x-panel>
+
 </x-app-layout>
