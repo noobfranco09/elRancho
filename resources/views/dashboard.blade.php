@@ -27,6 +27,7 @@
                         label="Consultar ventas"
                         description="Ver las ventas registradas."
                         color="blue"
+                        :href="route('venta.index')"
                     />
                 </div>
             </div>

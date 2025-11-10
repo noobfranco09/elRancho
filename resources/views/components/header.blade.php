@@ -274,10 +274,10 @@
 
                     <div class="hidden text-left sm:block">
                         <p class="text-sm font-semibold text-gray-800">
-                            {{ $user?->name ?? 'Invitado' }}
+                            {{ Auth::user()?->name ?? 'Invitado' }}
                         </p>
                         <p class="hidden max-w-[160px] truncate text-xs text-gray-500 lg:block">
-                            {{ $user?->email ?? '' }}
+                            {{ Auth::user()?->email ?? '' }}
                         </p>
                     </div>
                     <span
@@ -303,10 +303,10 @@
                         />
                         <div class="min-w-0">
                             <p class="text-sm font-semibold text-gray-800">
-                                {{ $user?->name ?? 'Invitado' }}
+                                {{ Auth::user()?->name ?? 'Invitado' }}
                             </p>
                             <p class="hidden max-w-[160px] truncate text-xs text-gray-500 lg:block">
-                                {{ $user?->email ?? '' }}
+                                {{ Auth::user()?->email ?? '' }}
                             </p>
                         </div>
                     </div>

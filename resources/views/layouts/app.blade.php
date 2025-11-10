@@ -83,12 +83,9 @@
         <main class="ml-20 w-full flex-1 p-6 transition-all duration-300 ease-in-out lg:p-8"
             :class="{ 'lg:ml-64': sidebarOpen, 'lg:ml-20': !sidebarOpen }">
 
-            {{-- Header personalizado --}}
-            <x-header
-                title="Dashboard"
-                description="Bienvenido al panel de control"
-                :user="Auth::user()"
-            />
+            @isset($header)
+                {{ $header }}
+            @endisset
 
             {{-- Contenido principal --}}
             <section class="mt-8">

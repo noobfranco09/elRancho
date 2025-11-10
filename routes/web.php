@@ -75,11 +75,14 @@ Route::get("/cliente/", function () {
 })->name("clientes.create");
 
 
-Route::get("/venta/{cedula}", function ($cedula) {
+Route::get("/ventas/{cedula}", function ($cedula) {
     $cliente = Cliente::where("cedula", $cedula)->first();
     return view("venta.registro", compact("cliente"));
 })->name("venta.registro");
 
+Route::get("/ventas", function (){
+    return view("venta.index");
+})->name("venta.index");
 
 
 /* Route::get('/dashboard', function () { */
