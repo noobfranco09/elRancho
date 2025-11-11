@@ -132,7 +132,11 @@
 
                 <x-tab.panel id="alimentaciones">
                     <x-tab.panel-header title="Alimentaciónes">
-                        <x-button>Citas</x-button>
+
+                        <x-button icon="add" @click="$dispatch('openModal', { component: 'alimentacion.modal', arguments: { animal_id: {{ $animal->id }} }  })">
+                            Registrar alimentación
+                        </x-button>
+
                     </x-tab.panel-header>
 
                     <livewire:alimentacion.table />
@@ -168,36 +172,44 @@
         document.addEventListener("enfermedadCreada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad creada con éxito"
+                title: "Enfermedad creada"
             })
         })
 
         document.addEventListener("enfermedadEditada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad editada con éxito"
+                title: "Enfermedad editada"
             })
         })
 
         document.addEventListener("enfermedadEliminada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad eliminada con éxito"
+                title: "Enfermedad eliminada"
             })
         })
 
         document.addEventListener("vacunacionCreada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Vacunación creada con éxito"
+                title: "Vacunación creada"
             })
         })
 
         document.addEventListener("vacunacionEliminada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Vacunación eliminada con éxito"
+                title: "Vacunación eliminada"
             })
         })
+
+        document.addEventListener("alimentacionCreada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación registrada"
+            })
+        })
+
     </script>
 </x-app-layout>

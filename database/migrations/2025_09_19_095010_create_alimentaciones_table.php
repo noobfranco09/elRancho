@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('alimentaciones', function (Blueprint $table) {
             $table->id();
+            $table->integer("cantidad");
             $table->foreignId('animal_id')->constrained('animales');
             $table->foreignId('alimento_id')->constrained('alimentos');
             $table->timestamp('fecha')->nullable();
