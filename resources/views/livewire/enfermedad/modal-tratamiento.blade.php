@@ -3,8 +3,7 @@
         id="modal-tratamiento"
         title="Registrar tratamiento"
     >
-
-
+        <!-- Formulario de Creación -->
         <div class="flex gap-2">
             <x-form.input
                 type="text"
@@ -27,29 +26,49 @@
             </x-button>
         </div>
 
-        @error('nuevaEspecie') <x-error-message> {{ $message }} </x-error-message> @enderror
+        @error('nuevoTratamiento') <x-error-message> {{ $message }} </x-error-message> @enderror
+        @error('fechaPrescripcion') <x-error-message> {{ $message }} </x-error-message> @enderror
 
         <!-- Separador -->
-        <div class="border-t border-gray-200 dark:border-gray-700"></div>
+        <div class="my-4 border-t border-gray-200 dark:border-gray-700"></div>
 
-        <!-- Lista de especies -->
+        <!-- Lista de tratamientos -->
         <ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
             @forelse($tratamientos as $tratamiento)
                 <li class="py-3 sm:py-4" wire:key="tratamiento-{{ $tratamiento->id }}">
                     <div class="flex items-center space-x-3">
-                        <div class="flex-1 min-w-0">
+
+                        <!-- Campos de Tratamiento -->
+                        <div class="flex-1 min-w-0 grid grid-cols-2 gap-4 items-center">
                             @if($isEditing === $tratamiento->id)
+                                <!-- Modo Edición -->
                                 <x-form.input
-                                    wire:model.defer="nuevaEspecieEditar.{{ $tratamiento->id }}"
+                                    type="text"
+                                    wire:model.defer="datosTratamientoEditar.{{ $tratamiento->id }}.descripcion"
                                 />
-                                @error('nuevoTratamientoEditar.$tratamiento->id') <x-error-message> {{ $message }}</x-error-message> @enderror
+                                <x-form.input
+                                    type="date"
+                                    wire:model.defer="datosTratamientoEditar.{{ $tratamiento->id }}.fecha_prescripcion"
+                                />
+                                @error("datosTratamientoEditar.{$tratamiento->id}.descripcion")
+                                    <x-error-message> {{ $message }}</x-error-message>
+                                @enderror
+                                @error("datosTratamientoEditar.{$tratamiento->id}.fecha_prescripcion")
+                                    <x-error-message> {{ $message }}</x-error-message>
+                                @enderror
+
                             @else
-                                <x-form.input
-                                    value="{{ $tratamiento->id }}"
-                                    disabled
-                                />
+                                <!-- Modo Lectura -->
+                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    {{ $tratamiento->descripcion }}
+                                </p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Fecha: {{ \Carbon\Carbon::parse($tratamiento->fecha_prescripcion)->format('d/M/Y') }}
+                                </p>
                             @endif
                         </div>
+
+                        <!-- Botones de Acción -->
                         <div class="flex items-center space-x-2">
                             <!-- Botón Editar/Guardar -->
                             <x-button
@@ -62,6 +81,7 @@
                                 variant="danger"
                                 icon="delete"
                                 wire:click="delete({{ $tratamiento->id }})"
+                                onclick="confirm('¿Estás seguro de que deseas eliminar este tratamiento?') || event.stopImmediatePropagation()"
                             />
                         </div>
                     </div>
@@ -74,11 +94,9 @@
         </ul>
 
         <x-slot:footer>
-
-            <x-button variant="secondary"  @click="Livewire.dispatch('closeModal')" >
+            <x-button variant="secondary" @click="Livewire.dispatch('closeModal')" >
                 Cerrar
             </x-button>
-
         </x-slot:footer>
     </x-modal>
 </div>
