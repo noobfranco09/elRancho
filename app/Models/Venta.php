@@ -14,6 +14,9 @@ class Venta extends Model
 
     protected $fillable = ["codigo", "total", "fecha", "cliente_id", "empleado_id"];
 
+    protected $casts = [
+        "fecha" => "datetime"
+    ];
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
