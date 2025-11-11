@@ -43,7 +43,7 @@ class Form extends Component
 
             "cedula" => "required",
             "nombre" => "required|string|min:3|max:40",
-            "telefono" => "required|integer|digits_between:7,10",
+            # "telefono" => "required|integer|digits_between:7,10",
             "correo" => "nullable|email|max:150|unique:clientes,correo,{$this->cedula},cedula",
             "direccion" => "nullable|string|max:255",
         ];

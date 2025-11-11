@@ -39,11 +39,10 @@ class Table extends DataTableComponent
                 ->sortable()
                 ->format(fn($value) => Carbon::parse($value)->format("d/M/Y")),
 
-            /* Column::make('Acciones') */
-            /*     ->label(function ($row) { */
-            /*         return view('components.vacuna.actions', ['vacuna' => $row]); */
-            /*     }) */
-            /*     ->html() */
+            Column::make('Acciones')
+                ->label(function ($row) {
+                    return view('components.ventas.actions', ['venta' => $row]);
+                })
         ];
     }
 }

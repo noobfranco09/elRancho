@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("observacion", 200)->nullable();
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('empleado_id')->constrained('empleados');
+            $table->softDeletes();
 
             $table->timestamps();
         });
