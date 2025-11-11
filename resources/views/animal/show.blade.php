@@ -211,5 +211,12 @@
             })
         })
 
+        document.addEventListener("alimentacionEditada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación editada"
+            })
+        })
+
     </script>
 </x-app-layout>

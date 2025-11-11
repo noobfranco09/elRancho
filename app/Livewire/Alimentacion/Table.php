@@ -24,6 +24,7 @@ class Table extends DataTableComponent
     }
 
     #[On("alimentacionCreada")]
+    #[On("alimentacionEditada")]
     public function columns(): array
     {
         return [
@@ -44,11 +45,10 @@ class Table extends DataTableComponent
             Column::make("Fecha", "fecha")
                 ->sortable()
                 ->format(fn($value) => Carbon::parse($value)->format("d/M/Y")),
-            /* Column::make('Acciones') */
-            /*     ->label(function ($row) { */
-            /*         return view('components.vacuna.actions', ['vacuna' => $row]); */
-            /*     }) */
-            /*     ->html() */
+            Column::make('Acciones')
+                ->label(function ($row) {
+                    return view('components.alimentos.actions-alimentaciones', ['alimentacion' => $row]);
+                })
         ];
     }
 }

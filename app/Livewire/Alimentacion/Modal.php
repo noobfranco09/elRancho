@@ -20,8 +20,12 @@ class Modal extends ModalComponent
     public function mount(Alimentacion $alimentacion, $animal_id = null)
     {
         $this->animal_id = $animal_id;
+        $this->alimentacion = $alimentacion;
 
         $this->alimentos = Alimento::pluck("nombre", "id")->toArray();
+        $this->cantidad = $alimentacion->cantidad;
+        $this->fecha = $alimentacion->fecha;
+        $this->alimentoId = $alimentacion->alimento_id;
     }
 
     public function rules()
@@ -61,16 +65,27 @@ class Modal extends ModalComponent
     {
         $validated = $this->validate();
 
-        Alimentacion::create([
-            "cantidad" => $validated["cantidad"],
-            "animal_id" => $this->animal_id,
-            "alimento_id" => $validated["alimentoId"],
-            "fecha" => $validated["fecha"],
-        ]);
+        if ($this->alimentacion->id) {
+            $this->alimentacion->update([
+                "cantidad" => $validated["cantidad"],
+                "fecha" => $validated["fecha"],
+                "alimento_id" => $validated["alimentoId"]
+            ]);
+            $this->dispatch("alimentacionEditada");
+        } else {
+
+            Alimentacion::create([
+                "cantidad" => $validated["cantidad"],
+                "animal_id" => $this->animal_id,
+                "alimento_id" => $validated["alimentoId"],
+                "fecha" => $validated["fecha"],
+            ]);
+
+            $this->dispatch("alimentacionCreada");
+        }
+
 
         $this->closeModal();
-        $this->dispatch("alimentacionCreada");
-
     }
 
     public static function modalMaxWidth(): string

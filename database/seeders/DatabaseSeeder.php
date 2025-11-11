@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             RolSeeder::class,
             EmpleadoSeeder::class,
             ClienteSeeder::class,
-            AnimalSeeder::class
+            AnimalSeeder::class,
+            AlimentoSeeder::class
         ]);
     }
 }
