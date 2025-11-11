@@ -16,8 +16,13 @@ class VacunaFactory extends Factory
      */
     public function definition(): array
     {
+        // Tipos de dosis comunes
+        $dosisTipos = ['Única', 'Doble', 'Refuerzo Anual', 'Esquema de 3'];
+
         return [
-            //
+            'nombre' => $this->faker->unique()->word() . ' ' . $this->faker->randomElement(['Vax', 'Protect', 'Shield', 'Guard']),
+            'descripcion' => $this->faker->paragraph(2),
+            'dosis' => $this->faker->randomElement($dosisTipos),
         ];
     }
 }

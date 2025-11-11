@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             EmpleadoSeeder::class,
             ClienteSeeder::class,
             AnimalSeeder::class,
-            AlimentoSeeder::class
+            AlimentoSeeder::class,
+            VacunaSeeder::class
         ]);
     }
 }

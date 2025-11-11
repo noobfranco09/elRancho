@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Vacuna;
 use Illuminate\Database\Seeder;
 
 class VacunaSeeder extends Seeder
@@ -12,6 +12,6 @@ class VacunaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Vacuna::factory()->count(15)->create();
     }
 }
