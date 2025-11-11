@@ -102,7 +102,7 @@
                         Enfermedades
                     </x-tab.nav-item>
 
-                    <x-tab.nav-item target="citas">
+                    <x-tab.nav-item target="alimentaciones">
                         Citas
                     </x-tab.nav-item>
                 </x-slot>
@@ -130,12 +130,13 @@
                     <livewire:enfermedad.table :animalId="$animal->id"/>
                 </x-tab.panel>
 
-                <x-tab.panel id="citas">
-                    <x-tab.panel-header title="Citas">
+                <x-tab.panel id="alimentaciones">
+                    <x-tab.panel-header title="Alimentaciónes">
                         <x-button>Citas</x-button>
                     </x-tab.panel-header>
 
-                    marrano
+                    <livewire:alimentacion.table />
+
                 </x-tab.panel>
 
             </x-tab.container>
