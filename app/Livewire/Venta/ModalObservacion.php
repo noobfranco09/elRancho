@@ -28,6 +28,11 @@ class ModalObservacion extends ModalComponent
         $this->validateOnly($propertyName);
     }
 
+    public static function modalMaxWidth(): string
+    {
+        return 'xl';
+    }
+
     public function save()
     {
         $this->validate();

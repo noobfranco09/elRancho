@@ -7,6 +7,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Livewire\Attributes\On;
 
 class Table extends DataTableComponent
 {
@@ -21,6 +22,7 @@ class Table extends DataTableComponent
             ->with(["cliente", "empleado"]);
     }
 
+    #[On("success")]
     public function columns(): array
     {
         return [

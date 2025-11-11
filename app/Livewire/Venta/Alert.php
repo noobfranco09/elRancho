@@ -21,6 +21,8 @@ class Alert extends ModalComponent
     public function delete()
     {
         $this->venta->delete();
+        $this->dispatch("success", message: "Venta anulada");
+        $this->closeModal();
     }
 
     public static function modalMaxWidth(): string

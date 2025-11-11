@@ -16,6 +16,12 @@ class ModalAnimales extends ModalComponent
         $this->animales = Animal::where("venta_id", $venta->id)->get();
     }
 
+
+    public static function modalMaxWidth(): string
+    {
+        return 'xl';
+    }
+
     public function render()
     {
         return view('livewire.venta.modal-animales');
