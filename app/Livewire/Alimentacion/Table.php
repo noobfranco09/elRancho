@@ -25,6 +25,7 @@ class Table extends DataTableComponent
 
     #[On("alimentacionCreada")]
     #[On("alimentacionEditada")]
+    #[On("alimentacionEliminada")]
     public function columns(): array
     {
         return [

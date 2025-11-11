@@ -218,5 +218,12 @@
             })
         })
 
+        document.addEventListener("alimentacionEliminada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación eliminada"
+            })
+        })
+
     </script>
 </x-app-layout>
