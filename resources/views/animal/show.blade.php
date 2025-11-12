@@ -103,7 +103,11 @@
                     </x-tab.nav-item>
 
                     <x-tab.nav-item target="alimentaciones">
-                        Citas
+                        Alimentaciones
+                    </x-tab.nav-item>
+
+                    <x-tab.nav-item target="ancestros">
+                        Ancestros
                     </x-tab.nav-item>
                 </x-slot>
 
@@ -142,6 +146,18 @@
                     <livewire:alimentacion.table />
 
                 </x-tab.panel>
+
+                <x-tab.panel id="ancestros">
+                    <x-tab.panel-header title="Ancestros">
+
+
+                    </x-tab.panel-header>
+
+                    <livewire:animal.ancestro-table :animalId="$animal->id" />
+
+                </x-tab.panel>
+
+
 
             </x-tab.container>
 
