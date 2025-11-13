@@ -46,11 +46,9 @@ class AncestroModal extends ModalComponent
     public function validarPadres()
     {
         if ($this->padre > 0 && $this->padre === $this->madre) {
-            // Añade los errores y...
             $this->addError('madre', 'El padre y la madre no pueden ser el mismo animal.');
             $this->addError('padre', 'El padre y la madre no pueden ser el mismo animal.');
 
-            // ... detiene la ejecución del método save() inmediatamente.
             return false;
         }
 

@@ -5,6 +5,7 @@ namespace App\Livewire\Alimentacion;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Alimentacion;
 use App\Models\Alimento;
+use phpDocumentor\Reflection\Types\This;
 
 class Modal extends ModalComponent
 {
@@ -15,6 +16,7 @@ class Modal extends ModalComponent
 
 
     public $alimentoId;
+    public Alimento $alimento;
 
 
     public function mount(Alimentacion $alimentacion, $animal_id = null)
@@ -59,11 +61,28 @@ class Modal extends ModalComponent
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+
+        if ($this->alimentoId && $this->cantidad) {
+            $this->validarStock();
+        }
+    }
+
+    public function validarStock()
+    {
+        $alimento = Alimento::find($this->alimentoId);
+
+        if ($alimento->cantidad < $this->cantidad) {
+            $this->addError('cantidad', "Quedan solo {$alimento->cantidad} existencias de este alimento");
+            return false;
+        }
+        return true;
     }
 
     public function save()
     {
         $validated = $this->validate();
+
+        if (!$this->validarStock()) return;
 
         if ($this->alimentacion->id) {
             $this->alimentacion->update([
@@ -83,6 +102,9 @@ class Modal extends ModalComponent
 
             $this->dispatch("alimentacionCreada");
         }
+
+
+
 
 
         $this->closeModal();

@@ -14,7 +14,7 @@
 
 
             <div>
-                <x-form.select wire:model="alimentoId" label="Vacuna"
+                <x-form.select wire:model="alimentoId" label="Alimento"
                     :options="['' => 'Seleccionar un alimento'] + $alimentos"
                     />
                     <x-error-message> @error('alimentoId') {{ $message }} @enderror </x-error-message>
