@@ -150,6 +150,9 @@
                 <x-tab.panel id="ancestros">
                     <x-tab.panel-header title="Ancestros">
 
+                        <x-button icon="add" @click="$dispatch('openModal', { component: 'animal.ancestro-modal', arguments: { animal_id: {{ $animal->id }} }  })">
+                            Registrar padres
+                        </x-button>
 
                     </x-tab.panel-header>
 
