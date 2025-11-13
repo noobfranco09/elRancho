@@ -4,9 +4,16 @@ namespace App\Observers;
 
 use App\Models\Alimentacion;
 use App\Models\Alimento;
+use App\Events\FoodStockLow;
 
 class AlimentacionObserver
 {
+    protected function checkStockAndNotify(Alimento $alimento): void
+    {
+        if ($alimento->cantidad < 10) {
+            FoodStockLow::dispatch($alimento);
+        }
+    }
     /**
      * Handle the Alimentacion "created" event.
      */
@@ -16,6 +23,9 @@ class AlimentacionObserver
 
         if ($alimento) {
             $alimento->decrement("cantidad", $alimentacion->cantidad);
+
+            $alimento->refresh();
+            $this->checkStockAndNotify($alimento);
         }
     }
 
@@ -32,6 +42,9 @@ class AlimentacionObserver
         if ($diferencia !== 0) {
             $alimento = Alimento::findOrFail($alimentacion->alimento_id);
             $alimento->decrement("cantidad", $diferencia);
+
+            $alimento->refresh();
+            $this->checkStockAndNotify($alimento);
         }
     }
 
