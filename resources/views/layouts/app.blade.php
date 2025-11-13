@@ -31,7 +31,7 @@
 
         <x-sidebar>
 
-            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard" />
+            <x-sidebar.section icon="dashboard" :href="route('dashboard')" title="Dashboard" :selected="request()->routeIs('dashboard')" />
 
             <x-sidebar.section icon="people_alt" title="Usuarios">
                 <x-sidebar.section icon="people_alt" title="Empleados" :href="route('empleados')"
@@ -43,11 +43,7 @@
             </x-sidebar.section>
 
 
-            <x-sidebar.section icon="pets" title="Animales">
-                <x-sidebar.link icon="pets" title="Gestionar animales" :href="route('animales')" />
-                <x-sidebar.link icon="account_tree" title="Consultar ancentros" selected />
-                <x-sidebar.link icon="description" title="Registrar documentos" href="noce.html" />
-            </x-sidebar.section>
+            <x-sidebar.section icon="pets" title="Animales" :href="route('animales')" :selected="request()->routeIs('animales')" />
 
 
             <x-sidebar.section icon="vaccines" title="Vacunas" :href="route('vacunas')"
@@ -83,12 +79,9 @@
         <main class="ml-20 w-full flex-1 p-6 transition-all duration-300 ease-in-out lg:p-8"
             :class="{ 'lg:ml-64': sidebarOpen, 'lg:ml-20': !sidebarOpen }">
 
-            {{-- Header personalizado --}}
-            <x-header
-                title="Dashboard"
-                description="Bienvenido al panel de control"
-                :user="Auth::user()"
-            />
+            @isset($header)
+                {{ $header }}
+            @endisset
 
             {{-- Contenido principal --}}
             <section class="mt-8">

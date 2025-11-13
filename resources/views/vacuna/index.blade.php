@@ -7,7 +7,6 @@
         <x-button @click="$dispatch('openModal', { component: 'vacuna.modal' })">
             Crear vacuna
         </x-button>
-
     </x-panel>
 
     <x-panel>

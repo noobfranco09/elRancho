@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Cliente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ClienteFactory extends Factory
 {
+
+    protected $model = Cliente::class;
     /**
      * Define the model's default state.
      *
@@ -16,8 +19,15 @@ class ClienteFactory extends Factory
      */
     public function definition(): array
     {
+        $cedula = $this->faker->unique()->numerify('##########');
+
         return [
-            //
+            'nombre' => $this->faker->name(),
+            'cedula' => $cedula,
+            'telefono' => $this->faker->phoneNumber(),
+            'correo' => $this->faker->unique()->safeEmail(),
+            'direccion' => $this->faker->address(),
+            'estado' => $this->faker->boolean(90), // 90% de probabilidad de ser 1 (activo)
         ];
     }
 }

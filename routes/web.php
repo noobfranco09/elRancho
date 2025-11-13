@@ -5,6 +5,7 @@ use App\Models\Animal;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\VentasPdfController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
@@ -75,11 +76,17 @@ Route::get("/cliente/", function () {
 })->name("clientes.create");
 
 
-Route::get("/venta/{cedula}", function ($cedula) {
+Route::get("/ventas/{cedula}", function ($cedula) {
     $cliente = Cliente::where("cedula", $cedula)->first();
     return view("venta.registro", compact("cliente"));
 })->name("venta.registro");
 
+Route::get("/ventas", function () {
+    return view("venta.index");
+})->name("venta.index");
+
+Route::get("/pdf/ventas", [VentasPdfController::class, "generarPdf"])
+    ->name("ventas.pdf");
 
 
 /* Route::get('/dashboard', function () { */

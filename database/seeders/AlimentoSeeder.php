@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Alimento;
 
 class AlimentoSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class AlimentoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Alimento::factory()->count(20)->create();
     }
 }

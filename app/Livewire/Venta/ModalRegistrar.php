@@ -13,6 +13,8 @@ class ModalRegistrar extends ModalComponent
 
     public function registrar()
     {
+        # simplemente se lanza un evento para que el componente del tablero lo
+        # escuche y realice el registro
         $this->dispatch("registrarVenta");
     }
 

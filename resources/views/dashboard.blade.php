@@ -27,12 +27,14 @@
                         label="Consultar ventas"
                         description="Ver las ventas registradas."
                         color="blue"
+                        :href="route('venta.index')"
                     />
                 </div>
             </div>
         </x-panel>
 
         {{-- Panel de Alquileres --}}
+        <!--
         <x-panel class="flex-1">
             {{-- Quitamos 'max-w-6xl mx-auto' --}}
             <div>
@@ -58,6 +60,7 @@
                 </div>
             </div>
         </x-panel>
+        -->
     </div>
 
 

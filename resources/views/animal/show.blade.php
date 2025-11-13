@@ -102,8 +102,12 @@
                         Enfermedades
                     </x-tab.nav-item>
 
-                    <x-tab.nav-item target="citas">
-                        Citas
+                    <x-tab.nav-item target="alimentaciones">
+                        Alimentaciones
+                    </x-tab.nav-item>
+
+                    <x-tab.nav-item target="ancestros">
+                        Ancestros
                     </x-tab.nav-item>
                 </x-slot>
 
@@ -130,13 +134,33 @@
                     <livewire:enfermedad.table :animalId="$animal->id"/>
                 </x-tab.panel>
 
-                <x-tab.panel id="citas">
-                    <x-tab.panel-header title="Citas">
-                        <x-button>Citas</x-button>
+                <x-tab.panel id="alimentaciones">
+                    <x-tab.panel-header title="Alimentaciónes">
+
+                        <x-button icon="add" @click="$dispatch('openModal', { component: 'alimentacion.modal', arguments: { animal_id: {{ $animal->id }} }  })">
+                            Registrar alimentación
+                        </x-button>
+
                     </x-tab.panel-header>
 
-                    marrano
+                    <livewire:alimentacion.table />
+
                 </x-tab.panel>
+
+                <x-tab.panel id="ancestros">
+                    <x-tab.panel-header title="Ancestros">
+
+                        <x-button icon="add" @click="$dispatch('openModal', { component: 'animal.ancestro-modal', arguments: { animal_id: {{ $animal->id }} }  })">
+                            Registrar padres
+                        </x-button>
+
+                    </x-tab.panel-header>
+
+                    <livewire:animal.ancestro-table :animalId="$animal->id" />
+
+                </x-tab.panel>
+
+
 
             </x-tab.container>
 
@@ -167,36 +191,58 @@
         document.addEventListener("enfermedadCreada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad creada con éxito"
+                title: "Enfermedad creada"
             })
         })
 
         document.addEventListener("enfermedadEditada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad editada con éxito"
+                title: "Enfermedad editada"
             })
         })
 
         document.addEventListener("enfermedadEliminada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Enfermedad eliminada con éxito"
+                title: "Enfermedad eliminada"
             })
         })
 
         document.addEventListener("vacunacionCreada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Vacunación creada con éxito"
+                title: "Vacunación creada"
             })
         })
 
         document.addEventListener("vacunacionEliminada", () => {
             Toast.fire({
                 icon: "success",
-                title: "Vacunación eliminada con éxito"
+                title: "Vacunación eliminada"
             })
         })
+
+        document.addEventListener("alimentacionCreada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación registrada"
+            })
+        })
+
+        document.addEventListener("alimentacionEditada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación editada"
+            })
+        })
+
+        document.addEventListener("alimentacionEliminada", () => {
+            Toast.fire({
+                icon: "success",
+                title: "Alimentación eliminada"
+            })
+        })
+
     </script>
 </x-app-layout>

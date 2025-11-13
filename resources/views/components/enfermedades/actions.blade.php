@@ -1,5 +1,17 @@
 <div class="flex items-center justify-center space-x-2">
-    <x-button variant="primary" wire:click="" icon="visibility"/>
+
+    <x-button
+        variant="primary"
+        @click="$dispatch('openModal', {
+            component: 'enfermedad.modal-tratamiento',
+            arguments: {
+                enfermedad:{{ $enfermedad->id }},
+                animal_id: {{ $enfermedad->animal_id }}
+            }
+        })"
+
+        icon="visibility"
+    />
 
     <x-button
         variant="warning"
