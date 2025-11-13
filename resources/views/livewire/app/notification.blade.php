@@ -9,9 +9,11 @@
         <span class="material-symbols-outlined"
             >notifications</span
         >
-        <span
-            class="absolute -right-0.5 -top-0.5 inline-flex h-2.5 w-2.5 rounded-full bg-red-500"
-        ></span>
+        @if ($bajoStock)
+            <span
+                class="absolute -right-0.5 -top-0.5 inline-flex h-2.5 w-2.5 rounded-full bg-red-500"
+            ></span>
+        @endif
     </button>
 
     <!-- Panel de notificaciones -->
@@ -44,13 +46,18 @@
 
         <!-- Lista -->
         <div class="max-h-80 overflow-y-auto p-2">
-            <!-- Item 1 -->
-            <x-notification.item
-                text="El producto <span class='font-semibold text-gray-900'>Xiaomi Pad 6</span> tiene solo <span class='font-bold text-red-600'>5 unidades</span> restantes."
-                label="Nose"
-                time="15 min ago"
-                link="/inventario/xiaomi-pad-6"
-            />
+            @forelse ($alimentosBajoStock as $alimento)
+                <x-notification.item
+                    :text="'El alimento <span class=\'font-semibold text-gray-900\'>' . $alimento->nombre . '</span> tiene solo <span class=\'font-bold text-red-600\'>' . $alimento->cantidad . ' unidades</span> restantes.'"
+                    label="Stock Bajo"
+                    time="Ahora" {{-- O calcula el tiempo si guardas la notificación en DB --}}
+                    :link="route('alimentos')" {{-- Asegúrate de que esta ruta exista --}}
+                />
+            @empty
+                <div class="p-4 text-center text-gray-500">
+                    No hay alertas de bajo stock.
+                </div>
+            @endforelse
 
         </div>
 

@@ -23,6 +23,9 @@ window.Echo.connector.pusher.connection.bind("unavailable", (err) => {
         err,
     );
 });
+
 window.Echo.channel("public").listen(".stock.bajo", (e) => {
-    alert("se ejecuto el evento");
+    console.log("Evento recibido:", e);
+    // Envía el evento a tu componente Livewire
+    Livewire.dispatch("notificarBajoStock", {event: e});
 });
