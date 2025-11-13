@@ -62,11 +62,13 @@
         </div>
 
         <div class="h-px bg-gray-100"></div>
+        <!--
         <button
             class="w-full rounded-b-2xl px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
             @click="/* ir a la página de notificaciones */"
         >
             View All Notification
         </button>
+        -->
     </div>
 </div>

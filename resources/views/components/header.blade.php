@@ -51,7 +51,9 @@
                         class="relative shrink-0 w-8 h-8 sm:w-9 sm:h-9 min-w-[2rem] min-h-[2rem] sm:min-w-[2.25rem] sm:min-h-[2.25rem]"
                     >
                         <img
-                            src="https://i.pravatar.cc/64?img=12"
+                            src="{{ file_exists(public_path('storage/profile.jpg'))
+                                ? asset('storage/profile.jpg')
+                                : 'https://i.pravatar.cc/64?img=12' }}"
                             alt="Avatar"
                             class="w-full h-full rounded-full object-cover block"
                             style="aspect-ratio: 1/1"
@@ -83,7 +85,10 @@
                         class="flex items-center gap-3 px-4 py-4"
                     >
                         <img
-                            src="https://i.pravatar.cc/64?img=12"
+
+                            src="{{ file_exists(public_path('storage/profile.jpg'))
+                                ? asset('storage/profile.jpg')
+                                : 'https://i.pravatar.cc/64?img=12' }}"
                             alt="Avatar"
                             class="h-10 w-10 aspect-square rounded-full object-cover shrink-0"
                         />
