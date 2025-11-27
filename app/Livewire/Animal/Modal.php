@@ -53,7 +53,7 @@ class Modal extends ModalComponent
             "sexo" => "required|in:M,F",
             "especie_id" => "required",
             "color" => "required|string|max:100",
-            "marcas" => "required|string|max:255",
+            "marcas" => "string|max:255",
             "fecha_nacimiento" => "required|date",
             "estado" => "required|boolean",
         ];
@@ -85,7 +85,6 @@ class Modal extends ModalComponent
             "color.string" => "El color debe ser una cadena de texto.",
             "color.max" => "El color no puede superar los 100 caracteres.",
 
-            "marcas.required" => "Las marcas son obligatorias.",
             "marcas.string" => "Las marcas deben ser una cadena de texto.",
             "marcas.max" => "Las marcas no pueden superar los 255 caracteres.",
 
