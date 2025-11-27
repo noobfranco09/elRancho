@@ -14,22 +14,22 @@ class Modal extends ModalComponent
     public Animal $animal;
     public $especies = [];
     public $id,
+        $nombre,
         $codigo,
         $precio,
         $imagen,
         $sexo,
+        $marcas,
         $especie_id,
         $color,
         $fecha_nacimiento,
         $estado;
-    public $nombre = "sin nombre";
-    public $marcas = "sin marcas";
 
     public function mount(Animal $animal)
     {
         $this->id = $animal->id;
         $this->animal = $animal;
-        $this->nombre = $animal->nombre;
+        $this->nombre = $animal->nombre ?? "sin nombre";
         $this->codigo = $animal->codigo;
         $this->precio = $animal->precio;
         $this->imagen = $animal->imagen;
@@ -37,7 +37,7 @@ class Modal extends ModalComponent
         $this->especie_id = $animal->especie;
         $this->especies = Especie::pluck("nombre", "id")->toArray();
         $this->color = $animal->color;
-        $this->marcas = $animal->marcas;
+        $this->marcas = $animal->marcas ?? "sin marcas";
         $this->fecha_nacimiento = $animal->fechaNacimiento;
         $this->estado = $animal->estado ?? 1;
     }
