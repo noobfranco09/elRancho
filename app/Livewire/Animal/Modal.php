@@ -14,16 +14,16 @@ class Modal extends ModalComponent
     public Animal $animal;
     public $especies = [];
     public $id,
-        $nombre,
         $codigo,
         $precio,
         $imagen,
         $sexo,
         $especie_id,
         $color,
-        $marcas,
         $fecha_nacimiento,
         $estado;
+    public $nombre = "sin nombre";
+    public $marcas = "sin marcas";
 
     public function mount(Animal $animal)
     {
@@ -46,7 +46,7 @@ class Modal extends ModalComponent
     public function rules()
     {
         return [
-            "nombre" => "required|string|max:255",
+            "nombre" => "string|max:255",
             "codigo" => "required|integer|max:99999|unique:animales,codigo," . $this->id,
             "precio" => "required|numeric|min:0",
             "imagen" => "nullable|image|mimes:jpg,jpeg,png,gif|max:2048",
@@ -62,7 +62,6 @@ class Modal extends ModalComponent
     public function messages()
     {
         return [
-            "nombre.required" => "El nombre del animal es obligatorio.",
             "nombre.string" => "El nombre debe ser una cadena de texto.",
             "nombre.max" => "El nombre no puede superar los 255 caracteres.",
 
