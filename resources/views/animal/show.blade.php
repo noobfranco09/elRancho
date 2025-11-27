@@ -166,24 +166,6 @@
 
 
 
-            <!-- Acciones -->
-            <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Acciones Rápidas</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Gestiona el perfil del animal</p>
-                    </div>
-                </div>
-
-                <!-- Acciones principales -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
-                    <x-action-button icon="edit" label="Editar perfil" color="blue" />
-                    <x-action-button icon="history" label="Ver historial" color="purple" />
-                    <x-action-button icon="event" label="Nueva cita" color="green" badge="3" />
-                    <x-action-button icon="vaccines" label="Vacunas" color="amber" />
-
-                </div>
-            </div>
         </div>
     </div>
 
