@@ -17,6 +17,7 @@ window.Echo.connector.pusher.connection.bind("connected", () => {
     console.log("✅ Laravel Echo/Reverb: Conexión establecida correctamente!");
 });
 
+
 window.Echo.connector.pusher.connection.bind("unavailable", (err) => {
     console.error(
         "❌ Laravel Echo/Reverb: Conexión fallida o no disponible.",
