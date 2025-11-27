@@ -14,16 +14,16 @@ class Modal extends ModalComponent
     public Animal $animal;
     public $especies = [];
     public $id,
-        $nombre,
         $codigo,
         $precio,
         $imagen,
         $sexo,
         $especie_id,
         $color,
-        $marcas,
         $fecha_nacimiento,
         $estado;
+    public $nombre = "sin nombre";
+    public $marcas = "sin marcas";
 
     public function mount(Animal $animal)
     {
@@ -46,14 +46,14 @@ class Modal extends ModalComponent
     public function rules()
     {
         return [
-            "nombre" => "required|string|max:255",
+            "nombre" => "string|max:255",
             "codigo" => "required|integer|max:99999|unique:animales,codigo," . $this->id,
             "precio" => "required|numeric|min:0",
             "imagen" => "nullable|image|mimes:jpg,jpeg,png,gif|max:2048",
             "sexo" => "required|in:M,F",
             "especie_id" => "required",
             "color" => "required|string|max:100",
-            "marcas" => "required|string|max:255",
+            "marcas" => "string|max:255",
             "fecha_nacimiento" => "required|date",
             "estado" => "required|boolean",
         ];
@@ -62,7 +62,6 @@ class Modal extends ModalComponent
     public function messages()
     {
         return [
-            "nombre.required" => "El nombre del animal es obligatorio.",
             "nombre.string" => "El nombre debe ser una cadena de texto.",
             "nombre.max" => "El nombre no puede superar los 255 caracteres.",
 
@@ -86,7 +85,6 @@ class Modal extends ModalComponent
             "color.string" => "El color debe ser una cadena de texto.",
             "color.max" => "El color no puede superar los 100 caracteres.",
 
-            "marcas.required" => "Las marcas son obligatorias.",
             "marcas.string" => "Las marcas deben ser una cadena de texto.",
             "marcas.max" => "Las marcas no pueden superar los 255 caracteres.",
 
