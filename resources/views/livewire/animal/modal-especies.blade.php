@@ -47,11 +47,13 @@
                                 variant="{{ ($isEditing === $especie->id ) ? 'primary' : 'warning' }}"
                             />
                             <!-- Botón Eliminar -->
-                            <x-button
-                                variant="danger"
-                                icon="delete"
-                                wire:click="delete({{ $especie->id }})"
-                            />
+                            @if ($especie->animales_count === 0)
+                                <x-button
+                                    variant="danger"
+                                    icon="delete"
+                                    wire:click="delete({{ $especie->id }})"
+                                />
+                            @endif
                         </div>
                     </div>
                 </li>

@@ -14,7 +14,7 @@ class ModalEspecies extends ModalComponent
 
     public function mount()
     {
-        $this->especies = Especie::all();
+        $this->especies = Especie::withCount("animales")->get();
     }
 
     public function rules()
