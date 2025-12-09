@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                <x-form.input type="number" wire:model.live="telefono" label="Telefono" />
+                <x-form.input type="text" wire:model.live="telefono" label="Telefono" />
                 <x-error-message> @error('telefono') {{ $message }} @enderror </x-error-message>
             </div>
 
@@ -26,7 +26,7 @@
                 <x-form.input type="email" wire:model.live="correo" label="Correo Electronico" />
                 <x-error-message> @error('correo') {{ $message }} @enderror </x-error-message>
             </div>
-            
+
             <div>
                 <x-form.input wire:model.live="direccion" label="Direccion"/>
                 <x-error-message> @error('direccion') {{ $message }} @enderror </x-error-message>
