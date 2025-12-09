@@ -13,7 +13,7 @@
             @foreach ($animales as $animal)
                 <x-table-row>
                     <td>{{ $animal->codigo }}</td>
-                    <td>{{ $animal->especie ?? "sin especie" }}</td>
+                    <td>{{ $animal->especie->nombre ?? "sin especie" }}</td>
                     <td>${{ $animal->precio }}</td>
                     <td class="p-3">
                         <x-button icon="search" :href="route('animales.show', $animal->id)"/>
