@@ -44,7 +44,7 @@ class ModalTratamiento extends ModalComponent
 
             $this->datosTratamientoEditar[$id] = [
                 "descripcion" => $tratamiento->descripcion,
-                "fecha_prescripcion" => Carbon::parse($tratamiento->fecha_prescripcion)->format("Y/m/d")
+                "fecha_prescripcion" => Carbon::parse($tratamiento->fecha_prescripcion)->format("Y-m-d")
             ];
         }
     }

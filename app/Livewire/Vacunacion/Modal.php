@@ -18,7 +18,7 @@ class Modal extends ModalComponent
     public function rules()
     {
         return [
-            "fecha" => "required|date|before:today",
+            "fecha" => "required|date|before:tomorrow",
             "vacunaId" => "required"
         ];
     }

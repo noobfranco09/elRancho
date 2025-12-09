@@ -35,7 +35,7 @@ class Modal extends ModalComponent
         return [
 
             "cantidad" => "required|integer|between:0,10000",
-            "fecha" => "required|date|before:today",
+            "fecha" => "required|date|before:tomorrow",
             "alimentoId" => "required|integer|exists:alimentos,id"
         ];
     }

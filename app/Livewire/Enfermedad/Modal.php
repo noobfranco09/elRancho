@@ -29,7 +29,7 @@ class Modal extends ModalComponent
     public function rules()
     {
         return [
-            'fecha' => 'required|date',
+            'fecha' => 'required|date|before:tomorrow',
             'descripcion' => 'required|string|min:5|max:500',
             'estado' => 'required',
         ];
@@ -41,6 +41,7 @@ class Modal extends ModalComponent
         return [
             'fecha.required' => 'La fecha es obligatoria.',
             'fecha.date' => 'La fecha debe tener un formato válido.',
+            'fecha.before' => 'La fecha no puede estar en el futuro',
 
             'descripcion.required' => 'La descripción es obligatoria.',
             'descripcion.string' => 'La descripción debe ser un texto.',

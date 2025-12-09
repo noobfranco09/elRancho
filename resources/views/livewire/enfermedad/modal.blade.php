@@ -11,7 +11,7 @@
             </div>
 
             <div>
-                <x-form.textarea wire:model.live="descripcion" label="Descripción del animal" rows="3"/>
+                <x-form.textarea wire:model.live="descripcion" label="Descripción de la enfermedad" rows="3"/>
                 <x-error-message> @error('descripcion') {{ $message }} @enderror </x-error-message>
             </div>
 

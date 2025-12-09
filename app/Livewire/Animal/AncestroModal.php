@@ -14,13 +14,33 @@ class AncestroModal extends ModalComponent
 
     public function mount($animal_id)
     {
-        $this->animales = Animal::whereNotIn("id", [$animal_id])
+        $animalesCollection = Animal::whereNotIn("id", [$animal_id])
             ->pluck("codigo", "id")
             ->toArray();
+
+        $this->animales = $animalesCollection->mapWithKeys(function ($animal) {
+            $sexo = $this->getSexLabel($animal->sexo);
+            $especieNombre = $animal->especie ? $animal->especie->nombre : "Sin especie";
+
+            return [
+                $animal->id => "{$animal->codigo} ({$sexo} - {$especieNombre})"
+            ];
+        })->toArray();
+
+
         $this->animalId = $animal_id;
         $animal = Animal::find($this->animalId);
         $this->padre = $animal->padre1_id;
         $this->madre = $animal->padre2_id;
+    }
+
+    public function getSexLabel($sexo)
+    {
+        return match ($sexo) {
+            "M" => "Macho",
+            "F" => "Hembre",
+            default => "N/A"
+        };
     }
 
     public function rules()

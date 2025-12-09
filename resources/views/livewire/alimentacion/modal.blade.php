@@ -22,7 +22,7 @@
 
 
             <div>
-                <x-form.input wire:model.live="fecha" type="date" label="Dosis" />
+                <x-form.input wire:model.live="fecha" type="date" label="Fecha de alimentación" />
                 <x-error-message> @error('fecha') {{ $message }} @enderror </x-error-message>
             </div>
 

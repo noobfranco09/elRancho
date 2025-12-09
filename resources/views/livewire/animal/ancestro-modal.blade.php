@@ -7,14 +7,14 @@
 
         <form class="grid grid-cols-1 gap-5">
             <div>
-                <x-form.select wire:model.live="padre" label="Vacuna"
+                <x-form.select wire:model.live="padre" label="Seleccionar padre (Código, Sexo, Especie)"
                     :options="['' => 'Seleccionar un animal'] + $animales"
                     />
                     <x-error-message> @error('padre') {{ $message }} @enderror </x-error-message>
             </div>
 
             <div>
-                <x-form.select wire:model.live="madre" label="Vacuna"
+                <x-form.select wire:model.live="madre" label="Seleccionar madre (Código, Sexo, Especie)"
                     :options="['' => 'Seleccionar un animal'] + $animales"
                     />
                     <x-error-message> @error('madre') {{ $message }} @enderror </x-error-message>
