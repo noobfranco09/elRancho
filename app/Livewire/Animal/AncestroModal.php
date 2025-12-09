@@ -38,7 +38,7 @@ class AncestroModal extends ModalComponent
     {
         return match ($sexo) {
             "M" => "Macho",
-            "F" => "Hembre",
+            "F" => "Hembra",
             default => "N/A"
         };
     }

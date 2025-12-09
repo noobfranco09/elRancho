@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-header title="Ventass" description="Gestión de ventas"/>
+        <x-header title="Ventas" description="Gestión de ventas"/>
     </x-slot>
 
     <x-panel class="mb-9">
